@@ -52,12 +52,14 @@
                                 </state>
                                 <connections>
                                     <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hqA-Bt-uXl"/>
+                                    <segue destination="SCo-mY-tD1" kind="show" id="IYj-P6-Z5l"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.36314823869271617" green="0.29854940134954699" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="XVP-dH-b5V"/>
                     <connections>
                         <outlet property="emailField" destination="XFB-vy-Eat" id="oMH-pm-r64"/>
                         <outlet property="gamerTagField" destination="17M-Id-nqj" id="tbX-Uv-Hub"/>
@@ -66,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2333" y="114"/>
+            <point key="canvasLocation" x="2458" y="96"/>
         </scene>
         <!--Side Menu View Controller-->
         <scene sceneID="3FU-bi-9FB">
@@ -197,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkJ-fp-wBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3238" y="115"/>
+            <point key="canvasLocation" x="3304" y="862"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="Da5-Ax-ukB">
@@ -213,7 +215,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.36314823870000001" green="0.29854940130000002" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="STf-p8-Cpg"/>
                     </view>
                     <navigationItem key="navigationItem" id="7I9-O4-6Bm">
                         <barButtonItem key="leftBarButtonItem" title="More" id="6yq-4M-NNr">
@@ -225,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ost-yK-47z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2376" y="862"/>
+            <point key="canvasLocation" x="2458" y="862"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xeu-aW-gRy">
@@ -238,12 +241,15 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="g40-ev-PiT" kind="relationship" relationship="rootViewController" id="tEv-z6-xJn"/>
+                        <segue destination="g40-ev-PiT" kind="relationship" relationship="rootViewController" id="7bK-G5-mFt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pn3-8l-VBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1609" y="862"/>
+            <point key="canvasLocation" x="1663" y="862"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="IYj-P6-Z5l"/>
+    </inferredMetricsTieBreakers>
 </document>

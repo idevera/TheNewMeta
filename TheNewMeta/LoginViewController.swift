@@ -56,12 +56,11 @@ class LoginViewController: UIViewController {
             print("Added \(user.gamerTag) User Object to Realm")
         }
     }
+
     
     // Call all functions here upon the load view
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //        addUser()
     }
     
     override func didReceiveMemoryWarning() {
