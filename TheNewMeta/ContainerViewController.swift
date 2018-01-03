@@ -20,9 +20,11 @@ class ContainerViewController : UIViewController {
         if sideMenuOpen {
             // This will hide the menu
             sideMenuConstraint.constant = -200
+            sideMenuOpen = false
         } else {
             // This will show the menu?
             sideMenuConstraint.constant = 0
+            sideMenuOpen = true
         }
         
     }
