@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class CreateLobbyViewController : UINavigationController {
+class CreateLobbyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        print("I made it to the CreateLobby View Controller!")
     }
 }
