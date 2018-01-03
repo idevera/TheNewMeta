@@ -27,6 +27,9 @@ class ContainerViewController : UIViewController {
             sideMenuOpen = true
         }
         
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     override func viewDidLoad() {
@@ -35,5 +38,6 @@ class ContainerViewController : UIViewController {
         // See the MainViewController for the NotificationCenter.default.post "message"
         NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: NSNotification.Name("ToggleSideMenu"), object: nil)
     }
+    
     
 }

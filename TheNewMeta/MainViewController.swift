@@ -24,6 +24,9 @@ class MainViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showMyLobbies), name: NSNotification.Name("ShowMyLobbies"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(showEditProfile), name: NSNotification.Name("ShowEditProfile"), object: nil)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(showLoginView), name: NSNotification.Name("ShowLoginView"), object: nil)
+
     }
     
     // Will be consumed by the NC
@@ -40,4 +43,8 @@ class MainViewController: UIViewController {
     @objc func showEditProfile () {
         performSegue(withIdentifier: "ShowEditProfile", sender: nil)
     }
+    
+//    @objc func showLoginView () {
+//        performSegue(withIdentifier: "ShowLoginView", sender: nil)
+//    }
 }
