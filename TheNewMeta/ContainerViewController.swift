@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class AfterLoginViewController : UIViewController {
+class ContainerViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
