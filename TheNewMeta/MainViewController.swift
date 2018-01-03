@@ -12,6 +12,6 @@ class MainViewController: UIViewController {
 
     @IBAction func clickHamburger() {
         print("TOGGLE SIDE MENU")
+        NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
     }
-    
 }

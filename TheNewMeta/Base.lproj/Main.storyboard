@@ -52,7 +52,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hqA-Bt-uXl"/>
-                                    <segue destination="SCo-mY-tD1" kind="show" id="IYj-P6-Z5l"/>
+                                    <segue destination="O9M-24-HEz" kind="show" id="wjR-hn-0Av"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -98,8 +98,25 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="60S-mk-I4N">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="A7C-Rc-TbY">
                                         <rect key="frame" x="0.0" y="44" width="200" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A7C-Rc-TbY" id="w3i-7E-Mlp">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Open Lobbies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFi-kF-OzN">
+                                                    <rect key="frame" x="16" y="11" width="194" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="60S-mk-I4N">
+                                        <rect key="frame" x="0.0" y="88" width="200" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="60S-mk-I4N" id="uLw-Y8-iFd">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="43.5"/>
@@ -116,7 +133,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Y4Z-pM-xIB">
-                                        <rect key="frame" x="0.0" y="88" width="200" height="44"/>
+                                        <rect key="frame" x="0.0" y="132" width="200" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y4Z-pM-xIB" id="wxB-zW-4nc">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="43.5"/>
@@ -173,14 +190,17 @@
                         <constraints>
                             <constraint firstItem="u2N-RW-vIg" firstAttribute="top" secondItem="Y7j-on-UCn" secondAttribute="top" id="7XL-fG-YtO"/>
                             <constraint firstItem="u2N-RW-vIg" firstAttribute="bottom" secondItem="jmk-MI-zTn" secondAttribute="bottom" id="DNN-6W-ftc"/>
-                            <constraint firstAttribute="trailing" secondItem="u2N-RW-vIg" secondAttribute="trailing" id="ToU-Sw-Zt7"/>
                             <constraint firstItem="u2N-RW-vIg" firstAttribute="leading" secondItem="d78-o6-xsm" secondAttribute="trailing" id="e3q-4P-p3l"/>
                             <constraint firstItem="d78-o6-xsm" firstAttribute="leading" secondItem="Y7j-on-UCn" secondAttribute="leading" constant="-200" id="qRf-LX-UP6"/>
                             <constraint firstItem="d78-o6-xsm" firstAttribute="top" secondItem="Y7j-on-UCn" secondAttribute="top" id="rW1-bL-YZo"/>
+                            <constraint firstItem="u2N-RW-vIg" firstAttribute="width" secondItem="Y7j-on-UCn" secondAttribute="width" id="sEH-1C-fQA"/>
                             <constraint firstItem="d78-o6-xsm" firstAttribute="bottom" secondItem="jmk-MI-zTn" secondAttribute="bottom" id="x7g-wL-UdP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jmk-MI-zTn"/>
                     </view>
+                    <connections>
+                        <outlet property="sideMenuConstraint" destination="qRf-LX-UP6" id="NBb-5m-d0x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGM-lK-3QD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -249,7 +269,4 @@
             <point key="canvasLocation" x="1663" y="862"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="IYj-P6-Z5l"/>
-    </inferredMetricsTieBreakers>
 </document>
