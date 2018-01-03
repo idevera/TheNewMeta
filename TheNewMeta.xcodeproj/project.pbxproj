@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CCF800E51FFC1B1D0089994B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF800E41FFC1B1D0089994B /* AppDelegate.swift */; };
-		CCF800E71FFC1B1D0089994B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF800E61FFC1B1D0089994B /* ViewController.swift */; };
+		CCF800E71FFC1B1D0089994B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF800E61FFC1B1D0089994B /* LoginViewController.swift */; };
 		CCF800EA1FFC1B1D0089994B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF800E81FFC1B1D0089994B /* Main.storyboard */; };
 		CCF800EC1FFC1B1D0089994B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCF800EB1FFC1B1D0089994B /* Assets.xcassets */; };
 		CCF800EF1FFC1B1D0089994B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF800ED1FFC1B1D0089994B /* LaunchScreen.storyboard */; };
@@ -21,6 +21,8 @@
 		CCF801191FFC1BE50089994B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF801131FFC1BDA0089994B /* RealmSwift.framework */; };
 		CCF8011A1FFC1BE50089994B /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCF801131FFC1BDA0089994B /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CCF8011E1FFC1DEC0089994B /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF8011D1FFC1DEC0089994B /* RealmObjects.swift */; };
+		CCF801261FFC42880089994B /* CreateLobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF801251FFC42880089994B /* CreateLobbyViewController.swift */; };
+		CCF8012A1FFC57BE0089994B /* AfterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF801291FFC57BE0089994B /* AfterLoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +60,7 @@
 /* Begin PBXFileReference section */
 		CCF800E11FFC1B1D0089994B /* TheNewMeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheNewMeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF800E41FFC1B1D0089994B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CCF800E61FFC1B1D0089994B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CCF800E61FFC1B1D0089994B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CCF800E91FFC1B1D0089994B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CCF800EB1FFC1B1D0089994B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCF800EE1FFC1B1D0089994B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -72,6 +74,8 @@
 		CCF801131FFC1BDA0089994B /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		CCF801141FFC1BDD0089994B /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		CCF8011D1FFC1DEC0089994B /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
+		CCF801251FFC42880089994B /* CreateLobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLobbyViewController.swift; sourceTree = "<group>"; };
+		CCF801291FFC57BE0089994B /* AfterLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterLoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +133,9 @@
 				CCF801141FFC1BDD0089994B /* Realm.framework */,
 				CCF801131FFC1BDA0089994B /* RealmSwift.framework */,
 				CCF800E41FFC1B1D0089994B /* AppDelegate.swift */,
-				CCF800E61FFC1B1D0089994B /* ViewController.swift */,
+				CCF800E61FFC1B1D0089994B /* LoginViewController.swift */,
+				CCF801291FFC57BE0089994B /* AfterLoginViewController.swift */,
+				CCF801251FFC42880089994B /* CreateLobbyViewController.swift */,
 				CCF8011D1FFC1DEC0089994B /* RealmObjects.swift */,
 				CCF800E81FFC1B1D0089994B /* Main.storyboard */,
 				CCF800EB1FFC1B1D0089994B /* Assets.xcassets */,
@@ -309,8 +315,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCF8012A1FFC57BE0089994B /* AfterLoginViewController.swift in Sources */,
 				CCF8011E1FFC1DEC0089994B /* RealmObjects.swift in Sources */,
-				CCF800E71FFC1B1D0089994B /* ViewController.swift in Sources */,
+				CCF800E71FFC1B1D0089994B /* LoginViewController.swift in Sources */,
+				CCF801261FFC42880089994B /* CreateLobbyViewController.swift in Sources */,
 				CCF800E51FFC1B1D0089994B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

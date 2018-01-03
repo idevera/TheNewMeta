@@ -14,3 +14,5 @@ class User: Object {
     @objc dynamic var email = ""
     @objc dynamic var password = ""
 }
+
+
