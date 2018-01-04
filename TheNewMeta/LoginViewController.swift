@@ -29,22 +29,21 @@ class LoginViewController: UIViewController {
         
         let realm = try! Realm()
 
-        let matchingUser = realm.objects(User.self).filter("email == '\(email)'")
+        let matchingUser = realm.objects(User.self).filter("email == '\(email)'").first
         
-        print("\(matchingUser)")
-        if matchingUser.count > 0 {
+        if matchingUser != nil {
             print("User was found with a matching email!")
-            // Move onto the next sign in page with a welcome a notification
-//            UserDefaults.standard.set(matchingUser., forKey: "UserID")
+            assignUserID(userID: matchingUser!.userID)
+            // TODO: Move onto the next sign in page with a welcome a notification
         } else {
-            createUser()
-            // Move onto the next sign in page with a welcome notification that a new user has been created
-//            UserDefaults.standard.set(Int, forKey: "UserID")
-
+            let savedUserID = createUser()
+            assignUserID(userID: savedUserID)
+            // TODO: Move onto the next sign in page with a welcome notification that a new user has been created
         }
     }
     
-    func createUser() {
+    // Need to add a arrow function to the declare the type that is being returned. Else it will return as a void function.
+    private func createUser() -> String {
         let user = User()
 
         user.gamerTag = gamerTagField.text!
@@ -55,8 +54,18 @@ class LoginViewController: UIViewController {
 
         try! realm.write {
             realm.add(user)
-            print("\(user)")
+            print("After the adding of a new user")
             print("Added new gamerTag: \(user.gamerTag) User Object to Realm")
+        }
+        
+        return user.userID
+    }
+    
+    private func assignUserID(userID: String) {
+        UserDefaults.standard.set(userID, forKey: "userID")
+        UserDefaults.standard.synchronize()
+        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+            print("\(key) = \(value) \n")
         }
     }
 
