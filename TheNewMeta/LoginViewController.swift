@@ -57,7 +57,6 @@ class LoginViewController: UIViewController {
             print("After the adding of a new user")
             print("Added new gamerTag: \(user.gamerTag) User Object to Realm")
         }
-        
         return user.userID
     }
     

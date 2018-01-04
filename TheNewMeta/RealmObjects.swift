@@ -27,3 +27,6 @@ class Lobby: Object {
     @objc dynamic var message = ""
 }
 
+class Game: Object {
+    @objc dynamic var title = ""
+}
