@@ -17,24 +17,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let config = Realm.Configuration(
+        var config = Realm.Configuration(
             // Set the new schema version. This must be greater than the previously used
             // version (if you've never set a schema version before, the version is 0).
-            schemaVersion: 7,
+            schemaVersion: 11,
             
             // Set the block which will be called automatically when opening a Realm with
             // a schema version lower than the one set above
             migrationBlock: { migration, oldSchemaVersion in
                 // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                if (oldSchemaVersion < 8) {
+                if (oldSchemaVersion < 12) {
                     var nextID = UUID().uuidString
                     migration.enumerateObjects(ofType: User.className()) { oldObject, newObject in
                         newObject!["userID"] = nextID
                         nextID = UUID().uuidString
                     }
-                    // Nothing to do!
-                    // Realm will automatically detect new properties and removed properties
-                    // And will update the schema on disk automatically
+                    migration.enumerateObjects(ofType: Lobby.className()) { oldObject, newObject in
+                        newObject!["lobbyID"] = nextID
+                        nextID = UUID().uuidString
+                    }
+                    migration.enumerateObjects(ofType: Game.className()) { oldObject, newObject in
+                        newObject!["gameID"] = nextID
+                        nextID = UUID().uuidString
+                    }
                 }
         })
         
@@ -43,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Now that we've told Realm how to handle the schema change, opening the file
         // will automatically perform the migration
+        config.deleteRealmIfMigrationNeeded = true
         return true
     }
 

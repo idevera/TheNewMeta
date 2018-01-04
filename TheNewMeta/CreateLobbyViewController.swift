@@ -26,25 +26,28 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         
         // Create a lobby instance
         let lobby = Lobby()
+        let newGame = Game()
         
         // It’s worth noting here that these getters will return optional values, so the type of name is String?. When the "name" key doesn’t exist, the code returns nil. It then makes sense to use optional binding to get the value safely:
         if let id = UserDefaults.standard.string(forKey: "userID") {
             lobby.hostID = id
+            print("Lobby ID successfully saved for logged in user: \(lobby.hostID)")
         } // OPTIONAL: Write an exception here if have time
         
-        lobby.game = gameTagField.text!
-        
+        newGame.title = gameTagField.text!
+        print("newGame title is: \(newGame.title)")
+
+        lobby.game = newGame
+        print("Lobby game instance is: \(String(describing: lobby.game))")
+
+//        lobby.game = gameTagField.text!
         let num: Int? = Int(numberOfPlayersField.text!)
-        
         lobby.numberOfPlayers = num!
-        
         lobby.message = messageTagField.text!
         
         saveObject(object: lobby)
-        
         navigationController?.popToRootViewController(animated: true)
-        print("Added Game: \(lobby.game) Message: \(lobby.message) HostID: \(lobby.hostID) Number of Players: \(lobby.numberOfPlayers) Lobby Object to Realm DB")
-//        }
+//        print("Added Game: \(lobby.game) Message: \(lobby.message) HostID: \(lobby.hostID) Number of Players: \(lobby.numberOfPlayers) Lobby Object to Realm DB")
     }
     
     private func saveObject(object: Object) {
@@ -54,7 +57,9 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         // Write to the database
         try! realm.write {
             realm.add(object)
+            print("Successfully saved your object: \(object)")
         }
+        // OPTIONAL: Add exception if the object was saved
     }
 
     
