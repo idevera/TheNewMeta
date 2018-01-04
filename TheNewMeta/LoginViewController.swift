@@ -64,13 +64,8 @@ class LoginViewController: UIViewController {
     private func assignUserID(userID: String) {
         UserDefaults.standard.set(userID, forKey: "userID")
         UserDefaults.standard.synchronize()
-        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
-            print("\(key) = \(value) \n")
-        }
     }
-
     
-    // Call all functions here upon the load view
     override func viewDidLoad() {
         super.viewDidLoad()
     }

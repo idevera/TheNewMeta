@@ -21,7 +21,7 @@ class User: Object {
 }
 
 class Lobby: Object {
-    @objc dynamic var hostID = 0
+    @objc dynamic var hostID = ""
     @objc dynamic var game = ""
     @objc dynamic var numberOfPlayers = 0
     @objc dynamic var message = ""

@@ -25,6 +25,10 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         // Create a lobby instance
         let lobby = Lobby()
         
+        // It’s worth noting here that these getters will return optional values, so the type of name is String?. When the "name" key doesn’t exist, the code returns nil. It then makes sense to use optional binding to get the value safely:
+        if let id = UserDefaults.standard.string(forKey: "userID") {
+            lobby.hostID = id
+        }
         lobby.game = gameTagField.text!
         let num: Int? = Int(numberOfPlayersField.text!)
         lobby.numberOfPlayers = num!
@@ -36,9 +40,10 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         // Write to the database
         try! realm.write {
             realm.add(lobby)
+            
             // After adding, go back to the rootVC
             navigationController?.popToRootViewController(animated: true)
-            print("Added \(lobby.game) \(lobby.message) \(lobby.hostID) \(lobby.numberOfPlayers) User Object to Realm")
+            print("Added Game: \(lobby.game) Message: \(lobby.message) HostID: \(lobby.hostID) Number of Players: \(lobby.numberOfPlayers) Lobby Object to Realm DB")
         }
     }
     
