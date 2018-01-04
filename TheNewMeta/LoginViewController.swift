@@ -10,17 +10,15 @@ import Foundation
 import UIKit
 import RealmSwift
 
-var gamerTag = ""
-var email = ""
-var password = ""
-
 // Inherits from the UIViewController
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var gamerTagField: UITextField!
-
-    @IBOutlet weak var emailField: UITextField!
+    var gamerTag = ""
+    var email = ""
+    var password = ""
     
+    @IBOutlet weak var gamerTagField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var pwField: UITextField!
     
     // Sign in button function

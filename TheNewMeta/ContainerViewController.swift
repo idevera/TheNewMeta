@@ -14,6 +14,7 @@ class ContainerViewController : UIViewController {
     
     // This outlet is linked to the constant constraint
     @IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
+    
     var sideMenuOpen = false
     
     @objc func toggleSideMenu() {

@@ -15,4 +15,10 @@ class User: Object {
     @objc dynamic var password = ""
 }
 
+class Lobby: Object {
+    @objc dynamic var hostID = 0
+    @objc dynamic var game = ""
+    @objc dynamic var numberOfPlayers = 0
+    @objc dynamic var message = ""
+}
 
