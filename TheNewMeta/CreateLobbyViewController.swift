@@ -36,6 +36,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         // Write to the database
         try! realm.write {
             realm.add(lobby)
+            // After adding, go back to the rootVC
             navigationController?.popToRootViewController(animated: true)
             print("Added \(lobby.game) \(lobby.message) \(lobby.hostID) \(lobby.numberOfPlayers) User Object to Realm")
         }
