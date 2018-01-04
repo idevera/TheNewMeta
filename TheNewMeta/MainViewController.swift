@@ -31,13 +31,11 @@ class MainViewController: UIViewController {
     
     // Will be consumed by the NC
     @objc func showCreateLobby () {
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier:)("ShowCreateLobby") as! CreateLobbyViewController
         performSegue(withIdentifier: "ShowCreateLobby", sender: nil)
     }
     
     @objc func showMyLobbies () {
         performSegue(withIdentifier: "ShowMyLobbies", sender: nil)
-
     }
     
     @objc func showEditProfile () {

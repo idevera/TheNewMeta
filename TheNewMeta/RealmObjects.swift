@@ -10,9 +10,14 @@ import Foundation
 import RealmSwift
 
 class User: Object {
+    @objc dynamic var userID = UUID().uuidString
     @objc dynamic var gamerTag = ""
     @objc dynamic var email = ""
     @objc dynamic var password = ""
+    
+    override static func primaryKey() -> String? {
+        return "userID"
+    }
 }
 
 class Lobby: Object {

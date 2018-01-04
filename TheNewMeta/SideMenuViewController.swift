@@ -11,8 +11,8 @@ import UIKit
 class SideMenuViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(indexPath.row)
         
+        // This is similar to a bus in backbone??
         NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
         // Each table row has an index that it represents
         switch indexPath.row {

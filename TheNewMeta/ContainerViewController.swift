@@ -12,10 +12,10 @@ import RealmSwift
 
 class ContainerViewController : UIViewController {
     
+    var sideMenuOpen = false
+    
     // This outlet is linked to the constant constraint
     @IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
-    
-    var sideMenuOpen = false
     
     @objc func toggleSideMenu() {
         if sideMenuOpen {
@@ -23,7 +23,7 @@ class ContainerViewController : UIViewController {
             sideMenuConstraint.constant = -200
             sideMenuOpen = false
         } else {
-            // This will show the menu?
+            // This will show the menu
             sideMenuConstraint.constant = 0
             sideMenuOpen = true
         }
@@ -39,6 +39,4 @@ class ContainerViewController : UIViewController {
         // See the MainViewController for the NotificationCenter.default.post "message"
         NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: NSNotification.Name("ToggleSideMenu"), object: nil)
     }
-    
-    
 }
