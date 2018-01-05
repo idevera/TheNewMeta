@@ -35,7 +35,7 @@ class ContainerViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Adding an observer to the NotifcationCenter and all its attributes. I think the NotificationCenter is listening to any Notificaton that has the name of ToggleSideMenu
+        // Adding an observer to the NotifcationCenter and all its attributes. I think the NotificationCenter is listening to any Notificaton that has the name of ToggleSideMenu2
         // See the MainViewController for the NotificationCenter.default.post "message"
         NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: NSNotification.Name("ToggleSideMenu"), object: nil)
     }

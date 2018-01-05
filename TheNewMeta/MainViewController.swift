@@ -15,7 +15,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var currentGames = [String]()
     
     @IBOutlet weak var tableViewContent: UITableView!
-//        let testData = ["hello", "goodbye", "salut"]
     
     @IBAction func clickHamburger() {
         print("TOGGLE SIDE MENU")
@@ -69,6 +68,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //    }
         //
     
+    // Notification Center Functions
     
     // Will be consumed by the NC --> Messages are sent from the sideMenuViewController on click
     @objc func showCreateLobby () {
@@ -95,13 +95,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableViewContent.dataSource = self
         
         
-        // NAVIGATION
+        // Navigation Bar Observers - Waiting for an on-click message
+        
         // On load, add the observers to the NC to be listening for a click event!!!
         NotificationCenter.default.addObserver(self, selector: #selector(showCreateLobby), name: NSNotification.Name("ShowCreateLobby"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showMyLobbies), name: NSNotification.Name("ShowMyLobbies"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showEditProfile), name: NSNotification.Name("ShowEditProfile"), object: nil)
         // NotificationCenter.default.addObserver(self, selector: #selector(showLoginView), name: NSNotification.Name("ShowLoginView"), object: nil)
-        
-        
     }
 }
