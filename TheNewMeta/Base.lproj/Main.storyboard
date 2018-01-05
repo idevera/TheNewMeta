@@ -296,7 +296,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="My Lobbies" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wZD-oq-Zwm">
-                                <rect key="frame" x="46" y="77" width="228" height="30"/>
+                                <rect key="frame" x="46" y="91" width="228" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -319,25 +319,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fPm-tF-3si">
-                                <rect key="frame" x="0.0" y="120" width="320" height="360"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="qUU-bn-GDe">
+                            <searchBar contentMode="redraw" text="" placeholder="Search Games" translatesAutoresizingMaskIntoConstraints="NO" id="qUU-bn-GDe">
                                 <rect key="frame" x="0.0" y="64" width="320" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eO9-nS-aaV">
+                                <rect key="frame" x="0.0" y="120" width="320" height="360"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameTitleCell" id="T2k-Jc-Lx4">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T2k-Jc-Lx4" id="pvp-xC-zk2">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.36314823870000001" green="0.29854940130000002" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="eO9-nS-aaV" firstAttribute="top" secondItem="qUU-bn-GDe" secondAttribute="bottom" id="0iE-c1-4Me"/>
                             <constraint firstItem="qUU-bn-GDe" firstAttribute="top" secondItem="STf-p8-Cpg" secondAttribute="top" id="2tW-nu-lbR"/>
-                            <constraint firstItem="fPm-tF-3si" firstAttribute="bottom" secondItem="STf-p8-Cpg" secondAttribute="bottom" id="6bL-da-jbf"/>
-                            <constraint firstItem="fPm-tF-3si" firstAttribute="top" secondItem="qUU-bn-GDe" secondAttribute="bottom" id="7Li-Uq-2jZ"/>
-                            <constraint firstItem="fPm-tF-3si" firstAttribute="top" secondItem="qUU-bn-GDe" secondAttribute="bottom" id="Alw-qg-9I9"/>
+                            <constraint firstItem="eO9-nS-aaV" firstAttribute="leading" secondItem="STf-p8-Cpg" secondAttribute="leading" id="FAz-3i-WiM"/>
+                            <constraint firstItem="eO9-nS-aaV" firstAttribute="trailing" secondItem="STf-p8-Cpg" secondAttribute="trailing" id="JDa-3f-cdY"/>
                             <constraint firstItem="qUU-bn-GDe" firstAttribute="trailing" secondItem="STf-p8-Cpg" secondAttribute="trailing" id="S2W-6M-LZS"/>
                             <constraint firstItem="qUU-bn-GDe" firstAttribute="leading" secondItem="STf-p8-Cpg" secondAttribute="leading" id="dcN-Hi-sdm"/>
-                            <constraint firstItem="fPm-tF-3si" firstAttribute="trailing" secondItem="STf-p8-Cpg" secondAttribute="trailing" id="nXd-cN-UtR"/>
-                            <constraint firstItem="fPm-tF-3si" firstAttribute="leading" secondItem="STf-p8-Cpg" secondAttribute="leading" id="tzv-m2-8qi"/>
+                            <constraint firstItem="eO9-nS-aaV" firstAttribute="bottom" secondItem="STf-p8-Cpg" secondAttribute="bottom" id="seT-su-pFu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="STf-p8-Cpg"/>
                     </view>
@@ -349,6 +358,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableViewContent" destination="eO9-nS-aaV" id="dU6-Mz-Pnr"/>
                         <segue destination="RKa-jk-mCb" kind="show" identifier="ShowCreateLobby" id="QX0-nQ-sPk"/>
                         <segue destination="Lc0-2d-4ke" kind="show" identifier="ShowEditProfile" id="TQq-io-Azx"/>
                         <segue destination="LTn-iN-TL5" kind="show" identifier="ShowMyLobbies" id="61b-O6-aYn"/>
@@ -356,7 +366,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ost-yK-47z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2454.375" y="859.85915492957747"/>
+            <point key="canvasLocation" x="2454.375" y="858.75"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="wLY-i2-WrC">
@@ -367,7 +377,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="My Lobbies" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fiz-C6-Nsz">
-                                <rect key="frame" x="46" y="66" width="228" height="30"/>
+                                <rect key="frame" x="46" y="92" width="228" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
