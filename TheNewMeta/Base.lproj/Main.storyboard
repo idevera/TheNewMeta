@@ -319,13 +319,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" text="" translatesAutoresizingMaskIntoConstraints="NO" id="qUU-bn-GDe">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fPm-tF-3si">
+                                <rect key="frame" x="0.0" y="120" width="320" height="360"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="qUU-bn-GDe">
                                 <rect key="frame" x="0.0" y="64" width="320" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.36314823870000001" green="0.29854940130000002" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qUU-bn-GDe" firstAttribute="top" secondItem="STf-p8-Cpg" secondAttribute="top" id="2tW-nu-lbR"/>
+                            <constraint firstItem="fPm-tF-3si" firstAttribute="bottom" secondItem="STf-p8-Cpg" secondAttribute="bottom" id="6bL-da-jbf"/>
+                            <constraint firstItem="fPm-tF-3si" firstAttribute="top" secondItem="qUU-bn-GDe" secondAttribute="bottom" id="7Li-Uq-2jZ"/>
+                            <constraint firstItem="fPm-tF-3si" firstAttribute="top" secondItem="qUU-bn-GDe" secondAttribute="bottom" id="Alw-qg-9I9"/>
+                            <constraint firstItem="qUU-bn-GDe" firstAttribute="trailing" secondItem="STf-p8-Cpg" secondAttribute="trailing" id="S2W-6M-LZS"/>
+                            <constraint firstItem="qUU-bn-GDe" firstAttribute="leading" secondItem="STf-p8-Cpg" secondAttribute="leading" id="dcN-Hi-sdm"/>
+                            <constraint firstItem="fPm-tF-3si" firstAttribute="trailing" secondItem="STf-p8-Cpg" secondAttribute="trailing" id="nXd-cN-UtR"/>
+                            <constraint firstItem="fPm-tF-3si" firstAttribute="leading" secondItem="STf-p8-Cpg" secondAttribute="leading" id="tzv-m2-8qi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="STf-p8-Cpg"/>
                     </view>
                     <navigationItem key="navigationItem" id="7I9-O4-6Bm">
@@ -343,7 +356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ost-yK-47z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2458" y="862"/>
+            <point key="canvasLocation" x="2454.375" y="859.85915492957747"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="wLY-i2-WrC">
