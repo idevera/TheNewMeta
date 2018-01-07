@@ -17,7 +17,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableViewContent: UITableView!
     
     @IBAction func clickHamburger() {
-        print("TOGGLE SIDE MENU")
+        //        print("TOGGLE SIDE MENU")
         // On click this will send a message to the side menu to run the constraint function!! This is a View Click action to the ContainerViewController
         NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
     }
@@ -46,10 +46,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // What are the contents of each cell?
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "gameTitleCell")
-        print("This is the textLabel:")
+        //        print("This is the textLabel:")
         // The indexPath moves down the array and prints each string in their own row
         cell.textLabel?.text = currentGames[indexPath.row]
-        // Return the cell!
+        // Return the cell view
         return cell
     }
     
@@ -94,7 +94,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableViewContent.delegate = self
         tableViewContent.dataSource = self
         
-        
         // Navigation Bar Observers - Waiting for an on-click message
         
         // On load, add the observers to the NC to be listening for a click event!!!
@@ -102,5 +101,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         NotificationCenter.default.addObserver(self, selector: #selector(showMyLobbies), name: NSNotification.Name("ShowMyLobbies"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showEditProfile), name: NSNotification.Name("ShowEditProfile"), object: nil)
         // NotificationCenter.default.addObserver(self, selector: #selector(showLoginView), name: NSNotification.Name("ShowLoginView"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        currentGames = [String]()
+        print("This is the viewDidAppear")
+        getData()
+        self.tableViewContent.reloadData()
     }
 }
