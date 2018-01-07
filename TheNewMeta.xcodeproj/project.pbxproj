@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC1654CC2002A425001DA633 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1654CB2002A425001DA633 /* GameTableViewCell.swift */; };
 		CC27185B1FFC801E0061FCDD /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC27185A1FFC801E0061FCDD /* SideMenuViewController.swift */; };
 		CC27185D1FFC88BA0061FCDD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC27185C1FFC88BA0061FCDD /* MainViewController.swift */; };
 		CCF800E51FFC1B1D0089994B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF800E41FFC1B1D0089994B /* AppDelegate.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CC1654CB2002A425001DA633 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameTableViewCell.swift; path = ../GameTableViewCell.swift; sourceTree = "<group>"; };
 		CC27185A1FFC801E0061FCDD /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		CC27185C1FFC88BA0061FCDD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CCF800E11FFC1B1D0089994B /* TheNewMeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheNewMeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,7 @@
 				CC27185C1FFC88BA0061FCDD /* MainViewController.swift */,
 				CCF801251FFC42880089994B /* CreateLobbyViewController.swift */,
 				CCF8011D1FFC1DEC0089994B /* RealmObjects.swift */,
+				CC1654CB2002A425001DA633 /* GameTableViewCell.swift */,
 				CCF800E81FFC1B1D0089994B /* Main.storyboard */,
 				CCF800EB1FFC1B1D0089994B /* Assets.xcassets */,
 				CCF800ED1FFC1B1D0089994B /* LaunchScreen.storyboard */,
@@ -328,6 +331,7 @@
 				CCF801261FFC42880089994B /* CreateLobbyViewController.swift in Sources */,
 				CC27185B1FFC801E0061FCDD /* SideMenuViewController.swift in Sources */,
 				CCF800E51FFC1B1D0089994B /* AppDelegate.swift in Sources */,
+				CC1654CC2002A425001DA633 /* GameTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

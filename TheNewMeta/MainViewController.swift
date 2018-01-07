@@ -12,7 +12,9 @@ import RealmSwift
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // TODO: Does this need to be a constant?
-    var currentGames = [String]()
+    var currentGames = [Game]()
+    
+    let gameCellIdentifier = "gameTitleCell"
     
     @IBOutlet weak var tableViewContent: UITableView!
     
@@ -27,7 +29,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let returnedGames = realm.objects(Game.self)
         print("This is all the games in the DB \(returnedGames.count)")
         for game in returnedGames {
-            currentGames.append(game.title)
+            currentGames.append(game)
         }
     }
     
@@ -45,10 +47,28 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // What are the contents of each cell?
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "gameTitleCell")
+        // The as? MealTableViewCell expression attempts to downcast the returned object from the UITableViewCell class to your MealTableViewCell class. This returns an optional.
+        //        The guard let expression safely unwraps the optional.
+        //        If your storyboard is set up correctly, and the cellIdentifier matches the identifier from your storyboard, then the downcast should never fail. If the downcast does fail, the fatalError() function prints an error message to the console and terminates the app.
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: gameCellIdentifier, for: indexPath) as? GameTableViewCell else {
+            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+        }
+        
+//        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "gameTitleCell")
         //        print("This is the textLabel:")
-        // The indexPath moves down the array and prints each string in their own row
-        cell.textLabel?.text = currentGames[indexPath.row]
+        // The indexPath moves down the array and prints each string in their own row of the cell
+        // let meal = meals[indexPath.row]
+
+        let game = currentGames[indexPath.row]
+        
+        cell.gameTitleLabel.text = game.title
+
+//        cell.nameLabel.text = meal.name
+//        cell.photoImageView.image = meal.photo
+//        cell.ratingControl.rating = meal.rating
+        
+        
+//        cell.textLabel?.text = currentGames[indexPath.row]
         // Return the cell view
         return cell
     }
@@ -105,7 +125,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        currentGames = [String]()
+        currentGames = [Game]()
         print("This is the viewDidAppear")
         getData()
         self.tableViewContent.reloadData()
