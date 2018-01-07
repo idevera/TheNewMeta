@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CC1654CC2002A425001DA633 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1654CB2002A425001DA633 /* GameTableViewCell.swift */; };
+		CC1654CE2002C36B001DA633 /* AvailableLobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1654CD2002C36B001DA633 /* AvailableLobbyViewController.swift */; };
 		CC27185B1FFC801E0061FCDD /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC27185A1FFC801E0061FCDD /* SideMenuViewController.swift */; };
 		CC27185D1FFC88BA0061FCDD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC27185C1FFC88BA0061FCDD /* MainViewController.swift */; };
 		CCF800E51FFC1B1D0089994B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF800E41FFC1B1D0089994B /* AppDelegate.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		CC1654CB2002A425001DA633 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameTableViewCell.swift; path = ../GameTableViewCell.swift; sourceTree = "<group>"; };
+		CC1654CD2002C36B001DA633 /* AvailableLobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableLobbyViewController.swift; sourceTree = "<group>"; };
 		CC27185A1FFC801E0061FCDD /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		CC27185C1FFC88BA0061FCDD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CCF800E11FFC1B1D0089994B /* TheNewMeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheNewMeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 				CCF800E61FFC1B1D0089994B /* LoginViewController.swift */,
 				CC27185C1FFC88BA0061FCDD /* MainViewController.swift */,
 				CCF801251FFC42880089994B /* CreateLobbyViewController.swift */,
+				CC1654CD2002C36B001DA633 /* AvailableLobbyViewController.swift */,
 				CCF8011D1FFC1DEC0089994B /* RealmObjects.swift */,
 				CC1654CB2002A425001DA633 /* GameTableViewCell.swift */,
 				CCF800E81FFC1B1D0089994B /* Main.storyboard */,
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC27185D1FFC88BA0061FCDD /* MainViewController.swift in Sources */,
+				CC1654CE2002C36B001DA633 /* AvailableLobbyViewController.swift in Sources */,
 				CCF8012A1FFC57BE0089994B /* ContainerViewController.swift in Sources */,
 				CCF8011E1FFC1DEC0089994B /* RealmObjects.swift in Sources */,
 				CCF800E71FFC1B1D0089994B /* LoginViewController.swift in Sources */,

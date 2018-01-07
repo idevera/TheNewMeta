@@ -26,7 +26,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func getData() {
         let realm = try! Realm()
-        let returnedGames = realm.objects(Game.self)
+        let returnedGames = realm.objects(Game.self).sorted(byKeyPath: "title")
         print("This is all the games in the DB \(returnedGames.count)")
         for game in returnedGames {
             currentGames.append(game)
@@ -51,7 +51,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //        The guard let expression safely unwraps the optional.
         //        If your storyboard is set up correctly, and the cellIdentifier matches the identifier from your storyboard, then the downcast should never fail. If the downcast does fail, the fatalError() function prints an error message to the console and terminates the app.
         guard let cell = tableView.dequeueReusableCell(withIdentifier: gameCellIdentifier, for: indexPath) as? GameTableViewCell else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            fatalError("The dequeued cell is not an instance of GameTableViewCell.")
         }
         
 //        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "gameTitleCell")
