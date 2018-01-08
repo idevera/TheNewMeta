@@ -400,42 +400,54 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LobbyTableCell" rowHeight="93" id="JC5-PK-n58" customClass="LobbyViewCell" customModule="TheNewMeta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="93"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LobbyTableCell" rowHeight="212" id="JC5-PK-n58" customClass="LobbyViewCell" customModule="TheNewMeta" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="212"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JC5-PK-n58" id="DRg-aw-io6">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="92.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="211.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GamerTag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4t-3c-m4a">
-                                                    <rect key="frame" x="8" y="0.0" width="83" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="GamerTag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4t-3c-m4a">
+                                                    <rect key="frame" x="15" y="11" width="78" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPf-Vc-g3K">
-                                                    <rect key="frame" x="230" y="3" width="57" height="23"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPf-Vc-g3K">
+                                                    <rect key="frame" x="251" y="35" width="30" height="30"/>
                                                     <state key="normal" title="Join">
                                                         <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#ofplayers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3N-o2-gqs">
-                                                    <rect key="frame" x="99" y="0.0" width="94" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message goes here!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfl-SD-zaG">
+                                                    <rect key="frame" x="8" y="128" width="305" height="73"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message goes here!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfl-SD-zaG">
-                                                    <rect key="frame" x="8" y="48" width="305" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="#ofplayers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3N-o2-gqs">
+                                                    <rect key="frame" x="15" y="71" width="94" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Xfl-SD-zaG" firstAttribute="bottom" secondItem="DRg-aw-io6" secondAttribute="bottomMargin" id="1Jd-YV-zIB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="EPf-Vc-g3K" secondAttribute="trailing" constant="24" id="6Ip-ok-ugI"/>
+                                                <constraint firstItem="k4t-3c-m4a" firstAttribute="leading" secondItem="DRg-aw-io6" secondAttribute="leadingMargin" id="6gR-sb-10D"/>
+                                                <constraint firstItem="k4t-3c-m4a" firstAttribute="top" secondItem="DRg-aw-io6" secondAttribute="topMargin" id="8kp-cU-fZ4"/>
+                                                <constraint firstItem="EPf-Vc-g3K" firstAttribute="leading" secondItem="k4t-3c-m4a" secondAttribute="trailing" constant="158" id="L3Z-qq-NbO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Xfl-SD-zaG" secondAttribute="trailing" constant="-8" id="OZB-vB-Kix"/>
+                                                <constraint firstItem="M3N-o2-gqs" firstAttribute="top" secondItem="k4t-3c-m4a" secondAttribute="bottom" constant="31" id="Teh-T5-nY2"/>
+                                                <constraint firstItem="Xfl-SD-zaG" firstAttribute="top" secondItem="EPf-Vc-g3K" secondAttribute="bottom" constant="63" id="Vwg-S6-8mn"/>
+                                                <constraint firstItem="M3N-o2-gqs" firstAttribute="leading" secondItem="DRg-aw-io6" secondAttribute="leadingMargin" id="a2Q-R1-ppI"/>
+                                                <constraint firstItem="EPf-Vc-g3K" firstAttribute="top" secondItem="DRg-aw-io6" secondAttribute="topMargin" constant="24" id="kFE-jx-aEg"/>
+                                                <constraint firstItem="EPf-Vc-g3K" firstAttribute="leading" secondItem="k4t-3c-m4a" secondAttribute="trailing" constant="158" id="pFw-2y-Vng"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="M3N-o2-gqs" secondAttribute="trailing" constant="196" id="wcW-ZI-Rni"/>
+                                                <constraint firstItem="Xfl-SD-zaG" firstAttribute="leading" secondItem="DRg-aw-io6" secondAttribute="leadingMargin" constant="-7" id="wph-xi-MqF"/>
+                                                <constraint firstItem="Xfl-SD-zaG" firstAttribute="top" secondItem="M3N-o2-gqs" secondAttribute="bottom" constant="21" id="x56-9y-wgh"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="gamerTagLabel" destination="k4t-3c-m4a" id="Nay-4q-ftz"/>
@@ -455,10 +467,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2XR-QY-eaK"/>
                     </view>
+                    <connections>
+                        <outlet property="LobbyTableView" destination="xMC-JP-mpE" id="5fk-k0-eOe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMx-cX-KWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3263" y="859"/>
+            <point key="canvasLocation" x="3262.5" y="858.75"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="wLY-i2-WrC">
