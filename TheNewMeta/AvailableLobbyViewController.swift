@@ -10,8 +10,11 @@ import UIKit
 
 class AvailableLobbyViewController: UIViewController {
 
+    var chosenGame: Game?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("This is the vailableLobbyVC chosen game: \(String(describing: chosenGame))")
 
         // Do any additional setup after loading the view.
     }

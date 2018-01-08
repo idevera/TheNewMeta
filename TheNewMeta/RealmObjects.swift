@@ -38,6 +38,20 @@ class Lobby: Object {
     }
 }
 
+
+//    Lobby {
+//    lobbyID = 4A362BCD-97C8-4D02-BE37-E314869DF7D1;
+//    hostID = 421F7DC6-EF38-4A7E-BB0E-8CEB1D6347AD;
+//    game = Game {
+//    gameID = 1AFB77B7-1DEB-4278-BF93-042DAAE992F1;
+//    title = NotOverWatch;
+//    };
+//    numberOfPlayers = 1;
+//    message = Looking for you!;
+//    }
+//
+
+
 class Game: Object {
     @objc dynamic var gameID: String = UUID().uuidString
     @objc dynamic var title: String = ""

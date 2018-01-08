@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import RealmSwift
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
@@ -19,25 +20,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let gameCellIdentifier = "gameTitleCell"
     
     @IBOutlet weak var tableViewContent: UITableView!
-
+    
     @IBOutlet weak var searchBarView: UISearchBar!
     
     @IBAction func clickHamburger() {
-        //        print("TOGGLE SIDE MENU")
         // On click this will send a message to the side menu to run the constraint function!! This is a View Click action to the ContainerViewController
         NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
     }
     
-    func getData() {
-        let realm = try! Realm()
-        let returnedGames = realm.objects(Game.self).sorted(byKeyPath: "title")
-        print("This is all the games in the DB \(returnedGames.count)")
-        for game in returnedGames {
-            currentGames.append(game)
-        }
-    }
-    
-    // Lobbies Table
+    // Table View for all games
     
     // How many sections in your table
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,8 +43,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // What are the contents of each cell?
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // The as? MealTableViewCell expression attempts to downcast the returned object from the UITableViewCell class to your MealTableViewCell class. This returns an optional.
-        //        The guard let expression safely unwraps the optional.
-        //        If your storyboard is set up correctly, and the cellIdentifier matches the identifier from your storyboard, then the downcast should never fail. If the downcast does fail, the fatalError() function prints an error message to the console and terminates the app.
+        // The guard let expression safely unwraps the optional.
+        // If your storyboard is set up correctly, and the cellIdentifier matches the identifier from your storyboard, then the downcast should never fail. If the downcast does fail, the fatalError() function prints an error message to the console and terminates the app.
         guard let cell = tableView.dequeueReusableCell(withIdentifier: gameCellIdentifier, for: indexPath) as? GameTableViewCell else {
             fatalError("The dequeued cell is not an instance of GameTableViewCell.")
         }
@@ -79,24 +70,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else {
             filteredData = currentGames
         }
-        //        filteredData = searchText.isEmpty ? currentGames : currentGames.filter{  $0.title.contains(searchText)
-            // If dataItem matches the searchText, return true to include it
-        //            return gameTitle.range(of: searchText, options: .caseInsensitive) != nil
         self.tableViewContent.reloadData()
     }
-    
-    //    Lobby {
-    //    lobbyID = 4A362BCD-97C8-4D02-BE37-E314869DF7D1;
-    //    hostID = 421F7DC6-EF38-4A7E-BB0E-8CEB1D6347AD;
-    //    game = Game {
-    //    gameID = 1AFB77B7-1DEB-4278-BF93-042DAAE992F1;
-    //    title = NotOverWatch;
-    //    };
-    //    numberOfPlayers = 1;
-    //    message = Looking for you!;
-    //    }
-        //
-    
+
     // Notification Center Functions
     
     // Will be consumed by the NC --> Messages are sent from the sideMenuViewController on click
@@ -115,6 +91,17 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //    @objc func showLoginView () {
     //        performSegue(withIdentifier: "ShowLoginView", sender: nil)
     //    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LobbyGames" {
+            if let indexPath = tableViewContent.indexPathForSelectedRow {
+                let gameObject = filteredData[indexPath.row]
+                let controller = segue.destination as? AvailableLobbyViewController
+                controller?.chosenGame = gameObject
+            }
+        }
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,5 +130,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         getData()
         filteredData = currentGames
         self.tableViewContent.reloadData()
+    }
+    
+    // Private functions
+    
+    private func getData() {
+        let realm = try! Realm()
+        let returnedGames = realm.objects(Game.self).sorted(byKeyPath: "title")
+        print("This is all the games in the DB \(returnedGames.count)")
+        for game in returnedGames {
+            currentGames.append(game)
+        }
     }
 }
