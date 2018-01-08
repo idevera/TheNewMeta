@@ -75,7 +75,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // For each item, return true if the item should be included and false if the
         // item should NOT be included
         if !searchText.isEmpty {
-            filteredData = currentGames.filter{ $0.title.contains(searchText) }
+            filteredData = currentGames.filter{ $0.title.localizedCaseInsensitiveContains(searchText) }
         } else {
             filteredData = currentGames
         }
@@ -84,35 +84,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //            return gameTitle.range(of: searchText, options: .caseInsensitive) != nil
         self.tableViewContent.reloadData()
     }
-    
-//    var studios = [Studio]()
-//    var filteredStudios = [Studio]()
-//    var studiosToDisplay = [Studio]()
-//
-//    func updateSearchResultsForSearchController(searchController: UISearchController) {
-//        let searchText = searchController.searchBar.text
-//
-//        print("SEARCH TEXT: \(searchText)")
-//
-//        if let searchText = searchText, !searchText.isEmpty {
-//            studiosToDisplay = studios.filter{ $0.studioName.contains(searchText) }
-//        }
-//        else {
-//            studiosToDisplay = studios
-//            NSNotificationCenter.defaultCenter().postNotificationName("showResultsBeforeSearchingNotification", object: nil) //Calls SearchVC
-//        }
-//
-//        self.resultTableView.reloadData()
-//    }
-    
-    
-    // filter by the Game attribute title
-    // Then
-    
-//    let result = aSectionArray.joined().filter { $0.isEnabled }
-
-
-    
     
     //    Lobby {
     //    lobbyID = 4A362BCD-97C8-4D02-BE37-E314869DF7D1;
@@ -166,8 +137,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         currentGames = [Game]()
+        
         print("This is the viewDidAppear")
+        
         getData()
+        filteredData = currentGames
         self.tableViewContent.reloadData()
     }
 }
