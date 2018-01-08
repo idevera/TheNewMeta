@@ -9,14 +9,18 @@
 import UIKit
 import RealmSwift
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     // TODO: Does this need to be a constant?
     var currentGames = [Game]()
     
+    var filteredData = [Game]()
+    
     let gameCellIdentifier = "gameTitleCell"
     
     @IBOutlet weak var tableViewContent: UITableView!
+
+    @IBOutlet weak var searchBarView: UISearchBar!
     
     @IBAction func clickHamburger() {
         //        print("TOGGLE SIDE MENU")
@@ -42,7 +46,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // How many rows in your table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentGames.count
+        return filteredData.count
     }
     
     // What are the contents of each cell?
@@ -54,25 +58,59 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             fatalError("The dequeued cell is not an instance of GameTableViewCell.")
         }
         
-//        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "gameTitleCell")
-        //        print("This is the textLabel:")
-        // The indexPath moves down the array and prints each string in their own row of the cell
-        // let meal = meals[indexPath.row]
-
-        let game = currentGames[indexPath.row]
+        // The table view will iterate over each thing in the filteredData
+        let game = filteredData[indexPath.row]
         
         cell.gameTitleLabel.text = game.title
-
-//        cell.nameLabel.text = meal.name
-//        cell.photoImageView.image = meal.photo
-//        cell.ratingControl.rating = meal.rating
         
-        
-//        cell.textLabel?.text = currentGames[indexPath.row]
         // Return the cell view
         return cell
     }
     
+    // The search bar is dynamic. With each searchText
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // When there is no text, filteredData is the same as the original data
+        // When user has entered text into the search box
+        // Use the filter method to iterate over all items in the data array
+        // For each item, return true if the item should be included and false if the
+        // item should NOT be included
+        if !searchText.isEmpty {
+            filteredData = currentGames.filter{ $0.title.contains(searchText) }
+        } else {
+            filteredData = currentGames
+        }
+        //        filteredData = searchText.isEmpty ? currentGames : currentGames.filter{  $0.title.contains(searchText)
+            // If dataItem matches the searchText, return true to include it
+        //            return gameTitle.range(of: searchText, options: .caseInsensitive) != nil
+        self.tableViewContent.reloadData()
+    }
+    
+//    var studios = [Studio]()
+//    var filteredStudios = [Studio]()
+//    var studiosToDisplay = [Studio]()
+//
+//    func updateSearchResultsForSearchController(searchController: UISearchController) {
+//        let searchText = searchController.searchBar.text
+//
+//        print("SEARCH TEXT: \(searchText)")
+//
+//        if let searchText = searchText, !searchText.isEmpty {
+//            studiosToDisplay = studios.filter{ $0.studioName.contains(searchText) }
+//        }
+//        else {
+//            studiosToDisplay = studios
+//            NSNotificationCenter.defaultCenter().postNotificationName("showResultsBeforeSearchingNotification", object: nil) //Calls SearchVC
+//        }
+//
+//        self.resultTableView.reloadData()
+//    }
+    
+    
+    // filter by the Game attribute title
+    // Then
+    
+//    let result = aSectionArray.joined().filter { $0.isEnabled }
+
 
     
     
@@ -110,9 +148,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
+        filteredData = currentGames
         
         tableViewContent.delegate = self
         tableViewContent.dataSource = self
+        searchBarView.delegate = self
         
         // Navigation Bar Observers - Waiting for an on-click message
         

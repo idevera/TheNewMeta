@@ -370,6 +370,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBarView" destination="qUU-bn-GDe" id="2yu-bn-ZSy"/>
                         <outlet property="tableViewContent" destination="eO9-nS-aaV" id="dU6-Mz-Pnr"/>
                         <segue destination="RKa-jk-mCb" kind="show" identifier="ShowCreateLobby" id="QX0-nQ-sPk"/>
                         <segue destination="Lc0-2d-4ke" kind="show" identifier="ShowEditProfile" id="TQq-io-Azx"/>
