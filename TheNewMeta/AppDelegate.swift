@@ -20,13 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var config = Realm.Configuration(
             // Set the new schema version. This must be greater than the previously used
             // version (if you've never set a schema version before, the version is 0).
-            schemaVersion: 11,
+            schemaVersion: 13,
             
             // Set the block which will be called automatically when opening a Realm with
             // a schema version lower than the one set above
             migrationBlock: { migration, oldSchemaVersion in
                 // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                if (oldSchemaVersion < 12) {
+                if (oldSchemaVersion < 14) {
                     var nextID = UUID().uuidString
                     migration.enumerateObjects(ofType: User.className()) { oldObject, newObject in
                         newObject!["userID"] = nextID

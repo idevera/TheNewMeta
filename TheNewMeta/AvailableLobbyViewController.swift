@@ -7,14 +7,31 @@
 //
 
 import UIKit
+import Foundation
+import RealmSwift
 
 class AvailableLobbyViewController: UIViewController {
 
     var chosenGame: Game?
+    // This should be an array of all lobbies
+    var gameLobbies = [Lobby]()
     
+    private func getMatchingLobbies() {
+//        let realm = try! Realm()
+        
+        // In product, look for any property of productTypelist.typeName that is equal to %@ --> productTypeName = "electronics"
+//        realm.objects(Product.self).filter("ANY productTypeList.typeName == %@", productTypeName)
+//        let returnedLobbies = realm.objects(Lobby.self).filter("ANY game = chosenGame")
+//        print("This is all the games in the DB \(returnedLobbies.count)")
+//        for lobby in returnedLobbies {
+//            gameLobbies.append(lobby)
+//        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("This is the vailableLobbyVC chosen game: \(String(describing: chosenGame))")
+        getMatchingLobbies()
+        print("This is the avilableLobbyVC chosen game: \(String(describing: chosenGame))")
+        print("This is the gameLobbies that match this game: \(gameLobbies)")
 
         // Do any additional setup after loading the view.
     }

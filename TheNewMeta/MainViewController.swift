@@ -92,7 +92,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //        performSegue(withIdentifier: "ShowLoginView", sender: nil)
     //    }
     
+    // Overrides
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // If there is a segue that is labeld as "Lobby Games" AND a tableview cell is selected, pull out the object from the filteredData array that was clicked and then make it equal to the controller attribute
         if segue.identifier == "LobbyGames" {
             if let indexPath = tableViewContent.indexPathForSelectedRow {
                 let gameObject = filteredData[indexPath.row]
@@ -100,9 +103,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 controller?.chosenGame = gameObject
             }
         }
-        
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
@@ -137,7 +139,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private func getData() {
         let realm = try! Realm()
         let returnedGames = realm.objects(Game.self).sorted(byKeyPath: "title")
-        print("This is all the games in the DB \(returnedGames.count)")
+//        print("This is all the games in the DB \(returnedGames.count)")
         for game in returnedGames {
             currentGames.append(game)
         }
