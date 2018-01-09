@@ -41,38 +41,10 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         
         // The table view will iterate over each thing in the matchingLobbies
         let lobby = chosenGame?.matchingLobbies[indexPath.row]
-        
-        
-//        The text of your textField is an optional value because a text field can sometimes be empty. So, use an if let to unwrap the variable and make sure it's not nil — otherwise your program could crash:
-        cell.gamerTagLabel.text = lobby?.hostID
-        
-//        print("Value is \(optionalValue as Int?)")
-        let players = "\(lobby?.numberOfPlayers ?? 0)"
-        cell.numPlayersLabel.text = players
-        cell.messageLabel.text = lobby?.message
-        
-//        var myVariable = 1
-//
-//        myVariable += 1
-//        label.text = string(myVariable)
-        
-//        let x : Int = 42
-//        var myString = String(x)
 
-        //        @IBOutlet weak var gamerTagLabel: UILabel!
-//        @IBOutlet weak var numPlayersLabel: UILabel!
-//        @IBOutlet weak var messageLabel: UILabel!
-        
-//        @objc dynamic var lobbyID: String = UUID().uuidString
-//        @objc dynamic var hostID: String = ""
-//        // Objects must be optional
-//        //    @objc dynamic var game: Game?
-//        @objc dynamic var numberOfPlayers: Int = 0
-//        @objc dynamic var message: String = ""
-//
-//        override static func primaryKey() -> String? {
-//            return "lobbyID"
-//        }
+        cell.gamerTagLabel.text = lobby?.hostID
+        cell.numPlayersLabel.text = "\(lobby?.numberOfPlayers ?? 0)"
+        cell.messageLabel.text = lobby?.message
         
         // Return the cell view
         return cell
