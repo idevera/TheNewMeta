@@ -34,7 +34,7 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // The as? MealTableViewCell expression attempts to downcast the returned object from the UITableViewCell class to your MealTableViewCell class. This returns an optional.
         // The guard let expression safely unwraps the optional.
-        // If your storyboard is set up correctly, and the cellIdentifier matches the identifier from your storyboard, then the downcast should never fail. If the downcast does fail, the fatalError() function prints an error message to the console and terminates the app.
+        // If your storyboard is set up correctly, and the cellIdentifier matches the identifier from your storyboard, then the downcast should never fail. If the downcast does fail, the fatalError() function prints an error message to the console and terminates the app
         guard let cell = tableView.dequeueReusableCell(withIdentifier: lobbyCellIdentifier, for: indexPath) as? LobbyViewCell else {
             fatalError("The dequeued cell is not an instance of GameTableViewCell.")
         }
@@ -45,35 +45,25 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         cell.gamerTagLabel.text = lobby?.hostID
         cell.numPlayersLabel.text = "\(lobby?.numberOfPlayers ?? 0)"
         cell.messageLabel.text = lobby?.message
+        cell.joinButton.addTarget(self, action: #selector(AvailableLobbyViewController.print123), for: UIControlEvents.touchUpInside)
+        // cell.joinButton.addTarget(self, action: #selector(ClassName.FunctionName.buttonTapped), for: .touchUpInside)
+        
+        // cell.joinButton addTarget:self action:@selector(yourButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         
         // Return the cell view
         return cell
+    }
+    
+    // TODO: How to pass the lobby object into this function
+    @objc func print123() {
+        print("Greeting worked!")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         LobbyTableView.delegate = self
         LobbyTableView.dataSource = self
+        
         print("This is the avilableLobbyVC chosen game: \(String(describing: chosenGame))")
-//        print("This is the gameLobbies that match this game: \(chosenGame?.matchingLobbies)")
-
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

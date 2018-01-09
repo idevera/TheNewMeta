@@ -451,6 +451,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="gamerTagLabel" destination="k4t-3c-m4a" id="Nay-4q-ftz"/>
+                                            <outlet property="joinButton" destination="EPf-Vc-g3K" id="Hit-Ab-cr2"/>
                                             <outlet property="messageLabel" destination="Xfl-SD-zaG" id="nQV-ps-JVW"/>
                                             <outlet property="numPlayersLabel" destination="M3N-o2-gqs" id="kwu-OC-G2K"/>
                                         </connections>
