@@ -41,22 +41,33 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         
         // The table view will iterate over each thing in the matchingLobbies
         let lobby = chosenGame?.matchingLobbies[indexPath.row]
+        
+        let lobbyHost = findLobbyCreatorName(hostID: (lobby?.hostID)!)
+        cell.gamerTagLabel.text = lobbyHost.gamerTag
 
-        cell.gamerTagLabel.text = lobby?.hostID
+//        cell.gamerTagLabel.text = lobby?.hostID
         cell.numPlayersLabel.text = "\(lobby?.numberOfPlayers ?? 0)"
         cell.messageLabel.text = lobby?.message
-        cell.joinButton.addTarget(self, action: #selector(AvailableLobbyViewController.print123), for: UIControlEvents.touchUpInside)
-        // cell.joinButton.addTarget(self, action: #selector(ClassName.FunctionName.buttonTapped), for: .touchUpInside)
-        
-        // cell.joinButton addTarget:self action:@selector(yourButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+//        cell.joinButton.addTarget(self, action: #selector(AvailableLobbyViewController.print123), for: UIControlEvents.touchUpInside)
+//        game!.matchingLobbies.append(newLobby)
         
         // Return the cell view
+        
+
         return cell
     }
     
-    // TODO: How to pass the lobby object into this function
+    // TODO: How to pass the lobby object into this 
     @objc func print123() {
         print("Greeting worked!")
+    }
+    
+    private func findLobbyCreatorName(hostID: String) -> User {
+        let realm = try! Realm()
+        print("This is the hostID that I'm trying to find the in the DB \(hostID)")
+        let userCreator = realm.objects(User.self).filter("userID = '\(hostID)'").first
+        print("This is all the games in the DB \(String(describing: userCreator))")
+        return userCreator!
     }
     
     override func viewDidLoad() {

@@ -18,9 +18,6 @@ class LobbyViewCell: UITableViewCell {
     // TODO: Add segue when the join button is clicked
     
     @IBOutlet weak var joinButton: UIButton!
-    
-
-
         // When a signed in user wants to join a lobby
         // When join is clicked
         // Add user to the lobbyusers

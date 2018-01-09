@@ -16,6 +16,8 @@ class User: Object {
     @objc dynamic var password: String = ""
     // List of all lobbies that this user has joined
     var userJoinedLobbies = List<Lobby>()
+    
+    // List of all lobbies that the user has created
     var userCreatedLobbies = List<Lobby>()
     override static func primaryKey() -> String? {
         return "userID"
@@ -34,6 +36,7 @@ class Lobby: Object {
     // @objc dynamic var game: Game?
     @objc dynamic var numberOfPlayers: Int = 0
     @objc dynamic var message: String = ""
+    
     // All users that have joined this lobby
     var lobbyUsers = List<User>()
     
