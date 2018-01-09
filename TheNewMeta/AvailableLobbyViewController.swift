@@ -14,9 +14,12 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
 
     var chosenGame: Game?
     
+    private var signedInUser = User()
+
     let lobbyCellIdentifier = "LobbyTableCell"
     
-    @IBOutlet weak var LobbyTableView: UITableView!
+    
+    @IBOutlet weak var lobbyTableView: UITableView!
     
     // Lobby Tables
     
@@ -42,38 +45,57 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         // The table view will iterate over each thing in the matchingLobbies
         let lobby = chosenGame?.matchingLobbies[indexPath.row]
         
+        // Find the matching User of the lobby and return back their name
         let lobbyHost = findLobbyCreatorName(hostID: (lobby?.hostID)!)
+        
         cell.gamerTagLabel.text = lobbyHost.gamerTag
-
-//        cell.gamerTagLabel.text = lobby?.hostID
         cell.numPlayersLabel.text = "\(lobby?.numberOfPlayers ?? 0)"
         cell.messageLabel.text = lobby?.message
-//        cell.joinButton.addTarget(self, action: #selector(AvailableLobbyViewController.print123), for: UIControlEvents.touchUpInside)
-//        game!.matchingLobbies.append(newLobby)
         
-        // Return the cell view
+        // Save the index of the matchingLobbies array that currently are in
+        cell.joinButton.tag = indexPath.row
         
-
+        // Attach a click action
+        cell.joinButton.addTarget(self, action: #selector(AvailableLobbyViewController.joinLobby), for: UIControlEvents.touchUpInside)
+        
         return cell
     }
     
-    // TODO: How to pass the lobby object into this 
-    @objc func print123() {
-        print("Greeting worked!")
+    // The joinButton when clicked will send a message for this function to run
+    @objc func joinLobby(sender: UIButton) {
+        let currentLobby = chosenGame?.matchingLobbies[sender.tag]
+
+        let realm = try! Realm()
+
+        try! realm.write {
+            currentLobby!.lobbyUsers.append(signedInUser)
+        }
+        
+        print("This is my current Lobby users: \(String(describing: currentLobby?.lobbyUsers))")
+    }
+    
+    private func findSignedInUser() {
+        // TODO: Should probably save the entire user object in the UserDefaults instead of just the ID
+        let id = UserDefaults.standard.string(forKey: "userID")
+        let realm = try! Realm()
+        signedInUser = realm.object(ofType: User.self, forPrimaryKey: id)!
+        
+        print("Found signed in user: \(String(describing: signedInUser))")
     }
     
     private func findLobbyCreatorName(hostID: String) -> User {
         let realm = try! Realm()
-        print("This is the hostID that I'm trying to find the in the DB \(hostID)")
         let userCreator = realm.objects(User.self).filter("userID = '\(hostID)'").first
-        print("This is all the games in the DB \(String(describing: userCreator))")
         return userCreator!
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LobbyTableView.delegate = self
-        LobbyTableView.dataSource = self
+        lobbyTableView.delegate = self
+        lobbyTableView.dataSource = self
+        
+        // Find the user and save it as a variable in this view
+        findSignedInUser()
         
         print("This is the avilableLobbyVC chosen game: \(String(describing: chosenGame))")
     }

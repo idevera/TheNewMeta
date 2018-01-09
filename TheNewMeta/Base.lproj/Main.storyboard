@@ -469,7 +469,7 @@
                         <viewLayoutGuide key="safeArea" id="2XR-QY-eaK"/>
                     </view>
                     <connections>
-                        <outlet property="LobbyTableView" destination="xMC-JP-mpE" id="5fk-k0-eOe"/>
+                        <outlet property="lobbyTableView" destination="xMC-JP-mpE" id="5j2-cd-IBh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMx-cX-KWh" userLabel="First Responder" sceneMemberID="firstResponder"/>

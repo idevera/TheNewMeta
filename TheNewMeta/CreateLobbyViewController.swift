@@ -33,6 +33,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         try! realm.write {
             realm.add(game!)
             realm.add(newLobby)
+            
             // Add the newlobby to the game instance
             game!.matchingLobbies.append(newLobby)
             print("Sucessfully added your game: \(String(describing: game))")
@@ -47,7 +48,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         let realm = try! Realm()
         let returnedGame = realm.objects(Game.self).filter("title = '\(gameTitle)'").first
         
-        print("This is the number of matching games by title: \(returnedGame)")
+//        print("This is the number of matching games by title: \(returnedGame)")
         if returnedGame != nil {
             return returnedGame
         } else {
