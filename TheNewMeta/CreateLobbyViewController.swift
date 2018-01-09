@@ -76,7 +76,6 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         return newGame
     }
 
-    
     // Overrides
     
     override func viewDidLoad() {
