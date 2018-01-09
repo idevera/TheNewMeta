@@ -23,6 +23,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
     // Actions
 
     @IBAction func createLobby(_ sender: UIButton) {
+        // This game is either a new created game OR an existing game
         let game = getGame(gameTitle: gameTagField.text!)
         let newLobby = createNewLobby()
         
@@ -35,25 +36,14 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
             realm.add(newLobby)
             
             // Add the newlobby to the game instance
+            // This should automatically update the newLobby.game property of a lobby
             game!.matchingLobbies.append(newLobby)
-            print("Sucessfully added your game: \(String(describing: game))")
-            print("Sucessfully added your new lobby: \(newLobby)")
+//            print("Sucessfully added your game: \(String(describing: game))")
+//            print("Sucessfully added your new lobby: \(newLobby.game)")
         }
             // OPTIONAL: Add exception if the object was saved
-  
+
         navigationController?.popToRootViewController(animated: true)
-    }
-    
-    private func getGame(gameTitle: String) -> Game? {
-        let realm = try! Realm()
-        let returnedGame = realm.objects(Game.self).filter("title = '\(gameTitle)'").first
-        
-//        print("This is the number of matching games by title: \(returnedGame)")
-        if returnedGame != nil {
-            return returnedGame
-        } else {
-            return createGame()
-        }
     }
     
     private func createNewLobby() -> Lobby {
@@ -66,11 +56,25 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         // It’s worth noting here that these getters will return optional values, so the type of name is String?. When the "name" key doesn’t exist, the code returns nil. It then makes sense to use optional binding to get the value safely:
         if let id = UserDefaults.standard.string(forKey: "userID") {
             lobby.hostID = id
-            print("Lobby ID successfully saved for logged in user: \(lobby.hostID)")
+//            print("Lobby ID successfully saved for logged in user: \(lobby.hostID)")
         }
         return lobby
     }
     
+    // 1
+    private func getGame(gameTitle: String) -> Game? {
+        let realm = try! Realm()
+        let returnedGame = realm.objects(Game.self).filter("title = '\(gameTitle)'").first
+        
+        // print("This is the number of matching games by title: \(returnedGame)")
+        if returnedGame != nil {
+            return returnedGame
+        } else {
+            return createGame()
+        }
+    }
+    
+    // 2
     private func createGame() -> Game {
         let newGame = Game()
         newGame.title = gameTagField.text!
