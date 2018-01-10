@@ -13,8 +13,7 @@ import RealmSwift
 class UserJoinedLobbiesVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let lobbyIdentifier = "joinedLobbyCell"
-    
-    var signedInUser = User()
+    private var signedInUser = User()
     
     @IBOutlet weak var joinedLobbyTableView: UITableView!
 

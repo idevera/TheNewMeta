@@ -79,24 +79,24 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         try! realm.write {
             currentLobby.lobbyUsers.append(signedInUser)
         }
-        
-        print("This is my current Lobby users: \(String(describing: currentLobby.lobbyUsers))")
+        navigationController?.popToRootViewController(animated: true)
+//        print("This is my current Lobby users: \(String(describing: currentLobby.lobbyUsers))")
     }
     
     private func findSignedInUser() {
         // TODO: Should probably save the entire user object in the UserDefaults instead of just the ID
         let id = UserDefaults.standard.string(forKey: "userID")
         let realm = try! Realm()
-        print("This is the id of the signed in user \(String(describing: id))")
+//        print("This is the id of the signed in user \(String(describing: id))")
         signedInUser = realm.object(ofType: User.self, forPrimaryKey: id)!
         
-        print("Found signed in user: \(String(describing: signedInUser))")
+//        print("Found signed in user: \(String(describing: signedInUser))")
     }
     
     private func findLobbyCreatorName(hostID: String) -> User {
         let realm = try! Realm()
         let userCreator = realm.objects(User.self).filter("userID = '\(hostID)'").first
-        print("This is the userCreator: \(String(describing: userCreator))")
+//        print("This is the userCreator: \(String(describing: userCreator))")
         return userCreator!
     }
     
@@ -108,6 +108,6 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         // Find the user and save it as a variable in this view
         findSignedInUser()
         
-        print("This is the avilableLobbyVC chosen game: \(String(describing: chosenGame))")
+//        print("This is the avilableLobbyVC chosen game: \(String(describing: chosenGame))")
     }
 }
