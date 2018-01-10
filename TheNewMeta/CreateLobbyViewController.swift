@@ -14,6 +14,8 @@ import RealmSwift
 
 class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
     
+    private var signedInUser = User()
+    
     // Outlets
     
     @IBOutlet weak var gameTagField: UITextField!
@@ -38,6 +40,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
             // Add the newlobby to the game instance
             // This should automatically update the newLobby.game property of a lobby
             game!.matchingLobbies.append(newLobby)
+            newLobby.lobbyUsers.append(signedInUser)
 //            print("Sucessfully added your game: \(String(describing: game))")
 //            print("Sucessfully added your new lobby: \(newLobby.game)")
         }
@@ -46,6 +49,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         navigationController?.popToRootViewController(animated: true)
     }
     
+    // 3
     private func createNewLobby() -> Lobby {
         let lobby = Lobby()
         
@@ -56,12 +60,11 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         // It’s worth noting here that these getters will return optional values, so the type of name is String?. When the "name" key doesn’t exist, the code returns nil. It then makes sense to use optional binding to get the value safely:
         if let id = UserDefaults.standard.string(forKey: "userID") {
             lobby.hostID = id
-//            print("Lobby ID successfully saved for logged in user: \(lobby.hostID)")
+        // print("Lobby ID successfully saved for logged in user: \(lobby.hostID)")
         }
         return lobby
     }
     
-    // 1
     private func getGame(gameTitle: String) -> Game? {
         let realm = try! Realm()
         let returnedGame = realm.objects(Game.self).filter("title = '\(gameTitle)'").first
@@ -74,17 +77,27 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // 2
     private func createGame() -> Game {
         let newGame = Game()
         newGame.title = gameTagField.text!
         return newGame
+    }
+    
+    private func findSignedInUser() {
+        // TODO: Should probably save the entire user object in the UserDefaults instead of just the ID
+        let id = UserDefaults.standard.string(forKey: "userID")
+        let realm = try! Realm()
+        print("This is the id of the signed in user \(String(describing: id))")
+        signedInUser = realm.object(ofType: User.self, forPrimaryKey: id)!
+        
+        print("Found signed in user: \(String(describing: signedInUser))")
     }
 
     // Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        findSignedInUser()
     }
 }

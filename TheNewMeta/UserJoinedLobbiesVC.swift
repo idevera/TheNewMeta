@@ -27,7 +27,7 @@ class UserJoinedLobbiesVC: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: lobbyIdentifier, for: indexPath) as? JoinLobbyTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: lobbyIdentifier, for: indexPath) as? JoinedLobbyTableViewCell else {
             fatalError("The dequeued cell is not an instance of GameTableViewCell.")
         }
 

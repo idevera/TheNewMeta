@@ -13,7 +13,7 @@
 		CC27185D1FFC88BA0061FCDD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC27185C1FFC88BA0061FCDD /* MainViewController.swift */; };
 		CC28C8772003E89B00987097 /* LobbyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC28C8762003E89B00987097 /* LobbyViewCell.swift */; };
 		CC7E048F20056C4100C667EB /* UserJoinedLobbiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */; };
-		CC7E049120056DED00C667EB /* JoinLobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E049020056DED00C667EB /* JoinLobbyTableViewCell.swift */; };
+		CC7E049120056DED00C667EB /* JoinedLobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */; };
 		CCF800E51FFC1B1D0089994B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF800E41FFC1B1D0089994B /* AppDelegate.swift */; };
 		CCF800E71FFC1B1D0089994B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF800E61FFC1B1D0089994B /* LoginViewController.swift */; };
 		CCF800EA1FFC1B1D0089994B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF800E81FFC1B1D0089994B /* Main.storyboard */; };
@@ -71,7 +71,7 @@
 		CC27185C1FFC88BA0061FCDD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CC28C8762003E89B00987097 /* LobbyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewCell.swift; sourceTree = "<group>"; };
 		CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJoinedLobbiesVC.swift; sourceTree = "<group>"; };
-		CC7E049020056DED00C667EB /* JoinLobbyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinLobbyTableViewCell.swift; sourceTree = "<group>"; };
+		CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedLobbyTableViewCell.swift; sourceTree = "<group>"; };
 		CCF800E11FFC1B1D0089994B /* TheNewMeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheNewMeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF800E41FFC1B1D0089994B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCF800E61FFC1B1D0089994B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 				CC28C8762003E89B00987097 /* LobbyViewCell.swift */,
 				CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */,
 				CCF800E81FFC1B1D0089994B /* Main.storyboard */,
-				CC7E049020056DED00C667EB /* JoinLobbyTableViewCell.swift */,
+				CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */,
 				CCF8011D1FFC1DEC0089994B /* RealmObjects.swift */,
 				CCF800EB1FFC1B1D0089994B /* Assets.xcassets */,
 				CCF800ED1FFC1B1D0089994B /* LaunchScreen.storyboard */,
@@ -346,7 +346,7 @@
 				CC27185B1FFC801E0061FCDD /* SideMenuViewController.swift in Sources */,
 				CC28C8772003E89B00987097 /* LobbyViewCell.swift in Sources */,
 				CCF800E51FFC1B1D0089994B /* AppDelegate.swift in Sources */,
-				CC7E049120056DED00C667EB /* JoinLobbyTableViewCell.swift in Sources */,
+				CC7E049120056DED00C667EB /* JoinedLobbyTableViewCell.swift in Sources */,
 				CC1654CC2002A425001DA633 /* GameTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -88,6 +88,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         performSegue(withIdentifier: "ShowEditProfile", sender: nil)
     }
     
+    @objc func showCreatedLobbies() {
+        performSegue(withIdentifier: "ShowCreatedLobbies", sender: nil)
+
+    }
     //    @objc func showLoginView () {
     //        performSegue(withIdentifier: "ShowLoginView", sender: nil)
     //    }
@@ -107,6 +111,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         getData()
         filteredData = currentGames
         
@@ -126,8 +131,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         currentGames = [Game]()
-        
-        print("This is the viewDidAppear")
         
         getData()
         filteredData = currentGames

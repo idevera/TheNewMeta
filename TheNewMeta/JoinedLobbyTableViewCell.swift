@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JoinLobbyTableViewCell: UITableViewCell {
+class JoinedLobbyTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lobbyHostLabel: UILabel!
     @IBOutlet weak var gameTitleLabel: UILabel!

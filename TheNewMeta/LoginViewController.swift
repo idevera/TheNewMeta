@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
         let matchingUser = realm.objects(User.self).filter("email == '\(email)'").first
         
         if matchingUser != nil {
-            print("User was found with a matching email!")
+            print("User was found with a matching email: \(String(describing: matchingUser?.userID))!")
             assignUserID(userID: matchingUser!.userID)
             // TODO: Move onto the next sign in page with a welcome a notification
         } else {
@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
         try! realm.write {
             realm.add(user)
             print("After the adding of a new user")
-            print("Added new gamerTag: \(user.gamerTag) User Object to Realm")
+            print("Added new gamerTag: \(user.gamerTag) \(user.userID) User Object to Realm")
         }
         return user.userID
     }

@@ -56,28 +56,38 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         cell.joinButton.tag = indexPath.row
         
         // Attach a click action
-        cell.joinButton.addTarget(self, action: #selector(AvailableLobbyViewController.joinLobby), for: UIControlEvents.touchUpInside)
+        cell.joinButton.addTarget(self, action: #selector(AvailableLobbyViewController.checkIfJoined), for: UIControlEvents.touchUpInside)
         
         return cell
     }
     
-    // The joinButton when clicked will send a message for this function to run
-    @objc func joinLobby(sender: UIButton) {
+    @objc private func checkIfJoined(sender: UIButton)  {
         let currentLobby = chosenGame?.matchingLobbies[sender.tag]
-
+        let matchingUser = currentLobby?.lobbyUsers.filter("userID == '\(signedInUser.userID)'").first
+        if matchingUser == nil {
+            joinLobby(currentLobby: currentLobby!)
+        } else {
+            // TODO: PLEASE RAISE ARGUMENT ERROR HERE
+            print("YOU HAVE ALREADY JOINED THIS LOBBY")
+        }
+    }
+    
+    // The joinButton when clicked will send a message for this function to run
+    private func joinLobby(currentLobby: Lobby) {
         let realm = try! Realm()
-
+        
         try! realm.write {
-            currentLobby!.lobbyUsers.append(signedInUser)
+            currentLobby.lobbyUsers.append(signedInUser)
         }
         
-        print("This is my current Lobby users: \(String(describing: currentLobby?.lobbyUsers))")
+        print("This is my current Lobby users: \(String(describing: currentLobby.lobbyUsers))")
     }
     
     private func findSignedInUser() {
         // TODO: Should probably save the entire user object in the UserDefaults instead of just the ID
         let id = UserDefaults.standard.string(forKey: "userID")
         let realm = try! Realm()
+        print("This is the id of the signed in user \(String(describing: id))")
         signedInUser = realm.object(ofType: User.self, forPrimaryKey: id)!
         
         print("Found signed in user: \(String(describing: signedInUser))")
@@ -86,6 +96,7 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
     private func findLobbyCreatorName(hostID: String) -> User {
         let realm = try! Realm()
         let userCreator = realm.objects(User.self).filter("userID = '\(hostID)'").first
+        print("This is the userCreator: \(String(describing: userCreator))")
         return userCreator!
     }
     
