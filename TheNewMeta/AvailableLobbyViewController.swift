@@ -84,7 +84,6 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     private func findSignedInUser() {
-        // TODO: Should probably save the entire user object in the UserDefaults instead of just the ID
         let id = UserDefaults.standard.string(forKey: "userID")
         let realm = try! Realm()
 //        print("This is the id of the signed in user \(String(describing: id))")

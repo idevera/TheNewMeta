@@ -308,7 +308,7 @@
         <!--My Lobbies View Controller-->
         <scene sceneID="CCF-NP-4q8">
             <objects>
-                <viewController id="LTn-iN-TL5" userLabel="My Lobbies View Controller" customClass="UserJoinedLobbiesVC" customModule="TheNewMeta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowMyLobbies" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LTn-iN-TL5" userLabel="My Lobbies View Controller" customClass="UserJoinedLobbiesVC" customModule="TheNewMeta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yML-DE-1qj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -441,9 +441,11 @@
                         <segue destination="Lc0-2d-4ke" kind="show" identifier="ShowEditProfile" id="TQq-io-Azx"/>
                         <segue destination="LTn-iN-TL5" kind="show" identifier="ShowMyLobbies" id="61b-O6-aYn"/>
                         <segue destination="XRW-ob-n2T" kind="show" identifier="ShowCreatedLobbies" id="aEK-Jw-qnx"/>
+                        <segue destination="HW1-Sy-2pq" kind="unwind" identifier="unwindtoLoginView" unwindAction="unwindToMenuWithSegue:" id="BsS-44-P1i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ost-yK-47z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="HW1-Sy-2pq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2468" y="860"/>
         </scene>
@@ -535,10 +537,10 @@
             </objects>
             <point key="canvasLocation" x="3234" y="860"/>
         </scene>
-        <!--View Controller-->
+        <!--My Created Lobbies View Controller-->
         <scene sceneID="CzD-KM-FH5">
             <objects>
-                <viewController storyboardIdentifier="ShowCreatedLobbies" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XRW-ob-n2T" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowCreatedLobbies" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XRW-ob-n2T" userLabel="My Created Lobbies View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fFO-8M-n0q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -548,12 +550,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GhP-Lv-aSs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2711" y="1614"/>
+            <point key="canvasLocation" x="2683" y="1614"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="wLY-i2-WrC">
             <objects>
-                <viewController id="Lc0-2d-4ke" userLabel="Edit Profile View Controller" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowEditProfile" id="Lc0-2d-4ke" userLabel="Edit Profile View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QMB-Oo-FUJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

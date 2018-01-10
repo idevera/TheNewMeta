@@ -14,9 +14,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // TODO: Does this need to be a constant?
     var currentGames = [Game]()
-    
     var filteredData = [Game]()
-    
+    private var signedInUser = User()
+
     let gameCellIdentifier = "gameTitleCell"
     
     @IBOutlet weak var tableViewContent: UITableView!
@@ -90,11 +90,53 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func showCreatedLobbies() {
         performSegue(withIdentifier: "ShowCreatedLobbies", sender: nil)
-
     }
-    //    @objc func showLoginView () {
-    //        performSegue(withIdentifier: "ShowLoginView", sender: nil)
-    //    }
+    
+    @objc func showLoginView () {
+        // Look into this error again
+        // Here I am unwinding. Get an error that this is discouraged when going back to root view
+        let alert = UIAlertController(title: "Succesfully Logged Out!", message: "Come back again soon!", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+            (_)in
+            self.performSegue(withIdentifier: "unwindtoLoginView", sender: self)
+        })
+
+        alert.addAction(OKAction)
+        self.present(alert, animated: true, completion: nil)
+        
+        findSignedInUser()
+        
+        removeSignedInUserID()
+        
+        // Other options
+        // self.navigationController?.popViewController(animated: true)
+        // self.dismiss(animated: true, completion: nil)
+    }
+    
+    // Private functions
+    
+    private func getData() {
+        let realm = try! Realm()
+        let returnedGames = realm.objects(Game.self).sorted(byKeyPath: "title")
+        //        print("This is all the games in the DB \(returnedGames.count)")
+        for game in returnedGames {
+            currentGames.append(game)
+        }
+    }
+    
+    private func findSignedInUser() {
+        let id = UserDefaults.standard.string(forKey: "userID")
+        let realm = try! Realm()
+        // print("This is the id of the signed in user \(String(describing: id))")
+        signedInUser = realm.object(ofType: User.self, forPrimaryKey: id)!
+    }
+    
+    private func removeSignedInUserID() {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "userID")
+//        UserDefaults.standard.synchronize()
+        print("\(String(describing: UserDefaults.standard.string(forKey: "userID")))")
+    }
     
     // Overrides
     
@@ -120,12 +162,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         searchBarView.delegate = self
         
         // Navigation Bar Observers - Waiting for an on-click message
-        
+
         // On load, add the observers to the NC to be listening for a click event!!!
         NotificationCenter.default.addObserver(self, selector: #selector(showCreateLobby), name: NSNotification.Name("ShowCreateLobby"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showMyLobbies), name: NSNotification.Name("ShowMyLobbies"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showEditProfile), name: NSNotification.Name("ShowEditProfile"), object: nil)
-        // NotificationCenter.default.addObserver(self, selector: #selector(showLoginView), name: NSNotification.Name("ShowLoginView"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showCreatedLobbies), name: NSNotification.Name("ShowLoginView"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showLoginView), name: NSNotification.Name("ShowLoginView"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -136,15 +179,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         filteredData = currentGames
         self.tableViewContent.reloadData()
     }
-    
-    // Private functions
-    
-    private func getData() {
-        let realm = try! Realm()
-        let returnedGames = realm.objects(Game.self).sorted(byKeyPath: "title")
-//        print("This is all the games in the DB \(returnedGames.count)")
-        for game in returnedGames {
-            currentGames.append(game)
-        }
-    }
 }
+
+

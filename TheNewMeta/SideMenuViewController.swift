@@ -25,6 +25,7 @@ class SideMenuViewController: UITableViewController {
         case 2: NotificationCenter.default.post(name: NSNotification.Name("ShowEditProfile"), object: nil)
         case 3: NotificationCenter.default.post(name: NSNotification.Name("ShowCreatedLobbies"), object: nil)
         case 4: NotificationCenter.default.post(name: NSNotification.Name("ShowLoginView"), object: nil)
+
         default: break
         }
     }
