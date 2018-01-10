@@ -12,17 +12,18 @@ import RealmSwift
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
+    // Properties
+    
     // TODO: Does this need to be a constant?
     var currentGames = [Game]()
     var filteredData = [Game]()
     private var signedInUser = User()
-
     let gameCellIdentifier = "gameTitleCell"
     
+    //
+    
     @IBOutlet weak var tableViewContent: UITableView!
-    
     @IBOutlet weak var searchBarView: UISearchBar!
-    
     @IBAction func clickHamburger() {
         // On click this will send a message to the side menu to run the constraint function!! This is a View Click action to the ContainerViewController
         NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
@@ -93,20 +94,20 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc func showLoginView () {
-        // Look into this error again
+        // TODO: Look into this error again
         // Here I am unwinding. Get an error that this is discouraged when going back to root view
+        
+        findSignedInUser()
+        removeSignedInUserID()
+        
         let alert = UIAlertController(title: "Succesfully Logged Out!", message: "Come back again soon!", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
             (_)in
-            self.performSegue(withIdentifier: "unwindtoLoginView", sender: self)
+            self.dismiss(animated: true, completion: nil)
         })
 
         alert.addAction(OKAction)
         self.present(alert, animated: true, completion: nil)
-        
-        findSignedInUser()
-        
-        removeSignedInUserID()
         
         // Other options
         // self.navigationController?.popViewController(animated: true)

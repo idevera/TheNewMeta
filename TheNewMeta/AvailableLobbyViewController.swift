@@ -18,7 +18,6 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
 
     let lobbyCellIdentifier = "LobbyTableCell"
     
-    
     @IBOutlet weak var lobbyTableView: UITableView!
     
     // Lobby Tables
