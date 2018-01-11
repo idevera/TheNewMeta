@@ -11,13 +11,11 @@ import Foundation
 import RealmSwift
 
 class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     var chosenGame: Game?
-    
     private var signedInUser = User()
-
     let lobbyCellIdentifier = "LobbyTableCell"
-    
+
     @IBOutlet weak var lobbyTableView: UITableView!
     
     // Lobby Tables
@@ -60,6 +58,8 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         return cell
     }
     
+    // Private Functions
+    
     @objc private func checkIfJoined(sender: UIButton)  {
         let currentLobby = chosenGame?.matchingLobbies[sender.tag]
         let matchingUser = currentLobby?.lobbyUsers.filter("userID == '\(signedInUser.userID)'").first
@@ -92,6 +92,8 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         return userCreator!
     }
     
+    // TODO: Error handling
+    
     private func preventJoin() {
         let alert = UIAlertController(title: "You are already in this lobby :)", message: "Please try another lobby to join", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
@@ -101,6 +103,8 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         alert.addAction(OKAction)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    // Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()

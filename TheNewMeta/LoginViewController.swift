@@ -44,6 +44,8 @@ class LoginViewController: UIViewController {
         pwField.text! = ""
     }
     
+    // Private Functions
+    
     // Need to add a arrow function to the declare the type that is being returned. Else it will return as a void function.
     // TODO: Could this be a self method?
     private func createUser() -> String {
@@ -67,6 +69,8 @@ class LoginViewController: UIViewController {
         UserDefaults.standard.set(userID, forKey: "userID")
         UserDefaults.standard.synchronize()
     }
+    
+    // Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
