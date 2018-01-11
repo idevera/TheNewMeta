@@ -40,7 +40,8 @@ class LoginViewController: UIViewController {
             assignUserID(userID: savedUserID)
             // TODO: Move onto the next sign in page with a welcome notification that a new user has been created
         }
-        pwField.text! = "" 
+        // Clear the password text field
+        pwField.text! = ""
     }
     
     // Need to add a arrow function to the declare the type that is being returned. Else it will return as a void function.

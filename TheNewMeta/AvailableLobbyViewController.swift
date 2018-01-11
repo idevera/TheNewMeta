@@ -66,8 +66,7 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         if matchingUser == nil {
             joinLobby(currentLobby: currentLobby!)
         } else {
-            // TODO: PLEASE RAISE ARGUMENT ERROR HERE
-            print("YOU HAVE ALREADY JOINED THIS LOBBY")
+            preventJoin()
         }
     }
     
@@ -79,23 +78,28 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
             currentLobby.lobbyUsers.append(signedInUser)
         }
         navigationController?.popToRootViewController(animated: true)
-//        print("This is my current Lobby users: \(String(describing: currentLobby.lobbyUsers))")
     }
     
     private func findSignedInUser() {
         let id = UserDefaults.standard.string(forKey: "userID")
         let realm = try! Realm()
-//        print("This is the id of the signed in user \(String(describing: id))")
         signedInUser = realm.object(ofType: User.self, forPrimaryKey: id)!
-        
-//        print("Found signed in user: \(String(describing: signedInUser))")
     }
     
     private func findLobbyCreatorName(hostID: String) -> User {
         let realm = try! Realm()
         let userCreator = realm.objects(User.self).filter("userID = '\(hostID)'").first
-//        print("This is the userCreator: \(String(describing: userCreator))")
         return userCreator!
+    }
+    
+    private func preventJoin() {
+        let alert = UIAlertController(title: "You are already in this lobby :)", message: "Please try another lobby to join", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+            (_)in
+        })
+        
+        alert.addAction(OKAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -105,7 +109,5 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         
         // Find the user and save it as a variable in this view
         findSignedInUser()
-        
-//        print("This is the avilableLobbyVC chosen game: \(String(describing: chosenGame))")
     }
 }
