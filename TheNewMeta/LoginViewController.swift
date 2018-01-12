@@ -79,6 +79,13 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewDidLayoutSubviews() {
+//        let lineColor = UIColor(red:0.12, green:0.23, blue:0.35, alpha:1.0)
+        self.gamerTagField.underlined(borderColor: UIColor.white)
+        self.emailField.underlined(borderColor: UIColor.white)
+        self.pwField.underlined(borderColor: UIColor.white)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

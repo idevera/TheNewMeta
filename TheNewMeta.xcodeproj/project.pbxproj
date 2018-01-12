@@ -18,6 +18,7 @@
 		CCB8CE69200954A200F79B16 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE68200954A200F79B16 /* TestViewController.swift */; };
 		CCB8CE6B2009611500F79B16 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE6A2009611500F79B16 /* TabBarViewController.swift */; };
 		CCB8CE7120096AE600F79B16 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE7020096AE600F79B16 /* MenuViewCell.swift */; };
+		CCB8CE7320097EA900F79B16 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE7220097EA900F79B16 /* Helpers.swift */; };
 		CCF800E51FFC1B1D0089994B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF800E41FFC1B1D0089994B /* AppDelegate.swift */; };
 		CCF800E71FFC1B1D0089994B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF800E61FFC1B1D0089994B /* LoginViewController.swift */; };
 		CCF800EA1FFC1B1D0089994B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF800E81FFC1B1D0089994B /* Main.storyboard */; };
@@ -80,6 +81,7 @@
 		CCB8CE68200954A200F79B16 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		CCB8CE6A2009611500F79B16 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CCB8CE7020096AE600F79B16 /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
+		CCB8CE7220097EA900F79B16 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		CCF800E11FFC1B1D0089994B /* TheNewMeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheNewMeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF800E41FFC1B1D0089994B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCF800E61FFC1B1D0089994B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				CCB8CE68200954A200F79B16 /* TestViewController.swift */,
 				CCB8CE662009542D00F79B16 /* TestCell.swift */,
 				CCF8011D1FFC1DEC0089994B /* RealmObjects.swift */,
+				CCB8CE7220097EA900F79B16 /* Helpers.swift */,
 				CCF800EB1FFC1B1D0089994B /* Assets.xcassets */,
 				CCF800ED1FFC1B1D0089994B /* LaunchScreen.storyboard */,
 				CCF800F01FFC1B1D0089994B /* Info.plist */,
@@ -358,6 +361,7 @@
 				CCF800E71FFC1B1D0089994B /* LoginViewController.swift in Sources */,
 				CCF801261FFC42880089994B /* CreateLobbyViewController.swift in Sources */,
 				CC27185B1FFC801E0061FCDD /* SideMenuViewController.swift in Sources */,
+				CCB8CE7320097EA900F79B16 /* Helpers.swift in Sources */,
 				CC28C8772003E89B00987097 /* LobbyViewCell.swift in Sources */,
 				CCF800E51FFC1B1D0089994B /* AppDelegate.swift in Sources */,
 				CC7E049120056DED00C667EB /* JoinedLobbyTableViewCell.swift in Sources */,
