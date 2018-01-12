@@ -46,7 +46,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         }
             // OPTIONAL: Add exception if the object was saved
 
-        navigationController?.popToRootViewController(animated: true)
+//        navigationController?.popToRootViewController(animated: true)
     }
     
     // 3

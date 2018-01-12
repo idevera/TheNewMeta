@@ -88,6 +88,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="qEg-qd-FDi" kind="relationship" relationship="viewControllers" id="yk8-a4-Gkj"/>
+                        <segue destination="RKa-jk-mCb" kind="relationship" relationship="viewControllers" id="hjg-nV-si8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o5s-Qr-b5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -373,6 +374,7 @@
                         <color key="backgroundColor" red="0.36314823870000001" green="0.29854940130000002" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="tTn-0U-wx3"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Create Lobby" id="GrT-Bi-1DF"/>
                     <connections>
                         <outlet property="gameTagField" destination="TPD-ae-bly" id="0VE-ep-iba"/>
                         <outlet property="messageTagField" destination="RJd-ol-VYU" id="yH6-fh-l2D"/>
@@ -381,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkJ-fp-wBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1813" y="1614"/>
+            <point key="canvasLocation" x="4658" y="-145"/>
         </scene>
         <!--My Lobbies View Controller-->
         <scene sceneID="CCF-NP-4q8">
@@ -446,7 +448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXv-Bo-pCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5906" y="539"/>
+            <point key="canvasLocation" x="4258" y="811"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="Da5-Ax-ukB">
@@ -511,7 +513,6 @@
                     <connections>
                         <outlet property="searchBarView" destination="qUU-bn-GDe" id="2yu-bn-ZSy"/>
                         <outlet property="tableViewContent" destination="eO9-nS-aaV" id="dU6-Mz-Pnr"/>
-                        <segue destination="RKa-jk-mCb" kind="show" identifier="ShowCreateLobby" id="QX0-nQ-sPk"/>
                         <segue destination="Lc0-2d-4ke" kind="show" identifier="ShowEditProfile" id="TQq-io-Azx"/>
                         <segue destination="LTn-iN-TL5" kind="show" identifier="ShowMyLobbies" id="61b-O6-aYn"/>
                         <segue destination="XRW-ob-n2T" kind="show" identifier="ShowCreatedLobbies" id="aEK-Jw-qnx"/>
@@ -519,7 +520,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ost-yK-47z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5507" y="-610"/>
+            <point key="canvasLocation" x="5447" y="-875"/>
         </scene>
         <!--Available Lobby Controller-->
         <scene sceneID="SdZ-cU-51p">
@@ -607,7 +608,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMx-cX-KWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6375" y="-610"/>
+            <point key="canvasLocation" x="6236" y="-875"/>
         </scene>
         <!--My Created Lobbies View Controller-->
         <scene sceneID="CzD-KM-FH5">
@@ -680,7 +681,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2eL-Y5-3cc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4661" y="-610"/>
+            <point key="canvasLocation" x="4658" y="-875"/>
         </scene>
     </scenes>
 </document>
