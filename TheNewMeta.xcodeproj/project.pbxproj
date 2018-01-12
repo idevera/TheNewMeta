@@ -14,6 +14,9 @@
 		CC28C8772003E89B00987097 /* LobbyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC28C8762003E89B00987097 /* LobbyViewCell.swift */; };
 		CC7E048F20056C4100C667EB /* UserJoinedLobbiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */; };
 		CC7E049120056DED00C667EB /* JoinedLobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */; };
+		CCB8CE672009542D00F79B16 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE662009542D00F79B16 /* TestCell.swift */; };
+		CCB8CE69200954A200F79B16 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE68200954A200F79B16 /* TestViewController.swift */; };
+		CCB8CE6B2009611500F79B16 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE6A2009611500F79B16 /* TabBarViewController.swift */; };
 		CCF800E51FFC1B1D0089994B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF800E41FFC1B1D0089994B /* AppDelegate.swift */; };
 		CCF800E71FFC1B1D0089994B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF800E61FFC1B1D0089994B /* LoginViewController.swift */; };
 		CCF800EA1FFC1B1D0089994B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF800E81FFC1B1D0089994B /* Main.storyboard */; };
@@ -72,6 +75,9 @@
 		CC28C8762003E89B00987097 /* LobbyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewCell.swift; sourceTree = "<group>"; };
 		CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJoinedLobbiesVC.swift; sourceTree = "<group>"; };
 		CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedLobbyTableViewCell.swift; sourceTree = "<group>"; };
+		CCB8CE662009542D00F79B16 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
+		CCB8CE68200954A200F79B16 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		CCB8CE6A2009611500F79B16 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CCF800E11FFC1B1D0089994B /* TheNewMeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheNewMeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF800E41FFC1B1D0089994B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCF800E61FFC1B1D0089994B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +156,7 @@
 				CCF801291FFC57BE0089994B /* ContainerViewController.swift */,
 				CC27185A1FFC801E0061FCDD /* SideMenuViewController.swift */,
 				CCF800E61FFC1B1D0089994B /* LoginViewController.swift */,
+				CCB8CE6A2009611500F79B16 /* TabBarViewController.swift */,
 				CC27185C1FFC88BA0061FCDD /* MainViewController.swift */,
 				CC1654CB2002A425001DA633 /* GameTableViewCell.swift */,
 				CCF801251FFC42880089994B /* CreateLobbyViewController.swift */,
@@ -158,6 +165,8 @@
 				CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */,
 				CCF800E81FFC1B1D0089994B /* Main.storyboard */,
 				CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */,
+				CCB8CE68200954A200F79B16 /* TestViewController.swift */,
+				CCB8CE662009542D00F79B16 /* TestCell.swift */,
 				CCF8011D1FFC1DEC0089994B /* RealmObjects.swift */,
 				CCF800EB1FFC1B1D0089994B /* Assets.xcassets */,
 				CCF800ED1FFC1B1D0089994B /* LaunchScreen.storyboard */,
@@ -336,9 +345,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCB8CE69200954A200F79B16 /* TestViewController.swift in Sources */,
 				CC27185D1FFC88BA0061FCDD /* MainViewController.swift in Sources */,
 				CC1654CE2002C36B001DA633 /* AvailableLobbyViewController.swift in Sources */,
 				CCF8012A1FFC57BE0089994B /* ContainerViewController.swift in Sources */,
+				CCB8CE672009542D00F79B16 /* TestCell.swift in Sources */,
 				CCF8011E1FFC1DEC0089994B /* RealmObjects.swift in Sources */,
 				CC7E048F20056C4100C667EB /* UserJoinedLobbiesVC.swift in Sources */,
 				CCF800E71FFC1B1D0089994B /* LoginViewController.swift in Sources */,
@@ -347,6 +358,7 @@
 				CC28C8772003E89B00987097 /* LobbyViewCell.swift in Sources */,
 				CCF800E51FFC1B1D0089994B /* AppDelegate.swift in Sources */,
 				CC7E049120056DED00C667EB /* JoinedLobbyTableViewCell.swift in Sources */,
+				CCB8CE6B2009611500F79B16 /* TabBarViewController.swift in Sources */,
 				CC1654CC2002A425001DA633 /* GameTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

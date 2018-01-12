@@ -42,6 +42,9 @@ class LoginViewController: UIViewController {
         }
         // Clear the password text field
         pwField.text! = ""
+        let tabController = storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarViewController
+        
+        present(tabController, animated: true, completion: nil)
     }
     
     // Private Functions

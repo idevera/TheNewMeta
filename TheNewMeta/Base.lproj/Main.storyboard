@@ -57,7 +57,6 @@
                                         </state>
                                         <connections>
                                             <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hqA-Bt-uXl"/>
-                                            <segue destination="O9M-24-HEz" kind="show" id="wjR-hn-0Av"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -76,7 +75,119 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2588" y="159"/>
+            <point key="canvasLocation" x="2948" y="50"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="77X-sx-r6a">
+            <objects>
+                <viewController id="9fd-Ns-vXN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rOR-LA-1T2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="TMr-al-9Kz"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="UHV-jr-ME9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ScE-Vr-u4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4718" y="265"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="AaC-W9-KXZ">
+            <objects>
+                <viewController id="2St-uR-dSm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m6o-UQ-Cwx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cKN-xa-AXy"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="ugr-CU-eUP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dmi-u6-BTQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4718" y="-511"/>
+        </scene>
+        <!--Tab Bar View Controller-->
+        <scene sceneID="t90-q6-m8W">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ckk-Hy-b6i" customClass="TabBarViewController" customModule="TheNewMeta" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Qf-Rh-ZPF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="2St-uR-dSm" kind="relationship" relationship="viewControllers" id="e7w-0R-1pe"/>
+                        <segue destination="9fd-Ns-vXN" kind="relationship" relationship="viewControllers" id="xeq-hS-GqJ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o5s-Qr-b5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3761" y="50"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="8w6-vK-Bbb">
+            <objects>
+                <viewController storyboardIdentifier="testVCID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ARO-nR-Noa" customClass="TestViewController" customModule="TheNewMeta" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vVH-59-mUv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="collectionView" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bQD-fL-gyv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="126"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ish-iO-b08">
+                                    <size key="itemSize" width="115" height="79"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="testCollectionCell" id="pHC-4N-cFX" customClass="TestCell" customModule="TheNewMeta" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="115" height="79"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="115" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t30-D3-SQP">
+                                                    <rect key="frame" x="36.5" y="29" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="t30-D3-SQP" firstAttribute="centerX" secondItem="pHC-4N-cFX" secondAttribute="centerX" id="58L-lZ-oT4"/>
+                                            <constraint firstItem="t30-D3-SQP" firstAttribute="centerY" secondItem="pHC-4N-cFX" secondAttribute="centerY" id="Scf-rh-B4N"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="labelTestCell" destination="t30-D3-SQP" id="eez-EL-t1C"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="POw-CQ-OeO" firstAttribute="bottom" secondItem="bQD-fL-gyv" secondAttribute="bottom" constant="354" id="31Q-rW-OLX"/>
+                            <constraint firstItem="bQD-fL-gyv" firstAttribute="top" secondItem="vVH-59-mUv" secondAttribute="top" id="Gni-75-4DH"/>
+                            <constraint firstItem="bQD-fL-gyv" firstAttribute="trailing" secondItem="POw-CQ-OeO" secondAttribute="trailing" id="dC4-YF-ItO"/>
+                            <constraint firstItem="bQD-fL-gyv" firstAttribute="leading" secondItem="POw-CQ-OeO" secondAttribute="leading" id="faq-f6-U3U"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="POw-CQ-OeO"/>
+                    </view>
+                    <connections>
+                        <outlet property="testCollection" destination="bQD-fL-gyv" id="oCr-KE-xrw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SUp-Po-a8t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="840" y="-471"/>
         </scene>
         <!--Side Menu View Controller-->
         <scene sceneID="3FU-bi-9FB">
