@@ -10,13 +10,36 @@ import UIKit
 import Foundation
 import RealmSwift
 
-class UserJoinedLobbiesVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class UserJoinedLobbiesVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    let labels = ["My Lobbies", "Host Lobbies"]
+    
+    @IBOutlet weak var menuCollectionView: UICollectionView!
+    // Collections
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = menuCollectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath) as! MenuViewCell
+        
+        cell.menuLabel.text = labels[indexPath.row]
+        cell.backgroundColor = UIColor.blue
+        return cell
+    }
+    
     
     let lobbyIdentifier = "joinedLobbyCell"
     private var signedInUser = User()
     
     @IBOutlet weak var joinedLobbyTableView: UITableView!
-
+    @IBOutlet weak var tabBarView: UICollectionView!
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -60,7 +83,9 @@ class UserJoinedLobbiesVC: UIViewController, UITableViewDataSource, UITableViewD
         
         joinedLobbyTableView.delegate = self
         joinedLobbyTableView.dataSource = self
-        
         self.joinedLobbyTableView.reloadData()
+        
+        menuCollectionView.delegate = self
+        menuCollectionView.dataSource = self
     }
 }
