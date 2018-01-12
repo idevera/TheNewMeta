@@ -24,10 +24,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableViewContent: UITableView!
     @IBOutlet weak var searchBarView: UISearchBar!
-    @IBAction func clickHamburger() {
-        // On click this will send a message to the side menu to run the constraint function!! This is a View Click action to the ContainerViewController
-        NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
-    }
+//    @IBAction func clickHamburger() {
+//        // On click this will send a message to the side menu to run the constraint function!! This is a View Click action to the ContainerViewController
+//        NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
+//    }
     
     // Table View for all games
     
@@ -77,42 +77,42 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // Notification Center Functions
     
     // Will be consumed by the NC --> Messages are sent from the sideMenuViewController on click
-    @objc func showCreateLobby () {
-        performSegue(withIdentifier: "ShowCreateLobby", sender: nil)
-    }
+//    @objc func showCreateLobby () {
+//        performSegue(withIdentifier: "ShowCreateLobby", sender: nil)
+//    }
+//
+//    @objc func showMyLobbies () {
+//        performSegue(withIdentifier: "ShowMyLobbies", sender: nil)
+//    }
+//
+//    @objc func showEditProfile () {
+//        performSegue(withIdentifier: "ShowEditProfile", sender: nil)
+//    }
+//
+//    @objc func showCreatedLobbies() {
+//        performSegue(withIdentifier: "ShowCreatedLobbies", sender: nil)
+//    }
     
-    @objc func showMyLobbies () {
-        performSegue(withIdentifier: "ShowMyLobbies", sender: nil)
-    }
-    
-    @objc func showEditProfile () {
-        performSegue(withIdentifier: "ShowEditProfile", sender: nil)
-    }
-    
-    @objc func showCreatedLobbies() {
-        performSegue(withIdentifier: "ShowCreatedLobbies", sender: nil)
-    }
-    
-    @objc func showLoginView () {
-        // TODO: Look into this error again
-        // Here I am unwinding. Get an error that this is discouraged when going back to root view
-        
-        findSignedInUser()
-        removeSignedInUserID()
-        
-        let alert = UIAlertController(title: "Succesfully Logged Out!", message: "Come back again soon!", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
-            (_)in
-            self.dismiss(animated: true, completion: nil)
-        })
-
-        alert.addAction(OKAction)
-        self.present(alert, animated: true, completion: nil)
-        
-        // Other options
-        // self.navigationController?.popViewController(animated: true)
-        // self.dismiss(animated: true, completion: nil)
-    }
+//    @objc func showLoginView () {
+//        // TODO: Look into this error again
+//        // Here I am unwinding. Get an error that this is discouraged when going back to root view
+//
+//        findSignedInUser()
+//        removeSignedInUserID()
+//
+//        let alert = UIAlertController(title: "Succesfully Logged Out!", message: "Come back again soon!", preferredStyle: .alert)
+//        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+//            (_)in
+//            self.dismiss(animated: true, completion: nil)
+//        })
+//
+//        alert.addAction(OKAction)
+//        self.present(alert, animated: true, completion: nil)
+//
+//        // Other options
+//        // self.navigationController?.popViewController(animated: true)
+//        // self.dismiss(animated: true, completion: nil)
+//    }
     
     // Private functions
     
@@ -132,12 +132,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         signedInUser = realm.object(ofType: User.self, forPrimaryKey: id)!
     }
     
-    private func removeSignedInUserID() {
-        let defaults = UserDefaults.standard
-        defaults.removeObject(forKey: "userID")
-//        UserDefaults.standard.synchronize()
-        print("\(String(describing: UserDefaults.standard.string(forKey: "userID")))")
-    }
+//    private func removeSignedInUserID() {
+//        let defaults = UserDefaults.standard
+//        defaults.removeObject(forKey: "userID")
+////        UserDefaults.standard.synchronize()
+//        print("\(String(describing: UserDefaults.standard.string(forKey: "userID")))")
+//    }
     
     // Overrides
     
@@ -165,11 +165,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Navigation Bar Observers - Waiting for an on-click message
 
         // On load, add the observers to the NC to be listening for a click event!!!
-        NotificationCenter.default.addObserver(self, selector: #selector(showCreateLobby), name: NSNotification.Name("ShowCreateLobby"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showMyLobbies), name: NSNotification.Name("ShowMyLobbies"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showEditProfile), name: NSNotification.Name("ShowEditProfile"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showCreatedLobbies), name: NSNotification.Name("ShowLoginView"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showLoginView), name: NSNotification.Name("ShowLoginView"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(showCreateLobby), name: NSNotification.Name("ShowCreateLobby"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(showMyLobbies), name: NSNotification.Name("ShowMyLobbies"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(showEditProfile), name: NSNotification.Name("ShowEditProfile"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(showCreatedLobbies), name: NSNotification.Name("ShowLoginView"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(showLoginView), name: NSNotification.Name("ShowLoginView"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
