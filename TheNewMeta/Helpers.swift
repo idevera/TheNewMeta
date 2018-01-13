@@ -9,7 +9,6 @@
 import UIKit
 
 extension UITextField {
-    
     func underlined(borderColor: UIColor) {
         self.borderStyle = UITextBorderStyle.none
         self.backgroundColor = UIColor.clear
@@ -20,5 +19,11 @@ extension UITextField {
         
         borderLine.backgroundColor = borderColor
         self.addSubview(borderLine)
+    }
+}
+
+extension UIButton {
+    func loginStyle() {
+        self.backgroundColor = UIColor.yellow
     }
 }

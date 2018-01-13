@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var gamerTagField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var pwField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
     // Sign in button function
     @IBAction func signIn(_ sender: Any) {
@@ -84,6 +85,7 @@ class LoginViewController: UIViewController {
         self.gamerTagField.underlined(borderColor: UIColor.white)
         self.emailField.underlined(borderColor: UIColor.white)
         self.pwField.underlined(borderColor: UIColor.white)
+        self.loginButton.loginStyle()
     }
     
     override func didReceiveMemoryWarning() {
