@@ -14,31 +14,13 @@ class UserJoinedLobbiesVC: UIViewController, UITableViewDataSource, UITableViewD
     
     let labels = ["My Lobbies", "Host Lobbies"]
     
-    @IBOutlet weak var menuCollectionView: UICollectionView!
-    // Collections
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = menuCollectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath) as! MenuViewCell
-        
-        cell.menuLabel.text = labels[indexPath.row]
-        cell.backgroundColor = UIColor.blue
-        return cell
-    }
-    
-    
     let lobbyIdentifier = "joinedLobbyCell"
     private var signedInUser = User()
     
     @IBOutlet weak var joinedLobbyTableView: UITableView!
     @IBOutlet weak var tabBarView: UICollectionView!
+    @IBOutlet weak var menuCollectionView: UICollectionView!
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -58,6 +40,24 @@ class UserJoinedLobbiesVC: UIViewController, UITableViewDataSource, UITableViewD
         cell.lobbyHostLabel.text = findLobbyHost(hostID: lobby.hostID).gamerTag
         cell.gameTitleLabel.text = lobby.game.title
         
+        return cell
+    }
+    
+    // Collections
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = menuCollectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath) as! MenuViewCell
+        
+        cell.menuLabel.text = labels[indexPath.row]
+        cell.backgroundColor = UIColor.blue
         return cell
     }
     
