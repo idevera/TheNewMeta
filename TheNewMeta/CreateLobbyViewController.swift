@@ -19,54 +19,38 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
     // Actions
 
     @objc func createLobby(_ sender: UIButton) {
-        // This game is either a new created game OR an existing game
-        
-        let game = getGame(gameTitle: gameFieldView.text!)
-        let newLobby = createNewLobby()
-        
-        // Perform the migration
-        let realm = try! Realm()
-        
-        // Write to the database
-        try! realm.write {
-            realm.add(game!)
-            realm.add(newLobby)
+        if checkInputs() {
+            // This game is either a new created game OR an existing game
+            let game = getGame(gameTitle: gameFieldView.text!)
+            let newLobby = createNewLobby()
             
-            // Add the newlobby to the game instance
-            // This should automatically update the newLobby.game property of a lobby
-            game!.matchingLobbies.append(newLobby)
-            newLobby.lobbyUsers.append(signedInUser)
-            successCreationAlert()
-//            print("Sucessfully added your game: \(String(describing: game))")
-//            print("Sucessfully added your new lobby: \(newLobby.game)")
-//            dismiss(animated: true, completion: nil)
-            // TODO: Segue back to the main view controller
+            // Perform the migration
+            let realm = try! Realm()
+            
+            // Write to the database
+            try! realm.write {
+                realm.add(game!)
+                realm.add(newLobby)
+                
+                // Add the newlobby to the game instance
+                // This should automatically update the newLobby.game property of a lobby
+                game!.matchingLobbies.append(newLobby)
+                newLobby.lobbyUsers.append(signedInUser)
+                successCreationAlert()
+    //            print("Sucessfully added your game: \(String(describing: game))")
+    //            print("Sucessfully added your new lobby: \(newLobby.game)")
+    //            dismiss(animated: true, completion: nil)
+                // TODO: Segue into the main view controller
+            }
         }
     }
     
-    private func successCreationAlert() {
-        let alert = UIAlertController(title: "Lobby Successfully Created", message: "See your profile for all your currently hosted lobbies", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
-            (_)in
-        })
-        
-        alert.addAction(OKAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    private func createNewLobby() -> Lobby {
-        let lobby = Lobby()
-        
-        let num: Int? = Int(playersFieldView.text!)
-        lobby.numberOfPlayers = num!
-        lobby.message = msgFieldView.text!
-        
-        // It’s worth noting here that these getters will return optional values, so the type of name is String?. When the "name" key doesn’t exist, the code returns nil. It then makes sense to use optional binding to get the value safely:
-        if let id = UserDefaults.standard.string(forKey: "userID") {
-            lobby.hostID = id
-        // print("Lobby ID successfully saved for logged in user: \(lobby.hostID)")
+    private func checkInputs() -> Bool {
+        if gameFieldView.text == "" || playersFieldView.text == "" || msgFieldView.text == "" {
+            failAlert()
+            return false
         }
-        return lobby
+        return true
     }
     
     private func getGame(gameTitle: String) -> Game? {
@@ -87,23 +71,52 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         return newGame
     }
     
+    private func createNewLobby() -> Lobby {
+        let lobby = Lobby()
+        
+        let num: Int? = Int(playersFieldView.text!)
+        lobby.numberOfPlayers = num!
+        lobby.message = msgFieldView.text!
+        
+        // It’s worth noting here that these getters will return optional values, so the type of name is String?. When the "name" key doesn’t exist, the code returns nil. It then makes sense to use optional binding to get the value safely:
+        if let id = UserDefaults.standard.string(forKey: "userID") {
+            lobby.hostID = id
+            // print("Lobby ID successfully saved for logged in user: \(lobby.hostID)")
+        }
+        return lobby
+    }
+    
     private func findSignedInUser() {
-        // TODO: Should probably save the entire user object in the UserDefaults instead of just the ID
         let id = UserDefaults.standard.string(forKey: "userID")
         let realm = try! Realm()
         print("This is the id of the signed in user \(String(describing: id))")
         signedInUser = realm.object(ofType: User.self, forPrimaryKey: id)!
-        
         print("Found signed in user: \(String(describing: signedInUser))")
     }
-
-    // Overrides
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupLayout()
-        findSignedInUser()
+    // Alerts
+    
+    private func failAlert() {
+        let alert = UIAlertController(title: "Try again", message: "Your fields cannot be blank", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+            (_)in
+        })
+        
+        alert.addAction(OKAction)
+        self.present(alert, animated: true, completion: nil)
     }
+    
+    private func successCreationAlert() {
+        let alert = UIAlertController(title: "Lobby Successfully Created", message: "See your profile for all your currently hosted lobbies", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+            (_)in
+        })
+        
+        alert.addAction(OKAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // Views and Constraints
     
     let gameFieldView: UITextField = {
         let gameField = UITextField()
@@ -172,5 +185,13 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         submitButtonView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         submitButtonView.topAnchor.constraint(equalTo: msgFieldView.bottomAnchor, constant: 20).isActive = true
         submitButtonView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
+    }
+    
+    // Overrides
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupLayout()
+        findSignedInUser()
     }
 }
