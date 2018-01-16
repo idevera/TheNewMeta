@@ -13,6 +13,7 @@
 		CC27185D1FFC88BA0061FCDD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC27185C1FFC88BA0061FCDD /* MainViewController.swift */; };
 		CC28C8772003E89B00987097 /* LobbyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC28C8762003E89B00987097 /* LobbyViewCell.swift */; };
 		CC5DEC87200EBF07005FE322 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DEC86200EBF07005FE322 /* EditProfileViewController.swift */; };
+		CC5DEC89200EC3F5005FE322 /* APIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DEC88200EC3F5005FE322 /* APIWrapper.swift */; };
 		CC7E048F20056C4100C667EB /* UserJoinedLobbiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */; };
 		CC7E049120056DED00C667EB /* JoinedLobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */; };
 		CCB8CE672009542D00F79B16 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE662009542D00F79B16 /* TestCell.swift */; };
@@ -77,6 +78,7 @@
 		CC27185C1FFC88BA0061FCDD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CC28C8762003E89B00987097 /* LobbyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewCell.swift; sourceTree = "<group>"; };
 		CC5DEC86200EBF07005FE322 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		CC5DEC88200EC3F5005FE322 /* APIWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWrapper.swift; sourceTree = "<group>"; };
 		CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJoinedLobbiesVC.swift; sourceTree = "<group>"; };
 		CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedLobbyTableViewCell.swift; sourceTree = "<group>"; };
 		CCB8CE662009542D00F79B16 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				CC27185C1FFC88BA0061FCDD /* MainViewController.swift */,
 				CC1654CB2002A425001DA633 /* GameTableViewCell.swift */,
 				CCF801251FFC42880089994B /* CreateLobbyViewController.swift */,
+				CC5DEC88200EC3F5005FE322 /* APIWrapper.swift */,
 				CC5DEC86200EBF07005FE322 /* EditProfileViewController.swift */,
 				CC1654CD2002C36B001DA633 /* AvailableLobbyViewController.swift */,
 				CC28C8762003E89B00987097 /* LobbyViewCell.swift */,
@@ -356,6 +359,7 @@
 			files = (
 				CCB8CE69200954A200F79B16 /* TestViewController.swift in Sources */,
 				CC27185D1FFC88BA0061FCDD /* MainViewController.swift in Sources */,
+				CC5DEC89200EC3F5005FE322 /* APIWrapper.swift in Sources */,
 				CC1654CE2002C36B001DA633 /* AvailableLobbyViewController.swift in Sources */,
 				CCF8012A1FFC57BE0089994B /* ContainerViewController.swift in Sources */,
 				CCB8CE672009542D00F79B16 /* TestCell.swift in Sources */,
