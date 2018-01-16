@@ -79,7 +79,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(handleTextView)
+//        view.addSubview(appTextView)
         setupLayout()
     }
     
@@ -98,6 +98,7 @@ class LoginViewController: UIViewController {
     
     // Styling
     
+    // Add a closure for the imageview - Anonymous functions
     let joystickImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "joystick"))
         
@@ -110,14 +111,22 @@ class LoginViewController: UIViewController {
     }()
     
     // Handle form label
-    let handleTextView: UITextView = {
+    let appTitleView: UITextView = {
         let textView = UITextView()
-        textView.text = "handle"
+        textView.text = "the new meta"
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isScrollEnabled = false
         textView.isEditable = false
         textView.textAlignment = .center
+        textView.backgroundColor = .clear
+        textView.textColor = .white
         return textView
+    }()
+    
+    let gamerTagView: UITextField = {
+        let gamerTag = UITextField()
+         gamerTag.translatesAutoresizingMaskIntoConstraints = false
+        return gamerTag
     }()
     
     private func setupLayout() {
@@ -129,13 +138,15 @@ class LoginViewController: UIViewController {
         view.addSubview(topImageContainerView)
         // This enables autolayout for our imageView
         topImageContainerView.translatesAutoresizingMaskIntoConstraints = false
+        // Makes it 50% of the views size
         topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
+        // Attaches to the top of the view
         topImageContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         // Instead of left and right anchor we use leading and trailing anchor.
         // It does the same thing. Video explains why we prefer it (convention)
         topImageContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         topImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+//        topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         
         // Add the image to the container
         topImageContainerView.addSubview(joystickImageView)
@@ -145,10 +156,23 @@ class LoginViewController: UIViewController {
         joystickImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor, constant: 20).isActive = true
         joystickImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.5).isActive = true
         
+        // Test
+        
+        topImageContainerView.addSubview(appTitleView)
+        appTitleView.topAnchor.constraint(equalTo: joystickImageView.bottomAnchor, constant: 8).isActive = true
+        appTitleView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true
+        appTitleView.bottomAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true
+//        handleTextView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor, constant: 20).isActive = true
+
+
+        
         // Handle text label constraints
-        handleTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true
-        handleTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        handleTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        handleTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//        handleTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true
+//        handleTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+//        handleTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+//        handleTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        // Text Field Constraints
+//        gamerTagView.centerXAnchor.constraint(equalTo: handleTextView.centerXAnchor).isActive = true
     }
 }
