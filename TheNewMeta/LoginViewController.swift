@@ -78,6 +78,9 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(handleTextView)
+        setupLayout()
     }
     
     override func viewDidLayoutSubviews() {
@@ -92,5 +95,60 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    // Styling
+    
+    let joystickImageView: UIImageView = {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "joystick"))
+        
+        // This enables autoLayout for our imageView
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // This forces the image to keep the same aspect ratio regardless of screen orientation or size
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    // Handle form label
+    let handleTextView: UITextView = {
+        let textView = UITextView()
+        textView.text = "handle"
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isScrollEnabled = false
+        textView.isEditable = false
+        textView.textAlignment = .center
+        return textView
+    }()
+    
+    private func setupLayout() {
+        // Add container which controls the top half of the screen
+        let topImageContainerView = UIView()
+        // Uncomment if you want to see what it looks like
+        topImageContainerView.backgroundColor = .blue
+        // Add container to the view
+        view.addSubview(topImageContainerView)
+        // This enables autolayout for our imageView
+        topImageContainerView.translatesAutoresizingMaskIntoConstraints = false
+        topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
+        topImageContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        // Instead of left and right anchor we use leading and trailing anchor.
+        // It does the same thing. Video explains why we prefer it (convention)
+        topImageContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        topImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        
+        // Add the image to the container
+        topImageContainerView.addSubview(joystickImageView)
+        
+        // Joystick constraints
+        joystickImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true
+        joystickImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor, constant: 20).isActive = true
+        joystickImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.5).isActive = true
+        
+        // Handle text label constraints
+        handleTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true
+        handleTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        handleTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        handleTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
 }
