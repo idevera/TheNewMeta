@@ -472,19 +472,10 @@
         <!--Edit Profile View Controller-->
         <scene sceneID="wLY-i2-WrC">
             <objects>
-                <viewController storyboardIdentifier="ShowEditProfile" id="Lc0-2d-4ke" userLabel="Edit Profile View Controller" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowEditProfile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lc0-2d-4ke" userLabel="Edit Profile View Controller" customClass="EditProfileViewController" customModule="TheNewMeta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QMB-Oo-FUJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="My Lobbies" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fiz-C6-Nsz">
-                                <rect key="frame" x="46" y="92" width="228" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
                         <color key="backgroundColor" red="0.36314823870000001" green="0.29854940130000002" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="SUg-HY-4fc"/>
                     </view>
