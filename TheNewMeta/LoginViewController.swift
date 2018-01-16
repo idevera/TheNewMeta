@@ -17,20 +17,11 @@ class LoginViewController: UIViewController {
     var email = ""
     var password = ""
     
-//    @IBOutlet weak var gamerTagField: UITextField!
-//    @IBOutlet weak var emailField: UITextField!
-//    @IBOutlet weak var pwField: UITextField!
-//    @IBOutlet weak var loginButton: UIButton!
-    
     // Sign in button function
     @objc func signIn(_ sender: Any) {
         gamerTag = gamerTagView.text!
         email = emailTagView.text!
         password = pwTagView.text!
-
-//        gamerTag = gamerTagField.text!
-//        email = emailField.text!
-//        password = pwField.text!
         
         let realm = try! Realm()
 
@@ -85,6 +76,7 @@ class LoginViewController: UIViewController {
         setupLayout()
     }
     
+    // TODO: Decide if I want to use this
 //    override func viewDidLayoutSubviews() {
 //        self.gamerTagField.underlined(borderColor: UIColor.white)
 //        self.emailField.underlined(borderColor: UIColor.white)
@@ -123,6 +115,8 @@ class LoginViewController: UIViewController {
         gamerTag.translatesAutoresizingMaskIntoConstraints = false
         gamerTag.backgroundColor = .white
         gamerTag.layer.cornerRadius = 10
+        gamerTag.textAlignment = .center
+        gamerTag.placeholder = "handle"
         return gamerTag
     }()
     
@@ -131,6 +125,8 @@ class LoginViewController: UIViewController {
         emailView.translatesAutoresizingMaskIntoConstraints = false
         emailView.backgroundColor = .white
         emailView.layer.cornerRadius = 10
+        emailView.textAlignment = .center
+        emailView.placeholder = "email"
         return emailView
     }()
     
@@ -139,6 +135,8 @@ class LoginViewController: UIViewController {
         pwView.translatesAutoresizingMaskIntoConstraints = false
         pwView.backgroundColor = .white
         pwView.layer.cornerRadius = 10
+        pwView.textAlignment = .center
+        pwView.placeholder = "password"
         return pwView
     }()
     
@@ -167,7 +165,6 @@ class LoginViewController: UIViewController {
         // It does the same thing. Video explains why we prefer it (convention)
         topImageContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         topImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//        topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         
         // Add the image to the container
         topImageContainerView.addSubview(joystickImageView)
@@ -177,7 +174,7 @@ class LoginViewController: UIViewController {
         joystickImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor).isActive = true
         joystickImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.5).isActive = true
         
-        // TITLE
+        // Title
         
         topImageContainerView.addSubview(appTitleView)
         appTitleView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true
@@ -229,6 +226,7 @@ class LoginViewController: UIViewController {
         loginButtonView.widthAnchor.constraint(equalTo: bottomViewContainer.widthAnchor, multiplier: 0.7).isActive = true
         loginButtonView.topAnchor.constraint(equalTo: pwTagView.bottomAnchor, constant: 40).isActive = true
         loginButtonView.setTitle("Login", for: .normal)
+        loginButtonView.setTitleColor(UIColor.darkGray, for: .normal)
         loginButtonView.addTarget(self, action: #selector(signIn), for: .touchUpInside)
     }
 }
