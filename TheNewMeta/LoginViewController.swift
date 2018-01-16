@@ -17,16 +17,20 @@ class LoginViewController: UIViewController {
     var email = ""
     var password = ""
     
-    @IBOutlet weak var gamerTagField: UITextField!
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var pwField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
+//    @IBOutlet weak var gamerTagField: UITextField!
+//    @IBOutlet weak var emailField: UITextField!
+//    @IBOutlet weak var pwField: UITextField!
+//    @IBOutlet weak var loginButton: UIButton!
     
     // Sign in button function
-    @IBAction func signIn(_ sender: Any) {
-        gamerTag = gamerTagField.text!
-        email = emailField.text!
-        password = pwField.text!
+    @objc func signIn(_ sender: Any) {
+        gamerTag = gamerTagView.text!
+        email = emailTagView.text!
+        password = pwTagView.text!
+
+//        gamerTag = gamerTagField.text!
+//        email = emailField.text!
+//        password = pwField.text!
         
         let realm = try! Realm()
 
@@ -42,7 +46,7 @@ class LoginViewController: UIViewController {
             // TODO: Move onto the next sign in page with a welcome notification that a new user has been created
         }
         // Clear the password text field
-        pwField.text! = ""
+        pwTagView.text! = ""
         let tabController = storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarViewController
         
         present(tabController, animated: true, completion: nil)
@@ -55,9 +59,9 @@ class LoginViewController: UIViewController {
     private func createUser() -> String {
         let user = User()
 
-        user.gamerTag = gamerTagField.text!
-        user.email = emailField.text!
-        user.password = pwField.text!
+        user.gamerTag = gamerTag
+        user.email = email
+        user.password = password
 
         let realm = try! Realm()
 
@@ -78,25 +82,17 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        view.addSubview(appTextView)
         setupLayout()
     }
     
-    override func viewDidLayoutSubviews() {
-//        let lineColor = UIColor(red:0.12, green:0.23, blue:0.35, alpha:1.0)
-        self.gamerTagField.underlined(borderColor: UIColor.white)
-        self.emailField.underlined(borderColor: UIColor.white)
-        self.pwField.underlined(borderColor: UIColor.white)
-        self.loginButton.loginStyle()
-    }
+//    override func viewDidLayoutSubviews() {
+//        self.gamerTagField.underlined(borderColor: UIColor.white)
+//        self.emailField.underlined(borderColor: UIColor.white)
+//        self.pwField.underlined(borderColor: UIColor.white)
+//        self.loginButton.loginStyle()
+//    }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // STYLING
+    // Create Views
     
     // Add a closure for the imageview - Anonymous functions
     let joystickImageView: UIImageView = {
@@ -126,6 +122,7 @@ class LoginViewController: UIViewController {
         let gamerTag = UITextField()
         gamerTag.translatesAutoresizingMaskIntoConstraints = false
         gamerTag.backgroundColor = .white
+        gamerTag.layer.cornerRadius = 10
         return gamerTag
     }()
     
@@ -133,6 +130,7 @@ class LoginViewController: UIViewController {
         let emailView = UITextField()
         emailView.translatesAutoresizingMaskIntoConstraints = false
         emailView.backgroundColor = .white
+        emailView.layer.cornerRadius = 10
         return emailView
     }()
     
@@ -140,6 +138,7 @@ class LoginViewController: UIViewController {
         let pwView = UITextField()
         pwView.translatesAutoresizingMaskIntoConstraints = false
         pwView.backgroundColor = .white
+        pwView.layer.cornerRadius = 10
         return pwView
     }()
     
@@ -147,14 +146,15 @@ class LoginViewController: UIViewController {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.backgroundColor = .yellow
+        loginButton.layer.cornerRadius = 10
         return loginButton
     }()
     
-    private func setupLayout() {
+    @objc private func setupLayout() {
         // Add container which controls the top half of the screen
         let topImageContainerView = UIView()
         // Uncomment if you want to see what it looks like
-        topImageContainerView.backgroundColor = .blue
+        topImageContainerView.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
         // Add container to the view
         view.addSubview(topImageContainerView)
         // This enables autolayout for our imageView
@@ -182,12 +182,12 @@ class LoginViewController: UIViewController {
         topImageContainerView.addSubview(appTitleView)
         appTitleView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true
         appTitleView.centerYAnchor.constraint(equalTo: joystickImageView.bottomAnchor, constant: 20).isActive = true
-        
+    
         // Add Bottom View
         
         let bottomViewContainer = UIView()
         // Uncomment if you want to see what it looks like
-        bottomViewContainer.backgroundColor = .purple
+        bottomViewContainer.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
         // Add container to the view
         view.addSubview(bottomViewContainer)
         
@@ -228,5 +228,7 @@ class LoginViewController: UIViewController {
         loginButtonView.centerXAnchor.constraint(equalTo: bottomViewContainer.centerXAnchor).isActive = true
         loginButtonView.widthAnchor.constraint(equalTo: bottomViewContainer.widthAnchor, multiplier: 0.7).isActive = true
         loginButtonView.topAnchor.constraint(equalTo: pwTagView.bottomAnchor, constant: 40).isActive = true
+        loginButtonView.setTitle("Login", for: .normal)
+        loginButtonView.addTarget(self, action: #selector(signIn), for: .touchUpInside)
     }
 }
