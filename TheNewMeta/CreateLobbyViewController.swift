@@ -20,6 +20,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
 
     @objc func createLobby(_ sender: UIButton) {
         // This game is either a new created game OR an existing game
+        
         let game = getGame(gameTitle: gameFieldView.text!)
         let newLobby = createNewLobby()
         
@@ -35,15 +36,24 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
             // This should automatically update the newLobby.game property of a lobby
             game!.matchingLobbies.append(newLobby)
             newLobby.lobbyUsers.append(signedInUser)
+            successCreationAlert()
 //            print("Sucessfully added your game: \(String(describing: game))")
 //            print("Sucessfully added your new lobby: \(newLobby.game)")
+//            dismiss(animated: true, completion: nil)
+            // TODO: Segue back to the main view controller
         }
-            // OPTIONAL: Add exception if the object was saved
-
-//        navigationController?.popToRootViewController(animated: true)
     }
     
-    // 3
+    private func successCreationAlert() {
+        let alert = UIAlertController(title: "Lobby Successfully Created", message: "See your profile for all your currently hosted lobbies", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+            (_)in
+        })
+        
+        alert.addAction(OKAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     private func createNewLobby() -> Lobby {
         let lobby = Lobby()
         
