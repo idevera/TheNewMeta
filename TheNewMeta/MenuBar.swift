@@ -8,20 +8,47 @@
 
 import UIKit
 
-class MenuBar: UIView {
+class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-//    let collectionView: UICollectionView = {
-//        let layout = UICollectionViewFlowLayout()
-//        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        return cv
-//    }()
-    
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.backgroundColor = .black
+        return cv
+    }()
+
+    let cellID = "cellID"
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        addSubview(collectionView)
-//        collectionView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
-//        collectionView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.15).isActive = true
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellID")
+        
+        addSubview(collectionView)
+        collectionView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
+        collectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        cell.backgroundColor = .white
+        return cell
+    }
+    
+    // Specifies the size of of each collectionviewcell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: frame.width / 2, height: frame.height)
+    }
+    
+    // Reduces the space between each cell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     required init?(coder aDecoder: NSCoder) {

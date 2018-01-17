@@ -52,8 +52,10 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     // Private Functions
     
     private func setupMenuBar() {
-//        view.addSubview(menuBarView)
-//        menuBarView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
+        view.addSubview(menuBarView)
+        menuBarView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
+        menuBarView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        menuBarView.heightAnchor.constraint(equalToConstant: 100).isActive = true
 //        menuBarView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15).isActive = true
     }
     
@@ -131,6 +133,12 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         collectionView?.backgroundColor = .lightGray
         collectionView?.register(LobbyCell.self, forCellWithReuseIdentifier: "cellID")
         setupMenuBar()
+        
+        // Pushes the collection view from being underneath the menu
+        collectionView?.contentInset = UIEdgeInsetsMake(100, 0, 0, 0)
+        
+        // Changes where the scroll of the collection view to not be underneath the menu bar
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(100, 0, 0, 0)
     }
 }
 
