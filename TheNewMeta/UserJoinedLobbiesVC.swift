@@ -56,59 +56,7 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         menuBarView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
         menuBarView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         menuBarView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-//        menuBarView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15).isActive = true
     }
-    
-    // Collection for Custom Tab Bar
-    
-//    let labels = ["My Lobbies", "Host Lobbies"]
-//    let lobbyIdentifier = "joinedLobbyCell"
-//
-////    @IBOutlet weak var joinedLobbyTableView: UITableView!
-////    @IBOutlet weak var tabBarView: UICollectionView!
-////    @IBOutlet weak var menuCollectionView: UICollectionView!
-////    let joinedLobbyTableView = UITableView()
-////    let tabBarView = UICollectionView()
-////    let menuCollectionView = UICollectionView()
-//
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return signedInUser.joinedLobbies.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: lobbyIdentifier, for: indexPath) as? JoinedLobbyTableViewCell else {
-//            fatalError("The dequeued cell is not an instance of GameTableViewCell.")
-//        }
-//
-//        let lobby = signedInUser.joinedLobbies[indexPath.row]
-//
-//        cell.lobbyHostLabel.text = findLobbyHost(hostID: lobby.hostID).gamerTag
-//        cell.gameTitleLabel.text = lobby.game.title
-//
-//        return cell
-//    }
-//
-    // Collections
-    
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 2
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = menuCollectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath) as! MenuViewCell
-//
-//        cell.menuLabel.text = labels[indexPath.row]
-//        cell.backgroundColor = UIColor.blue
-//        return cell
-//    }
     
     // TODO: Should probably save the entire user object in the UserDefaults instead of just the ID
     private func findSignedInUser() {
@@ -142,12 +90,25 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     }
 }
 
-class LobbyCell: UICollectionViewCell {
+// TODO: MOVE THIS INTO IT'S OWN SWIFT FILE
+
+// This is the super class of all UICollectionViewCells
+class BaseCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
     
+    func setupViews() {
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class LobbyCell: BaseCell {
     let gameTitleLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .yellow
@@ -179,7 +140,7 @@ class LobbyCell: UICollectionViewCell {
     
     // View Constraints
     
-    func setupViews() {
+    override func setupViews() {
         addSubview(gameTitleLabel)
         addSubview(leaveButtonView)
         addSubview(playersTextView)
@@ -207,10 +168,6 @@ class LobbyCell: UICollectionViewCell {
         addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .right, relatedBy: .equal, toItem: leaveButtonView, attribute: .left, multiplier: 1, constant: -5))
         addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 

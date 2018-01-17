@@ -14,17 +14,18 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.backgroundColor = .black
+//        cv.backgroundColor = .yellow
         return cv
     }()
 
     let cellID = "cellID"
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellID")
+        collectionView.register(MenuCell.self, forCellWithReuseIdentifier: "cellID")
         
         addSubview(collectionView)
         collectionView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
@@ -37,7 +38,7 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
-        cell.backgroundColor = .white
+//        cell.backgroundColor = .yellow
         return cell
     }
     
@@ -54,4 +55,26 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+// See UserJoinedLobbies VC for the basecell
+class MenuCell: BaseCell {
+    let menuViewLabel: UILabel = {
+        let mlabel = UILabel()
+        mlabel.translatesAutoresizingMaskIntoConstraints = false
+        mlabel.text = "My Lobbies"
+        mlabel.textColor = .black
+        return mlabel
+    }()
+    
+    override func setupViews() {
+        super.setupViews()
+        backgroundColor = .blue
+        addSubview(menuViewLabel)
+        menuViewLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
+        menuViewLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        menuViewLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+    }
+    
+    
 }
