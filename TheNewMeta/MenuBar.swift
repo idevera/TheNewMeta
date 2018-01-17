@@ -17,6 +17,7 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
 //        cv.backgroundColor = .yellow
         return cv
     }()
+    let menuLabelNames = ["Joined Lobbies", "Lobbies I Host"]
 
     let cellID = "cellID"
     
@@ -37,8 +38,8 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
-//        cell.backgroundColor = .yellow
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! MenuCell
+        cell.menuViewLabel.text = menuLabelNames[indexPath.row]
         return cell
     }
     
@@ -71,7 +72,7 @@ class MenuCell: BaseCell {
         super.setupViews()
         backgroundColor = .blue
         addSubview(menuViewLabel)
-        menuViewLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
+//        menuViewLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7).isActive = true
         menuViewLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         menuViewLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
