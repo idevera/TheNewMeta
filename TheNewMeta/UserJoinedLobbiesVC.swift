@@ -30,7 +30,7 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - 10, height: 150)
+        return CGSize(width: view.frame.width - 10, height: 120)
     }
     
 //    let labels = ["My Lobbies", "Host Lobbies"]
@@ -124,6 +124,7 @@ class lobbyCell: UICollectionViewCell {
         let label = UILabel()
         label.backgroundColor = .yellow
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "This is the game title label"
         return label
     }()
     
@@ -135,26 +136,51 @@ class lobbyCell: UICollectionViewCell {
         return leaveButton
     }()
     
+    let playersTextView: UILabel = {
+        let playersText = UILabel()
+        playersText.backgroundColor = .green
+        playersText.translatesAutoresizingMaskIntoConstraints = false
+        playersText.text = "Test number of players text"
+        return playersText
+    }()
+    
+    let msgTextView: UILabel = {
+        let msgText = UILabel()
+        msgText.backgroundColor = .white
+        msgText.translatesAutoresizingMaskIntoConstraints = false
+        msgText.text = "Looking for a Challenger!"
+        return msgText
+    }()
+    
     func setupViews() {
         addSubview(gameTitleLabel)
         addSubview(leaveButtonView)
+        addSubview(playersTextView)
+        addSubview(msgTextView)
         
-        // Constraints for game Label
+        // Game label view
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
-        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.5, constant: 0))
+        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.4, constant: 0))
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.8, constant: 5))
         
+        // Leave Button View
         addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .left, relatedBy: .equal, toItem: gameTitleLabel, attribute: .right, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -5))
         addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
         
-//        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .right, relatedBy: .equal, toItem: leaveButtonView, attribute: .left, multiplier: 1, constant: 5))
-////        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.2, constant: 0))
-//        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: -5))
-//
-//        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -5))
+        // Player Text View
+        addConstraint(NSLayoutConstraint(item: playersTextView, attribute: .top, relatedBy: .equal, toItem: gameTitleLabel, attribute: .bottom, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: playersTextView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
+        addConstraint(NSLayoutConstraint(item: playersTextView, attribute: .right, relatedBy: .equal, toItem: leaveButtonView, attribute: .left, multiplier: 1, constant: -5))
+        
+        // Msg Text View
+        addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .top, relatedBy: .equal, toItem: playersTextView, attribute: .bottom, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
+        addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .right, relatedBy: .equal, toItem: leaveButtonView, attribute: .left, multiplier: 1, constant: -5))
+        addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
+
     }
     
     required init?(coder aDecoder: NSCoder) {
