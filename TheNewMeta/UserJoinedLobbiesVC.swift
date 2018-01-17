@@ -30,7 +30,7 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - 10, height: 100)
+        return CGSize(width: view.frame.width - 10, height: 150)
     }
     
 //    let labels = ["My Lobbies", "Host Lobbies"]
@@ -127,10 +127,11 @@ class lobbyCell: UICollectionViewCell {
         return label
     }()
     
-    let leaveButtonView: UILabel = {
-        let leaveButton = UILabel()
+    let leaveButtonView: UIButton = {
+        let leaveButton = UIButton()
         leaveButton.backgroundColor = .red
         leaveButton.translatesAutoresizingMaskIntoConstraints = false
+        leaveButton.setTitle("Leave?", for: .normal)
         return leaveButton
     }()
     
@@ -141,14 +142,19 @@ class lobbyCell: UICollectionViewCell {
         // Constraints for game Label
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
-        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.8, constant: 0))
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.5, constant: 0))
-
+        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.8, constant: 5))
+        
         addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
-//        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.2, constant: 0))
-////        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.5, constant: 0))
-//        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .left, relatedBy: .equal, toItem: gameTitleLabel, attribute: .right, multiplier: 1, constant: 5))
-//        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 0, constant: 0))
+        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .left, relatedBy: .equal, toItem: gameTitleLabel, attribute: .right, multiplier: 1, constant: 5))
+        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -5))
+        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
+        
+//        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .right, relatedBy: .equal, toItem: leaveButtonView, attribute: .left, multiplier: 1, constant: 5))
+////        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.2, constant: 0))
+//        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: -5))
+//
+//        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -5))
     }
     
     required init?(coder aDecoder: NSCoder) {
