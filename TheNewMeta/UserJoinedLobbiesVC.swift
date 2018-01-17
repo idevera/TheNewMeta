@@ -13,25 +13,51 @@ import RealmSwift
 class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private var signedInUser = User()
     
-    // Collections
+    // Collection for user lobbies
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return signedInUser.joinedLobbies.count
     }
 
+    // FIgure out how to get the subviews within a collection
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath)
-        cell.backgroundColor = .white
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! LobbyCell
+        
+        let lobby = signedInUser.joinedLobbies[indexPath.row]
+        
+        cell.gameTitleLabel.text = findLobbyHost(hostID: lobby.hostID).gamerTag
+        cell.playersTextView.text = String(lobby.numberOfPlayers)
+        cell.msgTextView.text = lobby.message
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width - 10, height: 120)
     }
+    
+    
+    let menuBarView: MenuBar = {
+        let menuBar = MenuBar()
+        menuBar.translatesAutoresizingMaskIntoConstraints = false
+        menuBar.backgroundColor = .blue
+        return menuBar
+    }()
+    
+    // Private Functions
+    
+    private func setupMenuBar() {
+//        view.addSubview(menuBarView)
+//        menuBarView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
+//        menuBarView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15).isActive = true
+    }
+    
+    // Collection for Custom Tab Bar
     
 //    let labels = ["My Lobbies", "Host Lobbies"]
 //    let lobbyIdentifier = "joinedLobbyCell"
@@ -87,8 +113,7 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         let id = UserDefaults.standard.string(forKey: "userID")
         let realm = try! Realm()
         signedInUser = realm.object(ofType: User.self, forPrimaryKey: id)!
-        
-        print("Found signed in user: \(String(describing: signedInUser))")
+//        print("Found signed in user: \(String(describing: signedInUser))")
     }
     
     // TODO: Should probably just save this as an attribute of the controller??? IDK
@@ -98,23 +123,18 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         return hostUser
     }
     
+    // Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         findSignedInUser()
         collectionView?.backgroundColor = .lightGray
-        collectionView?.register(lobbyCell.self, forCellWithReuseIdentifier: "cellID")
-
-        
-//        joinedLobbyTableView.delegate = self
-//        joinedLobbyTableView.dataSource = self
-//        self.joinedLobbyTableView.reloadData()
-        
-//        menuCollectionView.delegate = self
-//        menuCollectionView.dataSource = self
+        collectionView?.register(LobbyCell.self, forCellWithReuseIdentifier: "cellID")
+        setupMenuBar()
     }
 }
 
-class lobbyCell: UICollectionViewCell {
+class LobbyCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -124,7 +144,6 @@ class lobbyCell: UICollectionViewCell {
         let label = UILabel()
         label.backgroundColor = .yellow
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "This is the game title label"
         return label
     }()
     
@@ -140,7 +159,6 @@ class lobbyCell: UICollectionViewCell {
         let playersText = UILabel()
         playersText.backgroundColor = .green
         playersText.translatesAutoresizingMaskIntoConstraints = false
-        playersText.text = "Test number of players text"
         return playersText
     }()
     
@@ -148,9 +166,10 @@ class lobbyCell: UICollectionViewCell {
         let msgText = UILabel()
         msgText.backgroundColor = .white
         msgText.translatesAutoresizingMaskIntoConstraints = false
-        msgText.text = "Looking for a Challenger!"
         return msgText
     }()
+    
+    // View Constraints
     
     func setupViews() {
         addSubview(gameTitleLabel)
@@ -163,24 +182,23 @@ class lobbyCell: UICollectionViewCell {
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.4, constant: 0))
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.8, constant: 5))
-        
+
         // Leave Button View
         addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .left, relatedBy: .equal, toItem: gameTitleLabel, attribute: .right, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -5))
         addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
-        
+
         // Player Text View
         addConstraint(NSLayoutConstraint(item: playersTextView, attribute: .top, relatedBy: .equal, toItem: gameTitleLabel, attribute: .bottom, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: playersTextView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: playersTextView, attribute: .right, relatedBy: .equal, toItem: leaveButtonView, attribute: .left, multiplier: 1, constant: -5))
-        
+
         // Msg Text View
         addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .top, relatedBy: .equal, toItem: playersTextView, attribute: .bottom, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .right, relatedBy: .equal, toItem: leaveButtonView, attribute: .left, multiplier: 1, constant: -5))
         addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
-
     }
     
     required init?(coder aDecoder: NSCoder) {

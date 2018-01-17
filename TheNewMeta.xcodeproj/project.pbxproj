@@ -14,6 +14,7 @@
 		CC28C8772003E89B00987097 /* LobbyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC28C8762003E89B00987097 /* LobbyViewCell.swift */; };
 		CC5DEC87200EBF07005FE322 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DEC86200EBF07005FE322 /* EditProfileViewController.swift */; };
 		CC5DEC89200EC3F5005FE322 /* APIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DEC88200EC3F5005FE322 /* APIWrapper.swift */; };
+		CC5DEC8B200FC918005FE322 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DEC8A200FC918005FE322 /* MenuBar.swift */; };
 		CC7E048F20056C4100C667EB /* UserJoinedLobbiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */; };
 		CC7E049120056DED00C667EB /* JoinedLobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */; };
 		CCB8CE672009542D00F79B16 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE662009542D00F79B16 /* TestCell.swift */; };
@@ -79,6 +80,7 @@
 		CC28C8762003E89B00987097 /* LobbyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewCell.swift; sourceTree = "<group>"; };
 		CC5DEC86200EBF07005FE322 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		CC5DEC88200EC3F5005FE322 /* APIWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWrapper.swift; sourceTree = "<group>"; };
+		CC5DEC8A200FC918005FE322 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJoinedLobbiesVC.swift; sourceTree = "<group>"; };
 		CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedLobbyTableViewCell.swift; sourceTree = "<group>"; };
 		CCB8CE662009542D00F79B16 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				CCB8CE68200954A200F79B16 /* TestViewController.swift */,
 				CCB8CE662009542D00F79B16 /* TestCell.swift */,
 				CCF8011D1FFC1DEC0089994B /* RealmObjects.swift */,
+				CC5DEC8A200FC918005FE322 /* MenuBar.swift */,
 				CCB8CE7220097EA900F79B16 /* Helpers.swift */,
 				CCF800EB1FFC1B1D0089994B /* Assets.xcassets */,
 				CCF800ED1FFC1B1D0089994B /* LaunchScreen.storyboard */,
@@ -371,6 +374,7 @@
 				CC27185B1FFC801E0061FCDD /* SideMenuViewController.swift in Sources */,
 				CCB8CE7320097EA900F79B16 /* Helpers.swift in Sources */,
 				CC28C8772003E89B00987097 /* LobbyViewCell.swift in Sources */,
+				CC5DEC8B200FC918005FE322 /* MenuBar.swift in Sources */,
 				CCF800E51FFC1B1D0089994B /* AppDelegate.swift in Sources */,
 				CC7E049120056DED00C667EB /* JoinedLobbyTableViewCell.swift in Sources */,
 				CCB8CE7120096AE600F79B16 /* MenuViewCell.swift in Sources */,
