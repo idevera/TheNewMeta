@@ -11,53 +11,24 @@ import Foundation
 import RealmSwift
 
 class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    private var signedInUser = User()
     let cellID = "cellID"
     
-    // Collection for user lobbies
-    
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-//
-//    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return signedInUser.joinedLobbies.count
-//    }
-//
-//    // FIgure out how to get the subviews within a collection
-//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! LobbyCell
-//
-//        let lobby = signedInUser.joinedLobbies[indexPath.row]
-//
-//        cell.gameTitleLabel.text = findLobbyHost(hostID: lobby.hostID).gamerTag
-//        cell.playersTextView.text = String(lobby.numberOfPlayers)
-//        cell.msgTextView.text = lobby.message
-//
-//        return cell
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: view.frame.width - 10, height: 120)
-//    }
-    
-    // Test Slide
-    
+    // Collection View for the collection view that is holding the collection of Feed Cells
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
-        let colors: [UIColor] = [.red, .green]
-        cell.backgroundColor = colors[indexPath.item]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height)
+        // Somehow the view.frame.width is off
+        return CGSize(width: view.frame.width, height: view.frame.height - 100)
     }
+    
+    // Menu Bar Setup
     
     // Allows self to me access within this block!
     lazy var menuBarView: MenuBar = {
@@ -68,9 +39,7 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         menuBar.userJoinedLobbiesVC = self
         return menuBar
     }()
-    
-    // Private Functions
-    
+        
     private func setupMenuBar() {
         view.addSubview(menuBarView)
         menuBarView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
@@ -80,58 +49,41 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     
     // This will let us know which scroll view we are on telling us the translation value
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.x)
+//        print(scrollView.contentOffset.x)
         // Moves the underline of menubar with the scrollview
         // To make it make, divide the scroll value by 2 the number of items in collection
         menuBarView.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 2
     }
     
+    // This highlights the icon text colors with when scrolling over
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        // This is the value of the one scroll over divided by the entire width of the view frame to get the index
+        // This is a CGFloat
+        let index = targetContentOffset.pointee.x / view.frame.width
+        let indexPath = IndexPath(item: Int(index), section: 0)
+        menuBarView.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+    }
+    
+    // Horizontal Collection Views
+    
     private func setupCollectionView() {
-        collectionView?.backgroundColor = .lightGray
-        
-//        collectionView?.register(LobbyCell.self, forCellWithReuseIdentifier: "cellID")
-        // Pushes the collection view from being underneath the menu
         collectionView?.contentInset = UIEdgeInsetsMake(100, 0, 0, 0)
-        
         // Changes where the scroll of the collection view to not be underneath the menu bar
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(100, 0, 0, 0)
-        //////////
-        //////////
+
         // This is the collection for the side scroll
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+//        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+        // We are using a new class called Feed Cell which represents each cell in the UICollectionView instead of using a generic UICollectiViewCell
         
+        collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellID)
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
             // minimizes the space between scrolls
             layout.minimumLineSpacing = 0
         }
         
-        // Snaps views into place
+        // Snaps horizontal views into place
         collectionView?.isPagingEnabled = true
-    }
-    
-    // TODO: Should probably save the entire user object in the UserDefaults instead of just the ID
-    private func findSignedInUser() {
-        let id = UserDefaults.standard.string(forKey: "userID")
-        let realm = try! Realm()
-        signedInUser = realm.object(ofType: User.self, forPrimaryKey: id)!
-//        print("Found signed in user: \(String(describing: signedInUser))")
-    }
-    
-    // TODO: Should probably just save this as an attribute of the controller??? IDK
-    private func findLobbyHost(hostID: String) -> User {
-        let realm = try! Realm()
-        let hostUser = realm.object(ofType: User.self, forPrimaryKey: hostID)!
-        return hostUser
-    }
-    
-    // Overrides
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        findSignedInUser()
-        setupMenuBar()
-        setupCollectionView()
     }
     
     // Scroll each horizontal view in collection with each button click
@@ -139,6 +91,18 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         let indexPath = NSIndexPath(item: menuIndex, section: 0)
         
         collectionView?.scrollToItem(at: indexPath as IndexPath, at: [], animated: true)
+    }
+
+    
+//    userJoinedLobbiesVC?.scrollToMenuIndex(menuIndex: indexPath.item) // indexPath.item is the index of the collection
+
+    
+    // Overrides
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupMenuBar()
+        setupCollectionView()
     }
 }
 

@@ -10,10 +10,12 @@ import UIKit
 
 class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    let collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.delegate = self
+        cv.dataSource = self
 //        cv.backgroundColor = .yellow
         return cv
     }()
@@ -27,13 +29,10 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
         collectionView.register(MenuCell.self, forCellWithReuseIdentifier: "cellID")
         
         addSubview(collectionView)
-        collectionView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
+        collectionView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         collectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
         // This is to highlight the initial menu My Lobbies
@@ -103,9 +102,9 @@ class MenuCell: BaseCell {
     let menuViewLabel: UILabel = {
         let mlabel = UILabel()
         mlabel.translatesAutoresizingMaskIntoConstraints = false
-        mlabel.text = "My Lobbies"
-        mlabel.textColor = .darkGray
-        mlabel.highlightedTextColor = .darkGray
+//        mlabel.text = "My Lobbies"
+//        mlabel.textColor = .darkGray
+//        mlabel.highlightedTextColor = .darkGray
         return mlabel
     }()
     
