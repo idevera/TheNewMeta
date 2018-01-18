@@ -59,11 +59,13 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         return CGSize(width: view.frame.width, height: view.frame.height)
     }
     
-    
-    let menuBarView: MenuBar = {
+    // Allows self to me access within this block!
+    lazy var menuBarView: MenuBar = {
         let menuBar = MenuBar()
         menuBar.translatesAutoresizingMaskIntoConstraints = false
         menuBar.backgroundColor = .blue
+        // setting userJoinedLobbiesVC = self
+        menuBar.userJoinedLobbiesVC = self
         return menuBar
     }()
     
@@ -74,6 +76,14 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         menuBarView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
         menuBarView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         menuBarView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+    }
+    
+    // This will let us know which scroll view we are on telling us the translation value
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.x)
+        // Moves the underline of menubar with the scrollview
+        // To make it make, divide the scroll value by 2 the number of items in collection
+        menuBarView.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 2
     }
     
     private func setupCollectionView() {
@@ -122,6 +132,13 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         findSignedInUser()
         setupMenuBar()
         setupCollectionView()
+    }
+    
+    // Scroll each horizontal view in collection with each button click
+    func scrollToMenuIndex(menuIndex: Int) {
+        let indexPath = NSIndexPath(item: menuIndex, section: 0)
+        
+        collectionView?.scrollToItem(at: indexPath as IndexPath, at: [], animated: true)
     }
 }
 
