@@ -31,6 +31,10 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         addSubview(collectionView)
         collectionView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
         collectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        
+        // This is to highlight the initial menu My Lobbies
+        let selectedIndex = IndexPath(item: 0, section: 0)
+        collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -64,9 +68,17 @@ class MenuCell: BaseCell {
         let mlabel = UILabel()
         mlabel.translatesAutoresizingMaskIntoConstraints = false
         mlabel.text = "My Lobbies"
-        mlabel.textColor = .black
+        mlabel.textColor = .darkGray
+        mlabel.highlightedTextColor = .darkGray
         return mlabel
     }()
+    
+    // If the labels are clicked, it will be selected somehow?
+    override var isSelected: Bool {
+        didSet {
+            menuViewLabel.highlightedTextColor = isSelected ? UIColor.white : UIColor.darkGray
+        }
+    }
     
     override func setupViews() {
         super.setupViews()
