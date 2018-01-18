@@ -73,7 +73,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CC1654CB2002A425001DA633 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameTableViewCell.swift; path = ../GameTableViewCell.swift; sourceTree = "<group>"; };
+		CC1654CB2002A425001DA633 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		CC1654CD2002C36B001DA633 /* AvailableLobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableLobbyViewController.swift; sourceTree = "<group>"; };
 		CC27185A1FFC801E0061FCDD /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		CC27185C1FFC88BA0061FCDD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +137,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CCA2C6B520106FD5006FEBB1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CCB8CE7220097EA900F79B16 /* Helpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		CCA2C6B620106FFE006FEBB1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC5DEC8A200FC918005FE322 /* MenuBar.swift */,
+				CC1654CB2002A425001DA633 /* GameTableViewCell.swift */,
+				CC28C8762003E89B00987097 /* LobbyViewCell.swift */,
+				CCB8CE7020096AE600F79B16 /* MenuViewCell.swift */,
+				CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CCA2C6B720107050006FEBB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CCF8011D1FFC1DEC0089994B /* RealmObjects.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CCA2C6B820107066006FEBB1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CCF800E61FFC1B1D0089994B /* LoginViewController.swift */,
+				CCB8CE6A2009611500F79B16 /* TabBarViewController.swift */,
+				CC27185C1FFC88BA0061FCDD /* MainViewController.swift */,
+				CCF801251FFC42880089994B /* CreateLobbyViewController.swift */,
+				CC5DEC86200EBF07005FE322 /* EditProfileViewController.swift */,
+				CC1654CD2002C36B001DA633 /* AvailableLobbyViewController.swift */,
+				CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		CCF800D81FFC1B1D0089994B = {
 			isa = PBXGroup;
 			children = (
@@ -165,24 +207,14 @@
 				CCF800E41FFC1B1D0089994B /* AppDelegate.swift */,
 				CCF801291FFC57BE0089994B /* ContainerViewController.swift */,
 				CC27185A1FFC801E0061FCDD /* SideMenuViewController.swift */,
-				CCF800E61FFC1B1D0089994B /* LoginViewController.swift */,
-				CCB8CE6A2009611500F79B16 /* TabBarViewController.swift */,
-				CC27185C1FFC88BA0061FCDD /* MainViewController.swift */,
-				CC1654CB2002A425001DA633 /* GameTableViewCell.swift */,
-				CCF801251FFC42880089994B /* CreateLobbyViewController.swift */,
+				CCA2C6B720107050006FEBB1 /* Model */,
+				CCA2C6B820107066006FEBB1 /* Controller */,
+				CCA2C6B620106FFE006FEBB1 /* View */,
+				CCA2C6B520106FD5006FEBB1 /* Helpers */,
 				CC5DEC88200EC3F5005FE322 /* APIWrapper.swift */,
-				CC5DEC86200EBF07005FE322 /* EditProfileViewController.swift */,
-				CC1654CD2002C36B001DA633 /* AvailableLobbyViewController.swift */,
-				CC28C8762003E89B00987097 /* LobbyViewCell.swift */,
-				CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */,
 				CCF800E81FFC1B1D0089994B /* Main.storyboard */,
-				CCB8CE7020096AE600F79B16 /* MenuViewCell.swift */,
-				CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */,
 				CCB8CE68200954A200F79B16 /* TestViewController.swift */,
 				CCB8CE662009542D00F79B16 /* TestCell.swift */,
-				CCF8011D1FFC1DEC0089994B /* RealmObjects.swift */,
-				CC5DEC8A200FC918005FE322 /* MenuBar.swift */,
-				CCB8CE7220097EA900F79B16 /* Helpers.swift */,
 				CCF800EB1FFC1B1D0089994B /* Assets.xcassets */,
 				CCF800ED1FFC1B1D0089994B /* LaunchScreen.storyboard */,
 				CCF800F01FFC1B1D0089994B /* Info.plist */,
