@@ -12,33 +12,51 @@ import RealmSwift
 
 class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private var signedInUser = User()
+    let cellID = "cellID"
     
     // Collection for user lobbies
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
+//
+//    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return signedInUser.joinedLobbies.count
+//    }
+//
+//    // FIgure out how to get the subviews within a collection
+//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! LobbyCell
+//
+//        let lobby = signedInUser.joinedLobbies[indexPath.row]
+//
+//        cell.gameTitleLabel.text = findLobbyHost(hostID: lobby.hostID).gamerTag
+//        cell.playersTextView.text = String(lobby.numberOfPlayers)
+//        cell.msgTextView.text = lobby.message
+//
+//        return cell
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: view.frame.width - 10, height: 120)
+//    }
+    
+    // Test Slide
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return signedInUser.joinedLobbies.count
+        return 2
     }
-
-    // FIgure out how to get the subviews within a collection
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! LobbyCell
-        
-        let lobby = signedInUser.joinedLobbies[indexPath.row]
-        
-        cell.gameTitleLabel.text = findLobbyHost(hostID: lobby.hostID).gamerTag
-        cell.playersTextView.text = String(lobby.numberOfPlayers)
-        cell.msgTextView.text = lobby.message
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        let colors: [UIColor] = [.red, .green]
+        cell.backgroundColor = colors[indexPath.item]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - 10, height: 120)
+        return CGSize(width: view.frame.width, height: view.frame.height)
     }
     
     
@@ -56,6 +74,30 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         menuBarView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
         menuBarView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         menuBarView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+    }
+    
+    private func setupCollectionView() {
+        collectionView?.backgroundColor = .lightGray
+        
+//        collectionView?.register(LobbyCell.self, forCellWithReuseIdentifier: "cellID")
+        // Pushes the collection view from being underneath the menu
+        collectionView?.contentInset = UIEdgeInsetsMake(100, 0, 0, 0)
+        
+        // Changes where the scroll of the collection view to not be underneath the menu bar
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(100, 0, 0, 0)
+        //////////
+        //////////
+        // This is the collection for the side scroll
+        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+        
+        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+            // minimizes the space between scrolls
+            layout.minimumLineSpacing = 0
+        }
+        
+        // Snaps views into place
+        collectionView?.isPagingEnabled = true
     }
     
     // TODO: Should probably save the entire user object in the UserDefaults instead of just the ID
@@ -78,15 +120,8 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     override func viewDidLoad() {
         super.viewDidLoad()
         findSignedInUser()
-        collectionView?.backgroundColor = .lightGray
-        collectionView?.register(LobbyCell.self, forCellWithReuseIdentifier: "cellID")
         setupMenuBar()
-        
-        // Pushes the collection view from being underneath the menu
-        collectionView?.contentInset = UIEdgeInsetsMake(100, 0, 0, 0)
-        
-        // Changes where the scroll of the collection view to not be underneath the menu bar
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(100, 0, 0, 0)
+        setupCollectionView()
     }
 }
 

@@ -17,6 +17,7 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
 //        cv.backgroundColor = .yellow
         return cv
     }()
+    
     let menuLabelNames = ["Joined Lobbies", "Lobbies I Host"]
 
     let cellID = "cellID"
@@ -35,6 +36,20 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         // This is to highlight the initial menu My Lobbies
         let selectedIndex = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
+        
+        setupHorizontalBar()
+    }
+    
+    func setupHorizontalBar() {
+        let horizontalBarView = UIView()
+        horizontalBarView.backgroundColor = UIColor(white: 95, alpha: 1)
+        horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(horizontalBarView)
+        
+        horizontalBarView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        horizontalBarView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        horizontalBarView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
+        horizontalBarView.heightAnchor.constraint(equalToConstant: 4).isActive = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -84,10 +99,7 @@ class MenuCell: BaseCell {
         super.setupViews()
         backgroundColor = .blue
         addSubview(menuViewLabel)
-//        menuViewLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7).isActive = true
         menuViewLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         menuViewLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
-    
-    
 }
