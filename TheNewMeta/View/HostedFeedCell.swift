@@ -19,7 +19,7 @@ class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDele
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.dataSource = self
         cv.delegate = self
-//        cv.backgroundColor = .yellow
+        cv.backgroundColor = .brown
         return cv
     }()
     
@@ -38,7 +38,7 @@ class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(signedInUser.createdLobbies.count)
+//        print(signedInUser.createdLobbies.count)
         return signedInUser.createdLobbies.count
     }
     

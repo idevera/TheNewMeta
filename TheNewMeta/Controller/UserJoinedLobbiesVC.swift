@@ -124,12 +124,12 @@ class BaseCell: UICollectionViewCell {
         setupViews()
     }
     
-    func setupViews() {
-        
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews() {
+        
     }
 }
 
@@ -205,7 +205,7 @@ class HostedCell: BaseCell {
         let label = UILabel()
         label.backgroundColor = .red
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Hello!"
+//        label.text = "Hello!"
         return label
     }()
     
@@ -239,10 +239,10 @@ class HostedCell: BaseCell {
         
         // Leave Button View
 //        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
-//        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .left, relatedBy: .equal, toItem: gameTitleLabel, attribute: .right, multiplier: 1, constant: 5))
+//        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .left, relatedBy: .equal, toItem: gameLabel, attribute: .right, multiplier: 1, constant: 5))
 //        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -5))
 //        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
-//
+
 //        // Player Text View
 //        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .top, relatedBy: .equal, toItem: gameTitleLabel, attribute: .bottom, multiplier: 1, constant: 0))
 //        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
