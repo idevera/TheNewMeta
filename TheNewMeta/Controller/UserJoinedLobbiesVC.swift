@@ -12,6 +12,7 @@ import RealmSwift
 
 class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let cellID = "cellID"
+    let hostedID = "hostedID"
     
     // Collection View for the collection view that is holding the collection of Feed Cells
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -20,6 +21,10 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        if indexPath.item == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: hostedID, for: indexPath)
+            return cell
+        }
         return cell
     }
     
@@ -75,7 +80,11 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
 //        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
         // We are using a new class called Feed Cell which represents each cell in the UICollectionView instead of using a generic UICollectiViewCell
         
+        // Feed Cell 1
         collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellID)
+        // Feed Cell 2
+        collectionView?.register(HostedFeedCell.self, forCellWithReuseIdentifier: hostedID)
+
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
             // minimizes the space between scrolls
@@ -123,6 +132,8 @@ class BaseCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// Lobby Cell in Feed Cell 1
 
 class LobbyCell: BaseCell {
     let gameTitleLabel: UILabel = {
@@ -184,6 +195,58 @@ class LobbyCell: BaseCell {
         addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .right, relatedBy: .equal, toItem: leaveButtonView, attribute: .left, multiplier: 1, constant: -5))
         addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
+    }
+}
+
+// Hosted Cell for Feed 2
+
+class HostedCell: BaseCell {
+    let gameLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Hello!"
+        return label
+    }()
+    
+    let cancelButtonView: UIButton = {
+        let cancelButton = UIButton()
+        cancelButton.backgroundColor = .blue
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        cancelButton.setTitle("Cancel?", for: .normal)
+        return cancelButton
+    }()
+    
+    let currentNumPlayers: UILabel = {
+        let numPlayers = UILabel()
+        numPlayers.backgroundColor = .green
+        numPlayers.translatesAutoresizingMaskIntoConstraints = false
+        return numPlayers
+    }()
+    
+    // View Constraints
+    
+    override func setupViews() {
+        addSubview(gameLabel)
+        addSubview(cancelButtonView)
+        addSubview(currentNumPlayers)
+        
+        // Game label view
+        addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
+        addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
+        addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.5, constant: 0))
+        addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.8, constant: 5))
+        
+        // Leave Button View
+//        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
+//        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .left, relatedBy: .equal, toItem: gameTitleLabel, attribute: .right, multiplier: 1, constant: 5))
+//        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -5))
+//        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
+//
+//        // Player Text View
+//        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .top, relatedBy: .equal, toItem: gameTitleLabel, attribute: .bottom, multiplier: 1, constant: 0))
+//        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
+//        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .right, relatedBy: .equal, toItem: cancelButtonView, attribute: .left, multiplier: 1, constant: -5))
     }
 }
 

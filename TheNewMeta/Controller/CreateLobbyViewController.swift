@@ -36,10 +36,9 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
                 // This should automatically update the newLobby.game property of a lobby
                 game!.matchingLobbies.append(newLobby)
                 newLobby.lobbyUsers.append(signedInUser)
+                signedInUser.createdLobbies.append(newLobby)
+                print("This is my signed in useres created lobbies: \(signedInUser.createdLobbies)")
                 successCreationAlert()
-    //            print("Sucessfully added your game: \(String(describing: game))")
-    //            print("Sucessfully added your new lobby: \(newLobby.game)")
-    //            dismiss(animated: true, completion: nil)
                 // TODO: Segue into the main view controller
             }
         }

@@ -18,6 +18,7 @@
 		CC7E048F20056C4100C667EB /* UserJoinedLobbiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */; };
 		CC7E049120056DED00C667EB /* JoinedLobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */; };
 		CC9AC9772011262600F1EF4D /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AC9762011262600F1EF4D /* FeedCell.swift */; };
+		CC9AC97F20114C8800F1EF4D /* HostedFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AC97E20114C8800F1EF4D /* HostedFeedCell.swift */; };
 		CCB8CE672009542D00F79B16 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE662009542D00F79B16 /* TestCell.swift */; };
 		CCB8CE69200954A200F79B16 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE68200954A200F79B16 /* TestViewController.swift */; };
 		CCB8CE6B2009611500F79B16 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE6A2009611500F79B16 /* TabBarViewController.swift */; };
@@ -85,6 +86,7 @@
 		CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJoinedLobbiesVC.swift; sourceTree = "<group>"; };
 		CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedLobbyTableViewCell.swift; sourceTree = "<group>"; };
 		CC9AC9762011262600F1EF4D /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		CC9AC97E20114C8800F1EF4D /* HostedFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostedFeedCell.swift; sourceTree = "<group>"; };
 		CCB8CE662009542D00F79B16 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
 		CCB8CE68200954A200F79B16 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		CCB8CE6A2009611500F79B16 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				CCB8CE7020096AE600F79B16 /* MenuViewCell.swift */,
 				CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */,
 				CC9AC9762011262600F1EF4D /* FeedCell.swift */,
+				CC9AC97E20114C8800F1EF4D /* HostedFeedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				CC27185B1FFC801E0061FCDD /* SideMenuViewController.swift in Sources */,
 				CCB8CE7320097EA900F79B16 /* Helpers.swift in Sources */,
 				CC28C8772003E89B00987097 /* LobbyViewCell.swift in Sources */,
+				CC9AC97F20114C8800F1EF4D /* HostedFeedCell.swift in Sources */,
 				CC9AC9772011262600F1EF4D /* FeedCell.swift in Sources */,
 				CC5DEC8B200FC918005FE322 /* MenuBar.swift in Sources */,
 				CCF800E51FFC1B1D0089994B /* AppDelegate.swift in Sources */,
