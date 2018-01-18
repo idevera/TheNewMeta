@@ -19,7 +19,7 @@ class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDele
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.dataSource = self
         cv.delegate = self
-        cv.backgroundColor = .brown
+//        cv.backgroundColor = .brown
         return cv
     }()
     

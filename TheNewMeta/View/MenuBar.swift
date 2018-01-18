@@ -16,7 +16,6 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.delegate = self
         cv.dataSource = self
-//        cv.backgroundColor = .yellow
         return cv
     }()
     
@@ -102,9 +101,6 @@ class MenuCell: BaseCell {
     let menuViewLabel: UILabel = {
         let mlabel = UILabel()
         mlabel.translatesAutoresizingMaskIntoConstraints = false
-//        mlabel.text = "My Lobbies"
-//        mlabel.textColor = .darkGray
-//        mlabel.highlightedTextColor = .darkGray
         return mlabel
     }()
     

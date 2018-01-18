@@ -28,8 +28,12 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         super.setupViews()
         addSubview(collectionView)
         findSignedInUser()
-        collectionView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        collectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+//        collectionView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+//        collectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         collectionView.register(LobbyCell.self, forCellWithReuseIdentifier: cellID)
     }
     
@@ -61,7 +65,6 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         return CGSize(width: frame.width, height: 120)
     }
     
-    // TODO: Should probably save the entire user object in the UserDefaults instead of just the ID
     private func findSignedInUser() {
         let id = UserDefaults.standard.string(forKey: "userID")
         let realm = try! Realm()
@@ -69,7 +72,6 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         self.collectionView.reloadData()
     }
     
-    // TODO: Should probably just save this as an attribute of the controller??? IDK
     private func findLobbyHost(hostID: String) -> User {
         let realm = try! Realm()
         let hostUser = realm.object(ofType: User.self, forPrimaryKey: hostID)!

@@ -29,7 +29,6 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // Somehow the view.frame.width is off
         return CGSize(width: view.frame.width, height: view.frame.height - 100)
     }
     
@@ -101,10 +100,6 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         
         collectionView?.scrollToItem(at: indexPath as IndexPath, at: [], animated: true)
     }
-
-    
-//    userJoinedLobbiesVC?.scrollToMenuIndex(menuIndex: indexPath.item) // indexPath.item is the index of the collection
-
     
     // Overrides
     
@@ -234,19 +229,20 @@ class HostedCell: BaseCell {
         // Game label view
         addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
-        addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.5, constant: 0))
-        addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.8, constant: 5))
+        addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.6, constant: 0))
+        addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.7, constant: 5))
         
         // Leave Button View
-//        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
-//        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .left, relatedBy: .equal, toItem: gameLabel, attribute: .right, multiplier: 1, constant: 5))
-//        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -5))
-//        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
+        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
+        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .left, relatedBy: .equal, toItem: gameLabel, attribute: .right, multiplier: 1, constant: 5))
+        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -5))
+        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
 
-//        // Player Text View
-//        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .top, relatedBy: .equal, toItem: gameTitleLabel, attribute: .bottom, multiplier: 1, constant: 0))
-//        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
-//        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .right, relatedBy: .equal, toItem: cancelButtonView, attribute: .left, multiplier: 1, constant: -5))
+        // Player Text View
+        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .top, relatedBy: .equal, toItem: gameLabel, attribute: .bottom, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
+        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .right, relatedBy: .equal, toItem: cancelButtonView, attribute: .left, multiplier: 1, constant: -5))
+        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
     }
 }
 
