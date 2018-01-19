@@ -20,7 +20,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.dataSource = self
         cv.delegate = self
-        cv.backgroundColor = .brown
+        cv.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
         return cv
     }()
     
@@ -56,6 +56,10 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         cell.gameTitleLabel.text = findLobbyHost(hostID: lobby.hostID).gamerTag
         cell.playersTextView.text = String(lobby.numberOfPlayers)
         cell.msgTextView.text = lobby.message
+        cell.backgroundColor = .white
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 8
 
         return cell
     }

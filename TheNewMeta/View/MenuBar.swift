@@ -31,7 +31,10 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         collectionView.register(MenuCell.self, forCellWithReuseIdentifier: "cellID")
         
         addSubview(collectionView)
+        // This is adding a width and a height for the menu collection equal to the menu bar constraints
+        collectionView.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
         collectionView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         collectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
         // This is to highlight the initial menu My Lobbies
@@ -53,8 +56,7 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         // Set the contstraint to itself and then save it as a class reference NSLayoutConstraint
         horizontalBarLeftAnchorConstraint = horizontalBarView.leftAnchor.constraint(equalTo: self.leftAnchor) // The left constraint is equal to the cell left constraint
         horizontalBarLeftAnchorConstraint?.isActive = true
-//
-//        horizontalBarView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        
         horizontalBarView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         horizontalBarView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
         horizontalBarView.heightAnchor.constraint(equalToConstant: 4).isActive = true
@@ -113,7 +115,7 @@ class MenuCell: BaseCell {
     
     override func setupViews() {
         super.setupViews()
-        backgroundColor = .blue
+        backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
         addSubview(menuViewLabel)
         menuViewLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         menuViewLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true

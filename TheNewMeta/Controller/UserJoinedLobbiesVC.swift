@@ -38,15 +38,13 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     lazy var menuBarView: MenuBar = {
         let menuBar = MenuBar()
         menuBar.translatesAutoresizingMaskIntoConstraints = false
-        menuBar.backgroundColor = .blue
-        // setting userJoinedLobbiesVC = self
         menuBar.userJoinedLobbiesVC = self
         return menuBar
     }()
         
     private func setupMenuBar() {
         view.addSubview(menuBarView)
-        menuBarView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
+        menuBarView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         menuBarView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         menuBarView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
@@ -108,11 +106,12 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         setupMenuBar()
         setupCollectionView()
     }
+    
+    func viewWillAppear() {
+        self.collectionView?.reloadData()
+    }
 }
 
-// TODO: MOVE THIS INTO IT'S OWN SWIFT FILE
-
-// This is the super class of all UICollectionViewCells
 class BaseCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -133,7 +132,7 @@ class BaseCell: UICollectionViewCell {
 class LobbyCell: BaseCell {
     let gameTitleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .yellow
+//        label.backgroundColor = .yellow
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -141,6 +140,7 @@ class LobbyCell: BaseCell {
     let leaveButtonView: UIButton = {
         let leaveButton = UIButton()
         leaveButton.backgroundColor = .red
+        
         leaveButton.translatesAutoresizingMaskIntoConstraints = false
         leaveButton.setTitle("Leave?", for: .normal)
         return leaveButton
@@ -148,14 +148,14 @@ class LobbyCell: BaseCell {
     
     let playersTextView: UILabel = {
         let playersText = UILabel()
-        playersText.backgroundColor = .green
+//        playersText.backgroundColor = .green
         playersText.translatesAutoresizingMaskIntoConstraints = false
         return playersText
     }()
     
     let msgTextView: UILabel = {
         let msgText = UILabel()
-        msgText.backgroundColor = .white
+//        msgText.backgroundColor = .white
         msgText.translatesAutoresizingMaskIntoConstraints = false
         return msgText
     }()
