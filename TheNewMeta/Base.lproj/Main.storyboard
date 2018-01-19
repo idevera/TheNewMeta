@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -336,50 +335,37 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="167.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="GamerTag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4t-3c-m4a">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GamerTag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4t-3c-m4a">
                                                     <rect key="frame" x="15" y="11" width="228" height="61"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Message goes here!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfl-SD-zaG">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message goes here!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfl-SD-zaG">
                                                     <rect key="frame" x="15" y="113" width="345" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.84154922675255384" green="1" blue="0.12737108551406362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPf-Vc-g3K">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPf-Vc-g3K">
                                                     <rect key="frame" x="251" y="11" width="109" height="91"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                     <state key="normal" title="Join"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="#ofplayers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3N-o2-gqs">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="#ofplayers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3N-o2-gqs">
                                                     <rect key="frame" x="15" y="73" width="228" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="EPf-Vc-g3K" firstAttribute="leading" secondItem="M3N-o2-gqs" secondAttribute="trailing" constant="8" id="2xL-1B-nhh"/>
-                                                <constraint firstItem="k4t-3c-m4a" firstAttribute="top" secondItem="DRg-aw-io6" secondAttribute="top" constant="11" id="3TZ-yt-0Y9"/>
-                                                <constraint firstAttribute="trailing" secondItem="Xfl-SD-zaG" secondAttribute="trailing" constant="15" id="75C-CK-H7Y"/>
-                                                <constraint firstAttribute="trailing" secondItem="EPf-Vc-g3K" secondAttribute="trailing" constant="15" id="9QP-qZ-Z8i"/>
-                                                <constraint firstItem="k4t-3c-m4a" firstAttribute="leading" secondItem="DRg-aw-io6" secondAttribute="leading" constant="15" id="NDr-wT-IDn"/>
-                                                <constraint firstItem="M3N-o2-gqs" firstAttribute="top" secondItem="k4t-3c-m4a" secondAttribute="bottom" constant="1" id="OYI-MW-G69"/>
-                                                <constraint firstItem="EPf-Vc-g3K" firstAttribute="leading" secondItem="k4t-3c-m4a" secondAttribute="trailing" constant="8" id="Qr7-CK-YXq"/>
-                                                <constraint firstItem="Xfl-SD-zaG" firstAttribute="top" secondItem="EPf-Vc-g3K" secondAttribute="bottom" constant="11" id="W3U-f2-tXP"/>
-                                                <constraint firstItem="Xfl-SD-zaG" firstAttribute="top" secondItem="M3N-o2-gqs" secondAttribute="bottom" id="e0M-fu-XC7"/>
-                                                <constraint firstItem="EPf-Vc-g3K" firstAttribute="width" secondItem="DRg-aw-io6" secondAttribute="height" multiplier="1:1" constant="-58.5" id="hbs-As-sqg"/>
-                                                <constraint firstItem="Xfl-SD-zaG" firstAttribute="centerX" secondItem="DRg-aw-io6" secondAttribute="centerX" id="imp-c2-Vt1"/>
-                                                <constraint firstItem="M3N-o2-gqs" firstAttribute="leading" secondItem="DRg-aw-io6" secondAttribute="leading" constant="15" id="j9O-Dq-Flx"/>
-                                                <constraint firstItem="Xfl-SD-zaG" firstAttribute="leading" secondItem="DRg-aw-io6" secondAttribute="leading" constant="15" id="kSR-Yz-x0V"/>
-                                                <constraint firstAttribute="bottom" secondItem="Xfl-SD-zaG" secondAttribute="bottom" constant="10.5" id="vNh-Y9-2Tr"/>
-                                                <constraint firstItem="EPf-Vc-g3K" firstAttribute="top" secondItem="DRg-aw-io6" secondAttribute="top" constant="11" id="xkW-zC-MbI"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="gamerTagLabel" destination="k4t-3c-m4a" id="Nay-4q-ftz"/>

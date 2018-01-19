@@ -22,6 +22,9 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setupLayout()
         findSignedInUser()
+        self.gameFieldView.delegate = self
+        self.playersFieldView.delegate = self
+        self.msgFieldView.delegate = self
     }
 
     // Actions
@@ -50,6 +53,11 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
                 // TODO: Segue into the main view controller
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     private func checkInputs() -> Bool {

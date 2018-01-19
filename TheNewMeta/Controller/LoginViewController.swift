@@ -11,7 +11,7 @@ import UIKit
 import RealmSwift
 
 // Inherits from the UIViewController
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var gamerTag = ""
     var email = ""
@@ -43,6 +43,11 @@ class LoginViewController: UIViewController {
         present(tabController, animated: true, completion: nil)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+
     // Private Functions
     
     // Need to add a arrow function to the declare the type that is being returned. Else it will return as a void function.
@@ -74,6 +79,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        self.emailTagView.delegate = self
+        self.pwTagView.delegate = self
+        self.gamerTagView.delegate = self
     }
     
     // TODO: Decide if I want to use this
