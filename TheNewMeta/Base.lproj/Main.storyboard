@@ -34,12 +34,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.53300261500000001" green="0.77290683979999997" blue="0.79905360940000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="qEg-qd-FDi" kind="relationship" relationship="viewControllers" id="yk8-a4-Gkj"/>
                         <segue destination="RKa-jk-mCb" kind="relationship" relationship="viewControllers" id="hjg-nV-si8"/>
-                        <segue destination="Lc0-2d-4ke" kind="relationship" relationship="viewControllers" id="rcW-7K-mgf"/>
                         <segue destination="n3V-7y-BA5" kind="relationship" relationship="viewControllers" id="XU7-1P-VHn"/>
                     </connections>
                 </tabBarController>
@@ -210,7 +208,7 @@
             </objects>
             <point key="canvasLocation" x="4658" y="-145"/>
         </scene>
-        <!--User Joined LobbiesVC-->
+        <!--Lobbies-->
         <scene sceneID="w0f-tb-bGd">
             <objects>
                 <collectionViewController id="n3V-7y-BA5" customClass="UserJoinedLobbiesVC" customModule="TheNewMeta" customModuleProvider="target" sceneMemberID="viewController">
@@ -230,7 +228,7 @@
                             <outlet property="delegate" destination="n3V-7y-BA5" id="m3l-EP-E2S"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" id="F1K-Fj-JsM"/>
+                    <tabBarItem key="tabBarItem" title="Lobbies" id="F1K-Fj-JsM"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHQ-FA-d84" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

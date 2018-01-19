@@ -24,6 +24,10 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         return cv
     }()
     
+//    func viewWillAppear() {
+//        collectionView.reloadData()
+//    }
+    
     override func setupViews() {
         super.setupViews()
         addSubview(collectionView)
@@ -54,19 +58,32 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         let lobby = signedInUser.joinedLobbies[indexPath.row]
 
         cell.gameTitleLabel.text = findLobbyHost(hostID: lobby.hostID).gamerTag
-        cell.playersTextView.text = String(lobby.numberOfPlayers)
+        cell.playersTextView.text = "Players: \(String(lobby.numberOfPlayers))"
         cell.msgTextView.text = lobby.message
         cell.backgroundColor = .white
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 8
+        cell.leaveButtonView.layer.setValue(lobby, forKey: "index")
+        cell.leaveButtonView.addTarget(self, action: #selector(leaveLobby), for: .touchUpInside)
 
         return cell
     }
-    
+
     // Returns the size of each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width, height: 120)
+    }
+    
+    // Remove the lobby from both the user.joinedlobbies and user.createdLobbies
+    @objc func leaveLobby(sender: UIButton) {
+        let lobby = (sender.layer.value(forKey: "index")) as! Lobby
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(lobby)
+        }
+        collectionView.reloadData()
     }
     
     private func findSignedInUser() {
@@ -81,4 +98,5 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         let hostUser = realm.object(ofType: User.self, forPrimaryKey: hostID)!
         return hostUser
     }
+    
 }

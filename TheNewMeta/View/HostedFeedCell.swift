@@ -11,17 +11,21 @@ import RealmSwift
 
 class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     private var signedInUser = User()
-    
     let hostedID = "hostedID"
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.dataSource = self
         cv.delegate = self
-//        cv.backgroundColor = .brown
+        cv.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
         return cv
     }()
+    
+//    func viewWillAppear() {
+//        collectionView.reloadData()
+//    }
     
     override func setupViews() {
         super.setupViews()
@@ -38,11 +42,10 @@ class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        print(signedInUser.createdLobbies.count)
         return signedInUser.createdLobbies.count
     }
     
-    // FIgure out how to get the subviews within a collection
+    // Figure out how to get the subviews within a collection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hostedID", for: indexPath) as! HostedCell
@@ -51,6 +54,12 @@ class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDele
         
         cell.gameLabel.text = lobby.game.title
         cell.currentNumPlayers.text = String(lobby.numberOfPlayers)
+        cell.backgroundColor = .white
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 8
+        cell.cancelButtonView.layer.setValue(lobby, forKey: "index")
+        cell.cancelButtonView.addTarget(self, action: #selector(cancelLobby), for: .touchUpInside)
         
         return cell
     }
@@ -60,7 +69,16 @@ class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDele
         return CGSize(width: frame.width, height: 120)
     }
     
-    // TODO: Should probably save the entire user object in the UserDefaults instead of just the ID
+    @objc func cancelLobby(sender: UIButton) {
+        let lobby = (sender.layer.value(forKey: "index")) as! Lobby
+    
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(lobby)
+        }
+        collectionView.reloadData()
+    }
+    
     private func findSignedInUser() {
         let id = UserDefaults.standard.string(forKey: "userID")
         let realm = try! Realm()
@@ -68,7 +86,6 @@ class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDele
         self.collectionView.reloadData()
     }
     
-    // TODO: Should probably just save this as an attribute of the controller??? IDK
     private func findLobbyHost(hostID: String) -> User {
         let realm = try! Realm()
         let hostUser = realm.object(ofType: User.self, forPrimaryKey: hostID)!

@@ -106,10 +106,6 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         setupMenuBar()
         setupCollectionView()
     }
-    
-    func viewWillAppear() {
-        self.collectionView?.reloadData()
-    }
 }
 
 class BaseCell: UICollectionViewCell {
@@ -127,6 +123,10 @@ class BaseCell: UICollectionViewCell {
     }
 }
 
+func leaveAction() {
+    
+}
+
 // Lobby Cell in Feed Cell 1
 
 class LobbyCell: BaseCell {
@@ -140,7 +140,6 @@ class LobbyCell: BaseCell {
     let leaveButtonView: UIButton = {
         let leaveButton = UIButton()
         leaveButton.backgroundColor = .red
-        
         leaveButton.translatesAutoresizingMaskIntoConstraints = false
         leaveButton.setTitle("Leave?", for: .normal)
         return leaveButton
@@ -198,7 +197,7 @@ class LobbyCell: BaseCell {
 class HostedCell: BaseCell {
     let gameLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .red
+//        label.backgroundColor = .red
         label.translatesAutoresizingMaskIntoConstraints = false
 //        label.text = "Hello!"
         return label
@@ -214,7 +213,7 @@ class HostedCell: BaseCell {
     
     let currentNumPlayers: UILabel = {
         let numPlayers = UILabel()
-        numPlayers.backgroundColor = .green
+//        numPlayers.backgroundColor = .green
         numPlayers.translatesAutoresizingMaskIntoConstraints = false
         return numPlayers
     }()

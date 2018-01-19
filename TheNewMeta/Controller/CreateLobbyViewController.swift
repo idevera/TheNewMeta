@@ -15,6 +15,14 @@ import RealmSwift
 class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
     
     private var signedInUser = User()
+    
+    // Overrides
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupLayout()
+        findSignedInUser()
+    }
 
     // Actions
 
@@ -37,7 +45,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
                 game!.matchingLobbies.append(newLobby)
                 newLobby.lobbyUsers.append(signedInUser)
                 signedInUser.createdLobbies.append(newLobby)
-                print("This is my signed in useres created lobbies: \(signedInUser.createdLobbies)")
+                print("This is my signed in useres created lobbies: \(signedInUser.joinedLobbies)")
                 successCreationAlert()
                 // TODO: Segue into the main view controller
             }
@@ -184,13 +192,5 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         submitButtonView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         submitButtonView.topAnchor.constraint(equalTo: msgFieldView.bottomAnchor, constant: 20).isActive = true
         submitButtonView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
-    }
-    
-    // Overrides
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupLayout()
-        findSignedInUser()
     }
 }
