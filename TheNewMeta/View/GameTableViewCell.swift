@@ -15,4 +15,5 @@ class GameTableViewCell: UITableViewCell {
 
     @IBOutlet weak var gameTitleLabel: UILabel!
     
+    @IBOutlet weak var gameImageView: UIImageView!
 }

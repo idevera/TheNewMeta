@@ -20,17 +20,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var signedInUser = User()
     let gameCellIdentifier = "gameTitleCell"
     
-    //
-    
     @IBOutlet weak var tableViewContent: UITableView!
     @IBOutlet weak var searchBarView: UISearchBar!
-//    @IBAction func clickHamburger() {
-//        // On click this will send a message to the side menu to run the constraint function!! This is a View Click action to the ContainerViewController
-//        NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
-//    }
-    
+    @IBAction func logoutButton(_ sender: Any) {
+        showLoginView()
+    }
     // Table View for all games
-    
+
     // How many sections in your table
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -54,6 +50,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let game = filteredData[indexPath.row]
         
         cell.gameTitleLabel.text = game.title
+        
+        // Get these to be the images of the API call
+        cell.gameImageView.image = #imageLiteral(resourceName: "joystick")
         
         // Return the cell view
         return cell
@@ -93,33 +92,32 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        performSegue(withIdentifier: "ShowCreatedLobbies", sender: nil)
 //    }
     
-//    @objc func showLoginView () {
-//        // TODO: Look into this error again
-//        // Here I am unwinding. Get an error that this is discouraged when going back to root view
-//
-//        findSignedInUser()
-//        removeSignedInUserID()
-//
-//        let alert = UIAlertController(title: "Succesfully Logged Out!", message: "Come back again soon!", preferredStyle: .alert)
-//        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
-//            (_)in
-//            self.dismiss(animated: true, completion: nil)
-//        })
-//
-//        alert.addAction(OKAction)
-//        self.present(alert, animated: true, completion: nil)
-//
-//        // Other options
-//        // self.navigationController?.popViewController(animated: true)
-//        // self.dismiss(animated: true, completion: nil)
-//    }
+    @objc func showLoginView () {
+        // TODO: Look into this error again
+        // Here I am unwinding. Get an error that this is discouraged when going back to root view
+
+        findSignedInUser()
+        removeSignedInUserID()
+
+        let alert = UIAlertController(title: "Succesfully Logged Out!", message: "Come back again soon!", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+            (_)in
+            self.dismiss(animated: true, completion: nil)
+        })
+
+        alert.addAction(OKAction)
+        self.present(alert, animated: true, completion: nil)
+
+        // Other options
+        // self.navigationController?.popViewController(animated: true)
+        // self.dismiss(animated: true, completion: nil)
+    }
     
     // Private functions
     
     private func getData() {
         let realm = try! Realm()
         let returnedGames = realm.objects(Game.self).sorted(byKeyPath: "title")
-        //        print("This is all the games in the DB \(returnedGames.count)")
         for game in returnedGames {
             currentGames.append(game)
         }
@@ -128,16 +126,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private func findSignedInUser() {
         let id = UserDefaults.standard.string(forKey: "userID")
         let realm = try! Realm()
-        // print("This is the id of the signed in user \(String(describing: id))")
         signedInUser = realm.object(ofType: User.self, forPrimaryKey: id)!
     }
     
-//    private func removeSignedInUserID() {
-//        let defaults = UserDefaults.standard
-//        defaults.removeObject(forKey: "userID")
-////        UserDefaults.standard.synchronize()
-//        print("\(String(describing: UserDefaults.standard.string(forKey: "userID")))")
-//    }
+    private func removeSignedInUserID() {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "userID")
+//        UserDefaults.standard.synchronize()
+        print("\(String(describing: UserDefaults.standard.string(forKey: "userID")))")
+    }
     
     // Overrides
     
