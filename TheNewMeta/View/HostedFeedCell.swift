@@ -23,10 +23,6 @@ class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDele
         return cv
     }()
     
-//    func viewWillAppear() {
-//        collectionView.reloadData()
-//    }
-    
     override func setupViews() {
         super.setupViews()
         addSubview(collectionView)

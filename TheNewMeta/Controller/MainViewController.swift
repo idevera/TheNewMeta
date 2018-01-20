@@ -25,6 +25,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBAction func logoutButton(_ sender: Any) {
         showLoginView()
     }
+    
     // Table View for all games
 
     // How many sections in your table
@@ -93,9 +94,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //    }
     
     @objc func showLoginView () {
-        // TODO: Look into this error again
-        // Here I am unwinding. Get an error that this is discouraged when going back to root view
-
         findSignedInUser()
         removeSignedInUserID()
 
@@ -158,17 +156,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableViewContent.delegate = self
         tableViewContent.dataSource = self
         searchBarView.delegate = self
-        
-        // Navigation Bar Observers - Waiting for an on-click message
-
-        // On load, add the observers to the NC to be listening for a click event!!!
-//        NotificationCenter.default.addObserver(self, selector: #selector(showCreateLobby), name: NSNotification.Name("ShowCreateLobby"), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(showMyLobbies), name: NSNotification.Name("ShowMyLobbies"), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(showEditProfile), name: NSNotification.Name("ShowEditProfile"), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(showCreatedLobbies), name: NSNotification.Name("ShowLoginView"), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(showLoginView), name: NSNotification.Name("ShowLoginView"), object: nil)
     }
     
+    // Reloads the data inside the table view each time the user goes back to this page
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         currentGames = [Game]()

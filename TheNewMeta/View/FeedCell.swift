@@ -12,8 +12,8 @@ import RealmSwift
 class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     private var signedInUser = User()
-
     let cellID = "cellID"
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -24,20 +24,15 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         return cv
     }()
     
-//    func viewWillAppear() {
-//        collectionView.reloadData()
-//    }
-    
     override func setupViews() {
         super.setupViews()
         addSubview(collectionView)
         findSignedInUser()
-//        collectionView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        
         collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         collectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-//        collectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         collectionView.register(LobbyCell.self, forCellWithReuseIdentifier: cellID)
     }
     

@@ -13,6 +13,14 @@ import RealmSwift
 class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let cellID = "cellID"
     let hostedID = "hostedID"
+   
+    // Overrides
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupMenuBar()
+        setupCollectionView()
+    }
     
     // Collection View for the collection view that is holding the collection of Feed Cells
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -20,7 +28,10 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // Display FeedCells in the collection view if index 0 is chosen
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        
+        // Display the HostedFeedCells is index 1 is chosen
         if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: hostedID, for: indexPath)
             return cell
@@ -28,6 +39,7 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         return cell
     }
     
+    // Changes the size of each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height - 100)
     }
@@ -49,9 +61,10 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         menuBarView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
+    // MenuBar View Underline
+    
     // This will let us know which scroll view we are on telling us the translation value
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print(scrollView.contentOffset.x)
         // Moves the underline of menubar with the scrollview
         // To make it make, divide the scroll value by 2 the number of items in collection
         menuBarView.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 2
@@ -74,7 +87,7 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(100, 0, 0, 0)
 
         // This is the collection for the side scroll
-//        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+        // collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
         // We are using a new class called Feed Cell which represents each cell in the UICollectionView instead of using a generic UICollectiViewCell
         
         // Feed Cell 1
@@ -98,15 +111,9 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         
         collectionView?.scrollToItem(at: indexPath as IndexPath, at: [], animated: true)
     }
-    
-    // Overrides
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupMenuBar()
-        setupCollectionView()
-    }
 }
+
+// Cell Classes
 
 class BaseCell: UICollectionViewCell {
     override init(frame: CGRect) {
@@ -127,12 +134,11 @@ func leaveAction() {
     
 }
 
-// Lobby Cell in Feed Cell 1
+// Lobby Cell in Feed Cell 1 inherits from BaseCell
 
 class LobbyCell: BaseCell {
     let gameTitleLabel: UILabel = {
         let label = UILabel()
-//        label.backgroundColor = .yellow
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -147,14 +153,12 @@ class LobbyCell: BaseCell {
     
     let playersTextView: UILabel = {
         let playersText = UILabel()
-//        playersText.backgroundColor = .green
         playersText.translatesAutoresizingMaskIntoConstraints = false
         return playersText
     }()
     
     let msgTextView: UILabel = {
         let msgText = UILabel()
-//        msgText.backgroundColor = .white
         msgText.translatesAutoresizingMaskIntoConstraints = false
         return msgText
     }()
@@ -197,9 +201,7 @@ class LobbyCell: BaseCell {
 class HostedCell: BaseCell {
     let gameLabel: UILabel = {
         let label = UILabel()
-//        label.backgroundColor = .red
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.text = "Hello!"
         return label
     }()
     

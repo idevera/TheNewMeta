@@ -85,12 +85,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     // TODO: Decide if I want to use this
-//    override func viewDidLayoutSubviews() {
-//        self.gamerTagField.underlined(borderColor: UIColor.white)
-//        self.emailField.underlined(borderColor: UIColor.white)
-//        self.pwField.underlined(borderColor: UIColor.white)
-//        self.loginButton.loginStyle()
-//    }
+    override func viewDidLayoutSubviews() {
+        self.gamerTagView.underlined(borderColor: UIColor.white)
+        self.emailTagView.underlined(borderColor: UIColor.white)
+        self.pwTagView.underlined(borderColor: UIColor.white)
+        self.loginButtonView.loginStyle()
+    }
     
     // Create Views
     
@@ -122,7 +122,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let gamerTag = UITextField()
         gamerTag.translatesAutoresizingMaskIntoConstraints = false
         gamerTag.backgroundColor = .white
-        gamerTag.layer.cornerRadius = 10
+        gamerTag.layer.cornerRadius = 5
         gamerTag.textAlignment = .center
         gamerTag.placeholder = "handle"
         return gamerTag
@@ -132,7 +132,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let emailView = UITextField()
         emailView.translatesAutoresizingMaskIntoConstraints = false
         emailView.backgroundColor = .white
-        emailView.layer.cornerRadius = 10
+        emailView.layer.cornerRadius = 5
         emailView.textAlignment = .center
         emailView.placeholder = "email"
         return emailView
@@ -142,7 +142,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let pwView = UITextField()
         pwView.translatesAutoresizingMaskIntoConstraints = false
         pwView.backgroundColor = .white
-        pwView.layer.cornerRadius = 10
+        pwView.layer.cornerRadius = 5
         pwView.textAlignment = .center
         pwView.placeholder = "password"
         return pwView
@@ -151,7 +151,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let loginButtonView: UIButton = {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.backgroundColor = .yellow
+        loginButton.backgroundColor = UIColor(red:0.177, green:0.143, blue:0.207, alpha: 0)
         loginButton.layer.cornerRadius = 10
         return loginButton
     }()
@@ -160,7 +160,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Add container which controls the top half of the screen
         let topImageContainerView = UIView()
         // Uncomment if you want to see what it looks like
-        topImageContainerView.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
+        topImageContainerView.backgroundColor = UIColor(red:0.81, green:0.70, blue:0.99, alpha: 0)
+//        topImageContainerView.backgroundColor = UIColor(red:0.81, green:0.70, blue:0.99, alpha: 0)
         // Add container to the view
         view.addSubview(topImageContainerView)
         // This enables autolayout for our imageView
@@ -174,25 +175,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         topImageContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         topImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
-        // Add the image to the container
-        topImageContainerView.addSubview(joystickImageView)
-        
         // Joystick constraints
+        
+        topImageContainerView.addSubview(joystickImageView)
         joystickImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true
-        joystickImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor).isActive = true
+        joystickImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor, constant: 20).isActive = true
         joystickImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.5).isActive = true
         
         // Title
         
         topImageContainerView.addSubview(appTitleView)
         appTitleView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true
-        appTitleView.centerYAnchor.constraint(equalTo: joystickImageView.bottomAnchor, constant: 20).isActive = true
+        appTitleView.centerYAnchor.constraint(equalTo: joystickImageView.bottomAnchor, constant: 30).isActive = true
     
         // Add Bottom View
         
         let bottomViewContainer = UIView()
         // Uncomment if you want to see what it looks like
-        bottomViewContainer.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
+        bottomViewContainer.backgroundColor = UIColor(red:0.81, green:0.70, blue:0.99, alpha: 0)
         // Add container to the view
         view.addSubview(bottomViewContainer)
         
@@ -215,18 +215,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         gamerTagView.centerXAnchor.constraint(equalTo: bottomViewContainer.centerXAnchor).isActive = true
         gamerTagView.widthAnchor.constraint(equalTo: bottomViewContainer.widthAnchor, multiplier: 0.7).isActive = true
         gamerTagView.topAnchor.constraint(equalTo: bottomViewContainer.topAnchor, constant: 20).isActive = true
-        
+        gamerTagView.heightAnchor.constraint(equalTo: emailTagView.heightAnchor).isActive = true
+
+
         // Email View
         
         emailTagView.centerXAnchor.constraint(equalTo: bottomViewContainer.centerXAnchor).isActive = true
         emailTagView.widthAnchor.constraint(equalTo: bottomViewContainer.widthAnchor, multiplier: 0.7).isActive = true
         emailTagView.topAnchor.constraint(equalTo: gamerTagView.bottomAnchor, constant: 20).isActive = true
+        gamerTagView.heightAnchor.constraint(equalTo: pwTagView.heightAnchor).isActive = true
+
         
         // PW View
         
         pwTagView.centerXAnchor.constraint(equalTo: bottomViewContainer.centerXAnchor).isActive = true
         pwTagView.widthAnchor.constraint(equalTo: bottomViewContainer.widthAnchor, multiplier: 0.7).isActive = true
         pwTagView.topAnchor.constraint(equalTo: emailTagView.bottomAnchor, constant: 20).isActive = true
+        pwTagView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         
         // Login Button
         
