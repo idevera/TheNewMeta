@@ -29,7 +29,6 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
     
     // TEST
     
-    
     // TEST
     
     // Actions

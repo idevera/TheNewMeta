@@ -76,23 +76,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     // Notification Center Functions
     
-    // Will be consumed by the NC --> Messages are sent from the sideMenuViewController on click
-//    @objc func showCreateLobby () {
-//        performSegue(withIdentifier: "ShowCreateLobby", sender: nil)
-//    }
-//
-//    @objc func showMyLobbies () {
-//        performSegue(withIdentifier: "ShowMyLobbies", sender: nil)
-//    }
-//
-//    @objc func showEditProfile () {
-//        performSegue(withIdentifier: "ShowEditProfile", sender: nil)
-//    }
-//
-//    @objc func showCreatedLobbies() {
-//        performSegue(withIdentifier: "ShowCreatedLobbies", sender: nil)
-//    }
-    
     @objc func showLoginView () {
         findSignedInUser()
         removeSignedInUserID()
@@ -156,6 +139,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableViewContent.delegate = self
         tableViewContent.dataSource = self
         searchBarView.delegate = self
+        self.title = "Search Games"
     }
     
     // Reloads the data inside the table view each time the user goes back to this page
