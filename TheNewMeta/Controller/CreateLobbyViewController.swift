@@ -174,10 +174,10 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         return submitButton
     }()
     
-    let searchBarView: UISearchBar = {
-        let sb = UISearchBar()
-        return sb
-    }()
+//    let searchBarView: UISearchBar = {
+//        let sb = UISearchBar()
+//        return sb
+//    }()
 // TEST
 ////    let navBarView: UINavigationBar = {
 ////        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.width, height:  64))
@@ -212,12 +212,12 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(playersFieldView)
         view.addSubview(gameFieldView)
         view.addSubview(msgFieldView)
-        view.addSubview(searchBarView)
+//        view.addSubview(searchBarView)
         
-        searchBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        searchBarView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        searchBarView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        searchBarView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        searchBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        searchBarView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+//        searchBarView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+//        searchBarView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
 
 //        view.addSubview(navBarView)
 
