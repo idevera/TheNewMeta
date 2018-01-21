@@ -133,16 +133,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         getData()
         filteredData = currentGames
-        
+        getGameJsonData()
+        apiKey = valueForAPIKey(named: "GIANT_BOMB_API_KEY")
+
         tableViewContent.delegate = self
         tableViewContent.dataSource = self
         searchBarView.delegate = self
+        
         self.title = "Search Games"
-        getGameJsonData()
-        apiKey = valueForAPIKey(named: "GIANT_BOMB_API")
     }
     
     // Reloads the data inside the table view each time the user goes back to this page
@@ -160,10 +160,20 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //    let STREET_FIGHTER_V_GAME_ID = "3030-48320"
     
     private func valueForAPIKey(named keyname:String) -> String {
-        let filePath = Bundle.main.path(forResource: "ApiKeys", ofType: "plist")
-        let plist = NSDictionary(contentsOfFile:filePath!)
-        let value = plist?.object(forKey: keyname) as! String
-        return value
+        var resourceFileDictionary: NSDictionary?
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+            resourceFileDictionary = NSDictionary(contentsOfFile: path)
+        }
+        if let resourceFileDictionaryContent = resourceFileDictionary {
+            print("PLIST: ", resourceFileDictionaryContent)
+//            let value = resourceFileDictionaryContent?.object(forKey: keyname) as! String
+            let value = resourceFileDictionaryContent[keyname] as! String
+            return value
+        }
+//        let filePath = Bundle.main.path(forResource: "Info.plist", ofType: "plist")
+//        let plist = NSDictionary(contentsOfFile:filePath!)
+//
+        return ""
     }
     
     func getGameJsonData() {
