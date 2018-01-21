@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC0B59B23E64A6474016CF4A /* Pods_TheNewMeta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFBDF7CFC1E3E725EBFF10DC /* Pods_TheNewMeta.framework */; };
+		4F34D8C0F05E832AC255311C /* Pods_TheNewMeta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBDD0CB823BAC2143BEA0C9D /* Pods_TheNewMeta.framework */; };
 		CC1654CC2002A425001DA633 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1654CB2002A425001DA633 /* GameTableViewCell.swift */; };
 		CC1654CE2002C36B001DA633 /* AvailableLobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1654CD2002C36B001DA633 /* AvailableLobbyViewController.swift */; };
 		CC27185B1FFC801E0061FCDD /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC27185A1FFC801E0061FCDD /* SideMenuViewController.swift */; };
@@ -16,6 +16,7 @@
 		CC5DEC87200EBF07005FE322 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DEC86200EBF07005FE322 /* EditProfileViewController.swift */; };
 		CC5DEC89200EC3F5005FE322 /* APIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DEC88200EC3F5005FE322 /* APIWrapper.swift */; };
 		CC5DEC8B200FC918005FE322 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DEC8A200FC918005FE322 /* MenuBar.swift */; };
+		CC6B142E201467FA0026D3BA /* CreateLobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF801251FFC42880089994B /* CreateLobbyViewController.swift */; };
 		CC7E048F20056C4100C667EB /* UserJoinedLobbiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */; };
 		CC7E049120056DED00C667EB /* JoinedLobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */; };
 		CC9AC9772011262600F1EF4D /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AC9762011262600F1EF4D /* FeedCell.swift */; };
@@ -32,14 +33,11 @@
 		CCF800EF1FFC1B1D0089994B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF800ED1FFC1B1D0089994B /* LaunchScreen.storyboard */; };
 		CCF800FA1FFC1B1D0089994B /* TheNewMetaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF800F91FFC1B1D0089994B /* TheNewMetaTests.swift */; };
 		CCF801051FFC1B1E0089994B /* TheNewMetaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF801041FFC1B1E0089994B /* TheNewMetaUITests.swift */; };
-		CCF801151FFC1BDD0089994B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF801131FFC1BDA0089994B /* RealmSwift.framework */; };
-		CCF801161FFC1BDD0089994B /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF801141FFC1BDD0089994B /* Realm.framework */; };
 		CCF801171FFC1BE50089994B /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF801141FFC1BDD0089994B /* Realm.framework */; };
 		CCF801181FFC1BE50089994B /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCF801141FFC1BDD0089994B /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CCF801191FFC1BE50089994B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF801131FFC1BDA0089994B /* RealmSwift.framework */; };
 		CCF8011A1FFC1BE50089994B /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCF801131FFC1BDA0089994B /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CCF8011E1FFC1DEC0089994B /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF8011D1FFC1DEC0089994B /* RealmObjects.swift */; };
-		CCF801261FFC42880089994B /* CreateLobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF801251FFC42880089994B /* CreateLobbyViewController.swift */; };
 		CCF8012A1FFC57BE0089994B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF801291FFC57BE0089994B /* ContainerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,8 +74,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4900418619369900DF23668B /* Pods-TheNewMeta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheNewMeta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheNewMeta/Pods-TheNewMeta.debug.xcconfig"; sourceTree = "<group>"; };
-		8B8FDE0991F4227DE49A720B /* Pods-TheNewMeta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheNewMeta.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheNewMeta/Pods-TheNewMeta.release.xcconfig"; sourceTree = "<group>"; };
+		138F1F712CAA1EFEEBA13F14 /* Pods-TheNewMeta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheNewMeta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheNewMeta/Pods-TheNewMeta.debug.xcconfig"; sourceTree = "<group>"; };
+		6F1879F7EC2C25576D2CAEAE /* Pods-TheNewMeta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheNewMeta.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheNewMeta/Pods-TheNewMeta.release.xcconfig"; sourceTree = "<group>"; };
 		CC1654CB2002A425001DA633 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		CC1654CD2002C36B001DA633 /* AvailableLobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableLobbyViewController.swift; sourceTree = "<group>"; };
 		CC27185A1FFC801E0061FCDD /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -113,7 +111,7 @@
 		CCF8011D1FFC1DEC0089994B /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
 		CCF801251FFC42880089994B /* CreateLobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLobbyViewController.swift; sourceTree = "<group>"; };
 		CCF801291FFC57BE0089994B /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		EFBDF7CFC1E3E725EBFF10DC /* Pods_TheNewMeta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheNewMeta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBDD0CB823BAC2143BEA0C9D /* Pods_TheNewMeta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheNewMeta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,10 +120,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCF801171FFC1BE50089994B /* Realm.framework in Frameworks */,
-				CCF801161FFC1BDD0089994B /* Realm.framework in Frameworks */,
 				CCF801191FFC1BE50089994B /* RealmSwift.framework in Frameworks */,
-				CCF801151FFC1BDD0089994B /* RealmSwift.framework in Frameworks */,
-				AC0B59B23E64A6474016CF4A /* Pods_TheNewMeta.framework in Frameworks */,
+				4F34D8C0F05E832AC255311C /* Pods_TheNewMeta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +145,7 @@
 		5DBF4126D05E7F846113CCAD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EFBDF7CFC1E3E725EBFF10DC /* Pods_TheNewMeta.framework */,
+				EBDD0CB823BAC2143BEA0C9D /* Pods_TheNewMeta.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -157,8 +153,8 @@
 		80658004F120D26208F12D12 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4900418619369900DF23668B /* Pods-TheNewMeta.debug.xcconfig */,
-				8B8FDE0991F4227DE49A720B /* Pods-TheNewMeta.release.xcconfig */,
+				138F1F712CAA1EFEEBA13F14 /* Pods-TheNewMeta.debug.xcconfig */,
+				6F1879F7EC2C25576D2CAEAE /* Pods-TheNewMeta.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -277,14 +273,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CCF801091FFC1B1E0089994B /* Build configuration list for PBXNativeTarget "TheNewMeta" */;
 			buildPhases = (
-				E9FF484A87820E28952DD973 /* [CP] Check Pods Manifest.lock */,
+				61D8929EEE3CAEB530B1800B /* [CP] Check Pods Manifest.lock */,
 				CCF800DD1FFC1B1D0089994B /* Sources */,
 				CCF800DE1FFC1B1D0089994B /* Frameworks */,
 				CCF800DF1FFC1B1D0089994B /* Resources */,
 				CCF8011B1FFC1BE50089994B /* Embed Frameworks */,
 				CCF8011C1FFC1D9E0089994B /* ShellScript */,
-				A43A63F78FB45557798E88C8 /* [CP] Embed Pods Frameworks */,
-				E21DEF4B47C7B283DEB4C843 /* [CP] Copy Pods Resources */,
+				0B4A7CAD69DB0A9F957CBB65 /* [CP] Embed Pods Frameworks */,
+				2C8FB1DBE7E351740796109F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -405,7 +401,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A43A63F78FB45557798E88C8 /* [CP] Embed Pods Frameworks */ = {
+		0B4A7CAD69DB0A9F957CBB65 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -414,31 +410,20 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-TheNewMeta/Pods-TheNewMeta-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheNewMeta/Pods-TheNewMeta-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CCF8011C1FFC1D9E0089994B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
-		};
-		E21DEF4B47C7B283DEB4C843 /* [CP] Copy Pods Resources */ = {
+		2C8FB1DBE7E351740796109F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -453,7 +438,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheNewMeta/Pods-TheNewMeta-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E9FF484A87820E28952DD973 /* [CP] Check Pods Manifest.lock */ = {
+		61D8929EEE3CAEB530B1800B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -471,6 +456,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CCF8011C1FFC1D9E0089994B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -478,6 +476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC6B142E201467FA0026D3BA /* CreateLobbyViewController.swift in Sources */,
 				CCB8CE69200954A200F79B16 /* TestViewController.swift in Sources */,
 				CC27185D1FFC88BA0061FCDD /* MainViewController.swift in Sources */,
 				CC5DEC89200EC3F5005FE322 /* APIWrapper.swift in Sources */,
@@ -488,7 +487,6 @@
 				CC7E048F20056C4100C667EB /* UserJoinedLobbiesVC.swift in Sources */,
 				CCF800E71FFC1B1D0089994B /* LoginViewController.swift in Sources */,
 				CC5DEC87200EBF07005FE322 /* EditProfileViewController.swift in Sources */,
-				CCF801261FFC42880089994B /* CreateLobbyViewController.swift in Sources */,
 				CC27185B1FFC801E0061FCDD /* SideMenuViewController.swift in Sources */,
 				CCB8CE7320097EA900F79B16 /* Helpers.swift in Sources */,
 				CC28C8772003E89B00987097 /* LobbyViewCell.swift in Sources */,
@@ -663,7 +661,7 @@
 		};
 		CCF8010A1FFC1B1E0089994B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4900418619369900DF23668B /* Pods-TheNewMeta.debug.xcconfig */;
+			baseConfigurationReference = 138F1F712CAA1EFEEBA13F14 /* Pods-TheNewMeta.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -673,6 +671,7 @@
 					"$(PROJECT_DIR)/TheNewMeta",
 				);
 				INFOPLIST_FILE = TheNewMeta/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Irene-DeVera.ios.TheNewMeta";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -683,7 +682,7 @@
 		};
 		CCF8010B1FFC1B1E0089994B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B8FDE0991F4227DE49A720B /* Pods-TheNewMeta.release.xcconfig */;
+			baseConfigurationReference = 6F1879F7EC2C25576D2CAEAE /* Pods-TheNewMeta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -693,6 +692,7 @@
 					"$(PROJECT_DIR)/TheNewMeta",
 				);
 				INFOPLIST_FILE = TheNewMeta/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Irene-DeVera.ios.TheNewMeta";
 				PRODUCT_NAME = "$(TARGET_NAME)";

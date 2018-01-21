@@ -425,10 +425,10 @@
             </objects>
             <point key="canvasLocation" x="1646" y="860"/>
         </scene>
-        <!--Nav Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="Rx8-3U-XVP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qEg-qd-FDi" customClass="NavController" customModule="TheNewMeta" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qEg-qd-FDi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="l3C-0D-VtK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qO0-rw-Bvn">

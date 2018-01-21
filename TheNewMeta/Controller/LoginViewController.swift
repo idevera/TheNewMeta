@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import RealmSwift
+import Lottie
 
 // Inherits from the UIViewController
 class LoginViewController: UIViewController, UITextFieldDelegate {
