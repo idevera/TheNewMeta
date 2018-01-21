@@ -77,7 +77,7 @@ class EditProfileViewController: UIViewController {
     }()
     
     private func setupLayout() {
-        view.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
+//        view.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
         
         view.addSubview(playersFieldView)
         view.addSubview(gamerTagField)

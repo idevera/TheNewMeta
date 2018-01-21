@@ -85,18 +85,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     // TODO: Decide if I want to use this
-    override func viewDidLayoutSubviews() {
-        self.gamerTagView.underlined(borderColor: UIColor.white)
-        self.emailTagView.underlined(borderColor: UIColor.white)
-        self.pwTagView.underlined(borderColor: UIColor.white)
-        self.loginButtonView.loginStyle()
-    }
+//    override func viewDidLayoutSubviews() {
+//        self.gamerTagView.underlined(borderColor: .black)
+//        self.emailTagView.underlined(borderColor: .black)
+//        self.pwTagView.underlined(borderColor: .black)
+////        self.loginButtonView.loginStyle()
+//    }
     
     // Create Views
     
     // Add a closure for the imageview - Anonymous functions
     let joystickImageView: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "joystick"))
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "manipulator (1)"))
         // This enables autoLayout for our imageView
         imageView.translatesAutoresizingMaskIntoConstraints = false
         // This forces the image to keep the same aspect ratio regardless of screen orientation or size
@@ -113,7 +113,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textView.isEditable = false
         textView.textAlignment = .center
         textView.backgroundColor = .clear
-        textView.textColor = .white
+        textView.textColor = .black
         textView.font = UIFont(name: "Arial", size: 18)
         return textView
     }()
@@ -151,8 +151,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let loginButtonView: UIButton = {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.backgroundColor = UIColor(red:0.177, green:0.143, blue:0.207, alpha: 0)
-        loginButton.layer.cornerRadius = 10
+        loginButton.backgroundColor = UIColor(red: 177/255.0, green: 143/255.0, blue: 207/255.0, alpha: 1.0)
+        loginButton.layer.cornerRadius = 1
         return loginButton
     }()
     
@@ -160,8 +160,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Add container which controls the top half of the screen
         let topImageContainerView = UIView()
         // Uncomment if you want to see what it looks like
-        topImageContainerView.backgroundColor = UIColor(red:0.81, green:0.70, blue:0.99, alpha: 0)
-//        topImageContainerView.backgroundColor = UIColor(red:0.81, green:0.70, blue:0.99, alpha: 0)
+//        topImageContainerView.backgroundColor = UIColor(red:0.31, green:0.27, blue:0.38, alpha: 0)
         // Add container to the view
         view.addSubview(topImageContainerView)
         // This enables autolayout for our imageView
@@ -192,10 +191,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         let bottomViewContainer = UIView()
         // Uncomment if you want to see what it looks like
-        bottomViewContainer.backgroundColor = UIColor(red:0.81, green:0.70, blue:0.99, alpha: 0)
+
         // Add container to the view
         view.addSubview(bottomViewContainer)
-        
         bottomViewContainer.translatesAutoresizingMaskIntoConstraints = false
         // Makes it 50% of the views size
         bottomViewContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6).isActive = true
@@ -238,8 +236,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButtonView.centerXAnchor.constraint(equalTo: bottomViewContainer.centerXAnchor).isActive = true
         loginButtonView.widthAnchor.constraint(equalTo: bottomViewContainer.widthAnchor, multiplier: 0.7).isActive = true
         loginButtonView.topAnchor.constraint(equalTo: pwTagView.bottomAnchor, constant: 40).isActive = true
+        loginButtonView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
         loginButtonView.setTitle("Login", for: .normal)
-        loginButtonView.setTitleColor(UIColor.darkGray, for: .normal)
         loginButtonView.addTarget(self, action: #selector(signIn), for: .touchUpInside)
     }
 }

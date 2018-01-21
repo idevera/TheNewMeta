@@ -14,7 +14,7 @@ extension UITextField {
         self.backgroundColor = UIColor.clear
         
         let borderLine = UIView()
-        let height = 1.0
+        let height = 2.0
         borderLine.frame = CGRect(x: 0, y: Double(self.frame.height) - height, width: Double(self.frame.width), height: height)
         
         borderLine.backgroundColor = borderColor
@@ -22,10 +22,10 @@ extension UITextField {
     }
 }
 
-extension UIButton {
-    func loginStyle() {
-        self.backgroundColor = UIColor.yellow
-    }
-}
+//extension UIButton {
+//    func loginStyle() {
+//        self.backgroundColor = UIColor(red:177.0/255.0, green:143.0/255.0, blue:207.0/255.0, alpha: 0)
+//    }
+//}
 
 
