@@ -6,7 +6,7 @@
 //  Copyright © 2018 Irene DeVera. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class APIWrapper {
     

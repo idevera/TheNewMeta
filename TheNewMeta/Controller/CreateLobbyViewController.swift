@@ -27,10 +27,6 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         self.msgFieldView.delegate = self
     }
     
-    // TEST
-    
-    // TEST
-    
     // Actions
     
     @objc func createLobby(_ sender: UIButton) {
@@ -178,13 +174,57 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         return submitButton
     }()
     
+    let searchBarView: UISearchBar = {
+        let sb = UISearchBar()
+        return sb
+    }()
+// TEST
+////    let navBarView: UINavigationBar = {
+////        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.width, height:  64))
+////        navBar.translatesAutoresizingMaskIntoConstraints = false
+////        return navBar
+////    }()
+////
+////    let searchBarView: UISearchBar = {
+////        let sb = UISearchBar()
+////    }()
+//
+//
+////    let navBarView: UINavigationBar = {
+////        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: guide, height:  64))
+////        navBar.translatesAutoresizingMaskIntoConstraints = false
+////        return navBar
+////    }()
+////    // TEST
+//
+//    let navBarView: UINavigationBar = UINavigationBar()
+////    let navItem = UINavigationItem(title: "SomeTitle");
+////    //        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: nil, action: "selector");
+////    //        navItem.rightBarButtonItem = doneItem;
+////    navBar.setItems([navItem], animated: false);
+
+//// TEST
+
+    
     private func setupLayout() {
         view.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
         
         view.addSubview(playersFieldView)
         view.addSubview(gameFieldView)
         view.addSubview(msgFieldView)
+        view.addSubview(searchBarView)
         
+        searchBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        searchBarView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        searchBarView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        searchBarView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+
+//        view.addSubview(navBarView)
+
+//        navBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        navBarView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+//        navBarView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+//
         playersFieldView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         playersFieldView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         playersFieldView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
@@ -194,6 +234,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         gameFieldView.bottomAnchor.constraint(equalTo: playersFieldView.topAnchor, constant: -20).isActive = true
         gameFieldView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
         gameFieldView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+//        gameFieldView.topAnchor.constraint(equalTo: navBarView.bottomAnchor).isActive = true
         
         msgFieldView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         msgFieldView.topAnchor.constraint(equalTo: playersFieldView.bottomAnchor, constant: 20).isActive = true
