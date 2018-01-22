@@ -14,11 +14,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // Properties
     
-    // TODO: Does this need to be a constant?
     var currentGames = [Game]()
     var filteredData = [Game]()
     private var signedInUser = User()
     let gameCellIdentifier = "gameTitleCell"
+    
+    // Outlets
     
     @IBOutlet weak var tableViewContent: UITableView!
     @IBOutlet weak var searchBarView: UISearchBar!
@@ -53,7 +54,21 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.gameTitleLabel.text = game.title
         
         // Get these to be the images of the API call
-        cell.gameImageView.image = #imageLiteral(resourceName: "joystick")
+        let currentImageURL = URL(string: game.imageURL)
+        print("This is the game object URL: ", game.imageURL)
+        // Make images load asynchronously from the main UI thread
+        // https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
+        DispatchQueue.global().async {
+            if let data = try? Data(contentsOf: currentImageURL!) {
+                DispatchQueue.main.async {
+                    print("Attempting to add game image")
+                    let gameImageView = UIImageView(image: UIImage(data: data))
+//                    self.view.addSubview(gameImageView)
+                    cell.gameImageView = gameImageView
+
+                }
+            }
+        }
         
         // Return the cell view
         return cell
@@ -73,8 +88,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         self.tableViewContent.reloadData()
     }
-
-    // Notification Center Functions
     
     @objc func showLoginView () {
         findSignedInUser()
@@ -88,10 +101,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         alert.addAction(OKAction)
         self.present(alert, animated: true, completion: nil)
-
-        // Other options
-        // self.navigationController?.popViewController(animated: true)
-        // self.dismiss(animated: true, completion: nil)
     }
     
     // Private functions
@@ -102,6 +111,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         for game in returnedGames {
             currentGames.append(game)
         }
+        print (currentGames.count)
     }
     
     private func findSignedInUser() {
@@ -129,14 +139,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    var apiKey = String()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Get Data from the Realm Database
         getData()
         filteredData = currentGames
-        getGameJsonData()
-        apiKey = valueForAPIKey(named: "GIANT_BOMB_API_KEY")
 
         tableViewContent.delegate = self
         tableViewContent.dataSource = self
@@ -154,100 +161,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         filteredData = currentGames
         self.tableViewContent.reloadData()
     }
-    
-    let gameApiIds = ["3030-48190", "3030-48320"]
-//    let OVERWATCH_GAME_ID = "3030-48190"
-//    let STREET_FIGHTER_V_GAME_ID = "3030-48320"
-    
-    private func valueForAPIKey(named keyname:String) -> String {
-        var resourceFileDictionary: NSDictionary?
-        if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
-            resourceFileDictionary = NSDictionary(contentsOfFile: path)
-        }
-        if let resourceFileDictionaryContent = resourceFileDictionary {
-            print("PLIST: ", resourceFileDictionaryContent)
-//            let value = resourceFileDictionaryContent?.object(forKey: keyname) as! String
-            let value = resourceFileDictionaryContent[keyname] as! String
-            return value
-        }
-//        let filePath = Bundle.main.path(forResource: "Info.plist", ofType: "plist")
-//        let plist = NSDictionary(contentsOfFile:filePath!)
-//
-        return ""
-    }
-    
-    func getGameJsonData() {
-        var i = 0
-        print("before the loop")
-        while i < gameApiIds.count {
-            let id = gameApiIds[i]
-            
-            let url = URL(string: "http://www.giantbomb.com/api/game/"+id+"/?api_key="+apiKey+"&format=json&field_list=name,image")
-            let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                if let data = data, let response = response as? HTTPURLResponse {
-                    do {
-                        // Convert the data to JSON
-                        let jsonSerialized = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
-                        if let json = jsonSerialized,
-                            let results = json["results"] as? [String: Any],
-                            let name = results["name"],
-                            let imageDict = results["image"] as? [String: String],
-                            let gameImageUrl = imageDict["icon_url"]
-                        {
-                            createGameObject(gameName: name as! String, imageURL: gameImageUrl, gameID: id)
-                            print(name)
-                            print(gameImageUrl)
-                        }
-                    } catch let error as NSError {
-                        print(error.localizedDescription)
-                    }
-                } else if let error = error {
-                    print(error.localizedDescription)
-                }
-            }
-        task.resume()
-        i += 1
-
-        }
-    }
 }
 
-private func createGameObject(gameName: String, imageURL: String, gameID: String) {
-    let game = Game()
-    game.title = gameName
-    game.imageURL = imageURL
-    game.apiGameID = gameID
-    
-    let realm = try! Realm()
-    try! realm.write {
-        realm.add(game)
-    }
-}
-
-//
-//{
-//    "error": "OK",
-//    "limit": 1,
-//    "offset": 0,
-//    "number_of_page_results": 1,
-//    "number_of_total_results": 1,
-//    "status_code": 1,
-//    "results": {
-//        "image": {
-//            "icon_url": "https://www.giantbomb.com/api/image/square_avatar/2852990-overwatch.jpg",
-//            "medium_url": "https://www.giantbomb.com/api/image/scale_medium/2852990-overwatch.jpg",
-//            "screen_url": "https://www.giantbomb.com/api/image/screen_medium/2852990-overwatch.jpg",
-//            "screen_large_url": "https://www.giantbomb.com/api/image/screen_kubrick/2852990-overwatch.jpg",
-//            "small_url": "https://www.giantbomb.com/api/image/scale_small/2852990-overwatch.jpg",
-//            "super_url": "https://www.giantbomb.com/api/image/scale_large/2852990-overwatch.jpg",
-//            "thumb_url": "https://www.giantbomb.com/api/image/scale_avatar/2852990-overwatch.jpg",
-//            "tiny_url": "https://www.giantbomb.com/api/image/square_mini/2852990-overwatch.jpg",
-//            "original_url": "https://www.giantbomb.com/api/image/original/2852990-overwatch.jpg",
-//            "image_tags": "All Images,Box Art"
-//        },
-//        "name": "Overwatch"
-//    },
-//    "version": "1.0"
-//}
 
 

@@ -8,12 +8,8 @@
 
 import UIKit
 import RealmSwift
-// Do I actually need this?
-import Foundation
 
 class GameTableViewCell: UITableViewCell {
-
     @IBOutlet weak var gameTitleLabel: UILabel!
-    
     @IBOutlet weak var gameImageView: UIImageView!
 }
