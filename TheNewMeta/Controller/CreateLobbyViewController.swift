@@ -24,19 +24,20 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        print("This is the crrentAPIGames title: ", currentAPIGames[row].title)
         return currentAPIGames[row].title
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        pickerLabelView.text = testArray[row]
-        initialPickerField.text = testArray[row]
+        pickerLabelView.text = currentAPIGames[row].title
+        initialPickerField.text = currentAPIGames[row].title
     }
-    
     
     // Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getData()
         setupLayout()
         findSignedInUser()
         
@@ -48,11 +49,12 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         initialPickerField.inputView = pickerView
 
         self.title = "Create Lobby"
-        
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(tap(gestureReconizer:)))
-//        // If the picker label is tapped
-//        initialPickerField.addGestureRecognizer(tap)
-//        initialPickerField.isUserInteractionEnabled = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        playersFieldView.text = ""
+        msgFieldView.text = ""
+        initialPickerField.text = ""
     }
     
     // When the user clicks on the screen the editing of the text field picker will close
@@ -60,18 +62,10 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         self.view.endEditing(true)
     }
     
-    // Gesture recognition for the picker
-//    @objc func tap(gestureReconizer: UITapGestureRecognizer) {
-//        print("*")
-//        pickerView.isHidden = false
-//    }
-//
-    // Actions
-    
-    @objc func createLobby(_ sender: UIButton) {
+    @objc private func createLobby(_ sender: UIButton) {
         if checkInputs() {
-            // This game is either a new created game OR an existing game
-//            let game = getGame(gameTitle: gameFieldView.text!)
+            // This game will always exist
+            let game = getGame(gameTitle: initialPickerField.text!)
             let newLobby = createNewLobby()
             
             // Perform the migration
@@ -79,53 +73,61 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
             
             // Write to the database
             try! realm.write {
-//                realm.add(game!)
                 realm.add(newLobby)
                 
                 // Add the newlobby to the game instance
                 // This should automatically update the newLobby.game property of a lobby
-//                game!.matchingLobbies.append(newLobby)
+                game!.matchingLobbies.append(newLobby)
                 newLobby.lobbyUsers.append(signedInUser)
                 signedInUser.createdLobbies.append(newLobby)
                 print("This is my signed in useres created lobbies: \(signedInUser.joinedLobbies)")
                 successCreationAlert()
-                // TODO: Segue into the main view controller
             }
         }
     }
     
     // Keyboard return after the textfield is done being edited
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        self.view.endEditing(true)
+//        return false
+//    }
+    // Keyboard clicks
+    
+    // Hide the keyboard if the text field is the picker field
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == initialPickerField {
+            pickerView.isHidden = false
+            return false
+        }
+        return true
+    }
+    
+    // Hide keyboard when the user clicks on the view
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        pickerView.isHidden = false
-        return true
-    }
-    
     private func checkInputs() -> Bool {
-        if playersFieldView.text == "" || msgFieldView.text == "" {
-
-//        if gameFieldView.text == "" || playersFieldView.text == "" || msgFieldView.text == "" {
+        if msgFieldView.text == "" || playersFieldView.text == "" || msgFieldView.text == "" {
             failAlert()
             return false
         }
         return true
     }
     
-//    private func getGame(gameTitle: String) -> Game? {
-//        let realm = try! Realm()
-//        let returnedGame = realm.objects(Game.self).filter("title = '\(gameTitle)'").first
-//
-//        // print("This is the number of matching games by title: \(returnedGame)")
-//        if returnedGame != nil {
-//            return returnedGame
-//        } else {
-////            return createGame()
-//        }
-//    }
+    private func getGame(gameTitle: String) -> Game? {
+        var i = 0
+        while i < currentAPIGames.count {
+            if currentAPIGames[i].title == gameTitle {
+                return currentAPIGames[i]
+            } else {
+                print("This game does not exist!")
+            }
+            i += 1
+        }
+        return nil
+    }
     
     private func getData() {
         let realm = try! Realm()
@@ -133,13 +135,8 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         for game in returnedGames {
             currentAPIGames.append(game)
         }
+        print("This is the current Games count:", currentAPIGames.count)
     }
-    
-//    private func createGame() -> Game {
-//        let newGame = Game()
-//        newGame.title = gameFieldView.text!
-//        return newGame
-//    }
     
     private func createNewLobby() -> Lobby {
         let lobby = Lobby()
@@ -196,7 +193,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         initialLabel.layer.masksToBounds = true
         initialLabel.layer.cornerRadius = 5
         initialLabel.textAlignment = .center
-        initialLabel.text = "Choose a game"
+        initialLabel.placeholder = "Choose a game"
         return initialLabel
     }()
     
@@ -217,14 +214,13 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         return label
     }()
     
-    // TEST PICKER GESTURE
-    
     let playersFieldView: UITextField = {
         let playersField = UITextField()
         playersField.translatesAutoresizingMaskIntoConstraints = false
         playersField.backgroundColor = .white
         playersField.layer.cornerRadius = 5
         playersField.textAlignment = .center
+//        playersField.isUserInteractionEnabled = true
         playersField.placeholder = "Please enter the number of players"
         return playersField
     }()
