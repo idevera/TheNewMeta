@@ -14,38 +14,25 @@ import RealmSwift
 class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     private var signedInUser = User()
     private var currentAPIGames: [Game] = [Game]()
-    var testArray = ["1", "2", "3"]
-    
-
-    
-    // Lable for each of item in the test Array
-    var pickerLabelView: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return testArray.count
-//        return currentAPIGames.count
+        return currentAPIGames.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return testArray[row]
-//        return currentAPIGames[row].title
+        return currentAPIGames[row].title
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickerLabelView.text = testArray[row]
-        self.view.endEditing(true)
+        initialPickerField.text = testArray[row]
     }
     
-
-
+    
     // Overrides
     
     override func viewDidLoad() {
@@ -58,20 +45,27 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
         
+        initialPickerField.inputView = pickerView
+
         self.title = "Create Lobby"
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tap(gestureReconizer:)))
-        // If the picker label is tapped
-        initialPickerLabel.addGestureRecognizer(tap)
-        initialPickerLabel.isUserInteractionEnabled = true
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(tap(gestureReconizer:)))
+//        // If the picker label is tapped
+//        initialPickerField.addGestureRecognizer(tap)
+//        initialPickerField.isUserInteractionEnabled = true
+    }
+    
+    // When the user clicks on the screen the editing of the text field picker will close
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     // Gesture recognition for the picker
-    @objc func tap(gestureReconizer: UITapGestureRecognizer) {
-        print("*")
-        pickerView.isHidden = false
-    }
-    
+//    @objc func tap(gestureReconizer: UITapGestureRecognizer) {
+//        print("*")
+//        pickerView.isHidden = false
+//    }
+//
     // Actions
     
     @objc func createLobby(_ sender: UIButton) {
@@ -104,6 +98,11 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        pickerView.isHidden = false
+        return true
     }
     
     private func checkInputs() -> Bool {
@@ -190,8 +189,8 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
     // Views and Constraints
     
     // Initial label to choose a game
-    var initialPickerLabel: UILabel = {
-        let initialLabel = UILabel()
+    var initialPickerField: UITextField = {
+        let initialLabel = UITextField()
         initialLabel.translatesAutoresizingMaskIntoConstraints = false
         initialLabel.backgroundColor = .white
         initialLabel.layer.masksToBounds = true
@@ -206,8 +205,16 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         let picker = UIPickerView()
         //        picker.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.isHidden = true
+//        picker.backgroundColor = .
+        picker.isHidden = false
         return picker
+    }()
+    
+    // Label for each of item in the test Array
+    var pickerLabelView: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     // TEST PICKER GESTURE
@@ -243,20 +250,18 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         return submitButton
     }()
     
-//// TEST
-
+    // Setup View Layout
     
     private func setupLayout() {
         view.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
         
         view.addSubview(playersFieldView)
-        view.addSubview(initialPickerLabel)
-//        view.addSubview(gameFieldView)
+        view.addSubview(initialPickerField)
         view.addSubview(msgFieldView)
-        view.addSubview(pickerView)
+        view.addSubview(submitButtonView)
+        
         // Have the pickerView add each label
         pickerView.addSubview(pickerLabelView)
-        view.addSubview(submitButtonView)
 
 
         // Player
@@ -266,16 +271,11 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         playersFieldView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
         
         // Initial PickerLabel on click
-        initialPickerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        initialPickerLabel.bottomAnchor.constraint(equalTo: playersFieldView.topAnchor, constant: -20).isActive = true
-        initialPickerLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
-        initialPickerLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        initialPickerField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        initialPickerField.bottomAnchor.constraint(equalTo: playersFieldView.topAnchor, constant: -20).isActive = true
+        initialPickerField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
+        initialPickerField.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
 
-//        gameFieldView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        gameFieldView.bottomAnchor.constraint(equalTo: playersFieldView.topAnchor, constant: -20).isActive = true
-//        gameFieldView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
-//        gameFieldView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-//
         msgFieldView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         msgFieldView.topAnchor.constraint(equalTo: playersFieldView.bottomAnchor, constant: 20).isActive = true
         msgFieldView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
