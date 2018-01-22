@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -250,41 +251,42 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameTitleCell" rowHeight="238" id="T2k-Jc-Lx4" customClass="GameTableViewCell" customModule="TheNewMeta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="84" width="375" height="238"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameTitleCell" rowHeight="180" id="T2k-Jc-Lx4" customClass="GameTableViewCell" customModule="TheNewMeta" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="84" width="375" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T2k-Jc-Lx4" id="pvp-xC-zk2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="237.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="179.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vbA-8B-13c">
-                                                    <rect key="frame" x="15" y="20" width="95" height="191"/>
+                                                    <rect key="frame" x="15" y="15" width="120" height="149.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="95" id="IcM-ws-jJe"/>
+                                                        <constraint firstAttribute="height" constant="150" id="4HJ-7A-5bz"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pmk-Vc-Mzp">
-                                                    <rect key="frame" x="126" y="26" width="234" height="179"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6z1-RE-gUW">
+                                                    <rect key="frame" x="150" y="62" width="210" height="55"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Pmk-Vc-Mzp" firstAttribute="top" secondItem="pvp-xC-zk2" secondAttribute="top" constant="26" id="DTS-6C-yIn"/>
-                                                <constraint firstAttribute="bottom" secondItem="Pmk-Vc-Mzp" secondAttribute="bottom" constant="32.5" id="KcR-Kt-4Yk"/>
-                                                <constraint firstAttribute="trailing" secondItem="Pmk-Vc-Mzp" secondAttribute="trailing" constant="15" id="gDd-9W-A8m"/>
-                                                <constraint firstItem="Pmk-Vc-Mzp" firstAttribute="leading" secondItem="vbA-8B-13c" secondAttribute="trailing" constant="16" id="s98-MU-Drx"/>
+                                                <constraint firstItem="vbA-8B-13c" firstAttribute="leading" secondItem="pvp-xC-zk2" secondAttribute="leading" constant="15" id="21M-V6-HYD"/>
+                                                <constraint firstItem="vbA-8B-13c" firstAttribute="top" secondItem="pvp-xC-zk2" secondAttribute="top" constant="15" id="3fi-AW-Y3c"/>
+                                                <constraint firstItem="6z1-RE-gUW" firstAttribute="width" secondItem="pvp-xC-zk2" secondAttribute="width" multiplier="0.6" constant="-15" id="aGW-K0-qPV"/>
+                                                <constraint firstItem="6z1-RE-gUW" firstAttribute="leading" secondItem="vbA-8B-13c" secondAttribute="trailing" constant="15" id="aat-Mu-Ii3"/>
+                                                <constraint firstAttribute="bottom" secondItem="vbA-8B-13c" secondAttribute="bottom" constant="15" id="al9-kF-YIe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="vbA-8B-13c" firstAttribute="top" secondItem="T2k-Jc-Lx4" secondAttribute="top" constant="20" id="bjy-nU-YTc"/>
-                                            <constraint firstAttribute="bottom" secondItem="vbA-8B-13c" secondAttribute="bottom" constant="27" id="uiv-pX-bY6"/>
-                                            <constraint firstItem="vbA-8B-13c" firstAttribute="leading" secondItem="T2k-Jc-Lx4" secondAttribute="leading" constant="15" id="vaf-we-8im"/>
+                                            <constraint firstAttribute="trailing" secondItem="6z1-RE-gUW" secondAttribute="trailing" constant="15" id="1AS-bZ-k0S"/>
+                                            <constraint firstAttribute="bottom" secondItem="6z1-RE-gUW" secondAttribute="bottom" constant="63" id="3NK-cC-Pop"/>
+                                            <constraint firstItem="6z1-RE-gUW" firstAttribute="top" secondItem="T2k-Jc-Lx4" secondAttribute="top" constant="62" id="RGI-23-jju"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="gameImageView" destination="vbA-8B-13c" id="r0Z-zI-WhQ"/>
-                                            <outlet property="gameTitleLabel" destination="Pmk-Vc-Mzp" id="dlY-Cf-zKd"/>
+                                            <outlet property="gameTitleLabel" destination="6z1-RE-gUW" id="8cl-j6-GlC"/>
                                             <segue destination="f7B-e8-TeQ" kind="show" identifier="LobbyGames" id="snD-dC-tka"/>
                                         </connections>
                                     </tableViewCell>
@@ -314,7 +316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ost-yK-47z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5445.6000000000004" y="-875.71214392803608"/>
+            <point key="canvasLocation" x="5444" y="-876.61169415292363"/>
         </scene>
         <!--Available Lobby Controller-->
         <scene sceneID="SdZ-cU-51p">

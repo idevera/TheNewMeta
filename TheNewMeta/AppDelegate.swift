@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    let gameApiIds = ["3030-48190", "3030-48320"]
+    let gameApiIds = ["3030-48190", "3030-48320", "3030-54979", "3030-32887", "3030-24024"]
     var apiKey = String()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -97,22 +97,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func getCurrentGames() {
         let realm = try! Realm()
-        
         let returnedGame = realm.objects(Game.self)
-        var i = 0
-        var currentGamesIDs = [String]()
         
-        while i < returnedGame.count {
-            currentGamesIDs.append(returnedGame[i].apiGameID)
-            i += 1
-        }
-        
-        while i < gameApiIds.count {
-            if currentGamesIDs.contains(gameApiIds[i]) {
-                getGameJsonData()
-            } else {
-                print("These games have already been created!")
-            }
+        if returnedGame.count > 0 {
+           print("These games have already been created!")
+        } else {
+            getGameJsonData()
         }
     }
     
@@ -131,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             let results = json["results"] as? [String: Any],
                             let name = results["name"],
                             let imageDict = results["image"] as? [String: String],
-                            let gameImageUrl = imageDict["icon_url"]
+                            let gameImageUrl = imageDict["thumb_url"]
                         {
                             self.createGameObject(gameName: name as! String, imageURL: gameImageUrl, gameID: id)
                         }
@@ -144,7 +134,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             task.resume()
             i += 1
-            
         }
     }
     
@@ -157,9 +146,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let realm = try! Realm()
         try! realm.write {
             realm.add(game)
+            print("Sucessfully created a each game")
         }
     }
-
-
 }
 

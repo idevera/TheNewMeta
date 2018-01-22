@@ -83,6 +83,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.emailTagView.delegate = self
         self.pwTagView.delegate = self
         self.gamerTagView.delegate = self
+//        let realm = try! Realm()
+//        try! realm.write {
+//            realm.deleteAll()
+//        }
     }
     
     // TODO: Decide if I want to use this

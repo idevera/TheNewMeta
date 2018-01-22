@@ -55,17 +55,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // Get these to be the images of the API call
         let currentImageURL = URL(string: game.imageURL)
-        print("This is the game object URL: ", game.imageURL)
+//        print("This is the game object URL: ", game.imageURL)
         // Make images load asynchronously from the main UI thread
         // https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
         DispatchQueue.global().async {
             if let data = try? Data(contentsOf: currentImageURL!) {
                 DispatchQueue.main.async {
-                    print("Attempting to add game image")
-                    let gameImageView = UIImageView(image: UIImage(data: data))
-//                    self.view.addSubview(gameImageView)
-                    cell.gameImageView = gameImageView
-
+                    cell.gameImageView.image = UIImage(data: data)
                 }
             }
         }
@@ -111,7 +107,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         for game in returnedGames {
             currentGames.append(game)
         }
-        print (currentGames.count)
     }
     
     private func findSignedInUser() {
@@ -149,17 +144,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableViewContent.dataSource = self
         searchBarView.delegate = self
         
+        
+
         self.title = "Search Games"
     }
     
-    // Reloads the data inside the table view each time the user goes back to this page
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        currentGames = [Game]()
-        
-        getData()
-        filteredData = currentGames
-        self.tableViewContent.reloadData()
+    func viewWillAppear() {
+        tableViewContent.estimatedRowHeight = 160
+        tableViewContent.rowHeight = UITableViewAutomaticDimension
     }
 }
 
