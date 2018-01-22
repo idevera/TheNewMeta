@@ -27,6 +27,39 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         showLoginView()
     }
     
+    // Overrides
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // If there is a segue that is labeld as "Lobby Games" AND a tableview cell is selected, pull out the object from the filteredData array that was clicked and then make it equal to the controller attribute
+        if segue.identifier == "LobbyGames" {
+            if let indexPath = tableViewContent.indexPathForSelectedRow {
+                let gameObject = filteredData[indexPath.row]
+                let controller = segue.destination as? AvailableLobbyViewController
+                controller?.chosenGame = gameObject
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Get Data from the Realm Database
+        getData()
+        filteredData = currentGames
+        
+        tableViewContent.delegate = self
+        tableViewContent.dataSource = self
+        searchBarView.delegate = self
+        
+        tableViewContent.estimatedRowHeight = 160
+        tableViewContent.rowHeight = UITableViewAutomaticDimension
+        self.title = "Search Games"
+        
+        // Tap gesture to exit keyboard after tap
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
+    }
+    
     // Table View for all games
 
     // How many sections in your table
@@ -69,6 +102,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Return the cell view
         return cell
     }
+
     
     // The search bar is dynamic. With each searchText
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -84,20 +118,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         self.tableViewContent.reloadData()
     }
-    
-    @objc func showLoginView () {
-        findSignedInUser()
-        removeSignedInUserID()
 
-        let alert = UIAlertController(title: "Succesfully Logged Out!", message: "Come back again soon!", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
-            (_)in
-            self.dismiss(animated: true, completion: nil)
-        })
-
-        alert.addAction(OKAction)
-        self.present(alert, animated: true, completion: nil)
-    }
     
     // Private functions
     
@@ -121,36 +142,24 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print("\(String(describing: UserDefaults.standard.string(forKey: "userID")))")
     }
     
-    // Overrides
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // If there is a segue that is labeld as "Lobby Games" AND a tableview cell is selected, pull out the object from the filteredData array that was clicked and then make it equal to the controller attribute
-        if segue.identifier == "LobbyGames" {
-            if let indexPath = tableViewContent.indexPathForSelectedRow {
-                let gameObject = filteredData[indexPath.row]
-                let controller = segue.destination as? AvailableLobbyViewController
-                controller?.chosenGame = gameObject
-            }
-        }
+    @objc private func showLoginView () {
+        findSignedInUser()
+        removeSignedInUserID()
+        
+        let alert = UIAlertController(title: "Succesfully Logged Out!", message: "Come back again soon!", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+            (_)in
+            self.dismiss(animated: true, completion: nil)
+        })
+        
+        alert.addAction(OKAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Get Data from the Realm Database
-        getData()
-        filteredData = currentGames
 
-        tableViewContent.delegate = self
-        tableViewContent.dataSource = self
-        searchBarView.delegate = self
-
-        tableViewContent.estimatedRowHeight = 160
-        tableViewContent.rowHeight = UITableViewAutomaticDimension
-        self.title = "Search Games"
-    }
-    
-    func viewWillAppear() {
-
+    @objc private func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 }
 

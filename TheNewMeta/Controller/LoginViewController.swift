@@ -14,9 +14,25 @@ import Lottie
 // Inherits from the UIViewController
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
+    // Properties
+    
     var gamerTag = ""
     var email = ""
     var password = ""
+    
+    // Overrides
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupLayout()
+        self.emailTagView.delegate = self
+        self.pwTagView.delegate = self
+        self.gamerTagView.delegate = self
+        //        let realm = try! Realm()
+        //        try! realm.write {
+        //            realm.deleteAll()
+        //        }
+    }
     
     // Sign in button function
     @objc func signIn(_ sender: Any) {
@@ -44,6 +60,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         present(tabController, animated: true, completion: nil)
     }
     
+    // Keyboard returns after editing the text field
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
@@ -52,7 +70,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // Private Functions
     
     // Need to add a arrow function to the declare the type that is being returned. Else it will return as a void function.
-    // TODO: Could this be a self method?
     private func createUser() -> String {
         let user = User()
 
@@ -74,28 +91,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         UserDefaults.standard.set(userID, forKey: "userID")
         UserDefaults.standard.synchronize()
     }
-    
-    // Overrides
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupLayout()
-        self.emailTagView.delegate = self
-        self.pwTagView.delegate = self
-        self.gamerTagView.delegate = self
-//        let realm = try! Realm()
-//        try! realm.write {
-//            realm.deleteAll()
-//        }
-    }
-    
-    // TODO: Decide if I want to use this
-//    override func viewDidLayoutSubviews() {
-//        self.gamerTagView.underlined(borderColor: .black)
-//        self.emailTagView.underlined(borderColor: .black)
-//        self.pwTagView.underlined(borderColor: .black)
-////        self.loginButtonView.loginStyle()
-//    }
+   
+        // TODO: Decide if I want to use this
+    //    override func viewDidLayoutSubviews() {
+    //        self.gamerTagView.underlined(borderColor: .black)
+    //        self.emailTagView.underlined(borderColor: .black)
+    //        self.pwTagView.underlined(borderColor: .black)
+    ////        self.loginButtonView.loginStyle()
+    //    }
     
     // Create Views
     

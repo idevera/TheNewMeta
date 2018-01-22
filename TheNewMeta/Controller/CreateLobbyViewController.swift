@@ -10,7 +10,11 @@ import Foundation
 import UIKit
 import RealmSwift
 
-// Set global variables?
+//extension UINavigationBar {
+//    override open func sizeThatFits(_ size: CGSize) -> CGSize {
+//        return CGSize(width: UIScreen.main.bounds.size.width, height: 80.0)
+//    }
+//}
 
 class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
     
@@ -25,6 +29,28 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         self.gameFieldView.delegate = self
         self.playersFieldView.delegate = self
         self.msgFieldView.delegate = self
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Create the navigation bar
+
+//        let navigationBar = UINavigationBar() // set frame here
+//        navigationBar.translatesAutoresizingMaskIntoConstraints = false
+//        frame: CGRect(
+//        origin: CGPoint(x: 0, y:0),
+//        size: CGSize(width: self.view.frame.size.width, height: 100)))
+        //set the background color
+//        navigationBar.backgroundColor = .white
+//        navigationBar.delegate = self
+        
+        // Create a navigation item with a title
+//        let navigationItem = UINavigationItem()
+//        navigationItem.title = "Title" //If you want to set a title set here.Whatever you want set here.
+        
+        // Make the navigation bar a subview of the current view controller
+//        self.view.addSubview(navigationBar)
+//        navigationBar.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+//        navigationBar.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
     }
     
     // Actions
