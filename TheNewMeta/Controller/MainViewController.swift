@@ -143,15 +143,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableViewContent.delegate = self
         tableViewContent.dataSource = self
         searchBarView.delegate = self
-        
-        
 
+        tableViewContent.estimatedRowHeight = 160
+        tableViewContent.rowHeight = UITableViewAutomaticDimension
         self.title = "Search Games"
     }
     
     func viewWillAppear() {
-        tableViewContent.estimatedRowHeight = 160
-        tableViewContent.rowHeight = UITableViewAutomaticDimension
+
     }
 }
 
