@@ -29,28 +29,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         self.gameFieldView.delegate = self
         self.playersFieldView.delegate = self
         self.msgFieldView.delegate = self
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        // Create the navigation bar
-
-//        let navigationBar = UINavigationBar() // set frame here
-//        navigationBar.translatesAutoresizingMaskIntoConstraints = false
-//        frame: CGRect(
-//        origin: CGPoint(x: 0, y:0),
-//        size: CGSize(width: self.view.frame.size.width, height: 100)))
-        //set the background color
-//        navigationBar.backgroundColor = .white
-//        navigationBar.delegate = self
-        
-        // Create a navigation item with a title
-//        let navigationItem = UINavigationItem()
-//        navigationItem.title = "Title" //If you want to set a title set here.Whatever you want set here.
-        
-        // Make the navigation bar a subview of the current view controller
-//        self.view.addSubview(navigationBar)
-//        navigationBar.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-//        navigationBar.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
+        self.title = "Create Lobby"
     }
     
     // Actions
@@ -163,7 +142,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         let gameField = UITextField()
         gameField.translatesAutoresizingMaskIntoConstraints = false
         gameField.backgroundColor = .white
-        gameField.layer.cornerRadius = 10
+        gameField.layer.cornerRadius = 5
         gameField.textAlignment = .center
         gameField.placeholder = "Enter the name of your game"
         return gameField
@@ -173,7 +152,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         let playersField = UITextField()
         playersField.translatesAutoresizingMaskIntoConstraints = false
         playersField.backgroundColor = .white
-        playersField.layer.cornerRadius = 10
+        playersField.layer.cornerRadius = 5
         playersField.textAlignment = .center
         playersField.placeholder = "Please enter the number of players"
         return playersField
@@ -183,7 +162,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         let msgField = UITextField()
         msgField.translatesAutoresizingMaskIntoConstraints = false
         msgField.backgroundColor = .white
-        msgField.layer.cornerRadius = 10
+        msgField.layer.cornerRadius = 5
         msgField.textAlignment = .center
         msgField.placeholder = "Add a message to your challengers!"
         return msgField
@@ -193,7 +172,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         let submitButton = UIButton()
         submitButton.translatesAutoresizingMaskIntoConstraints = false
         submitButton.backgroundColor = .yellow
-        submitButton.layer.cornerRadius = 10
+        submitButton.layer.cornerRadius = 1
         submitButton.setTitle("Create Lobby", for: .normal)
         submitButton.setTitleColor(UIColor.darkGray, for: .normal)
         submitButton.addTarget(self, action: #selector(createLobby(_:)), for: .touchUpInside)
@@ -247,10 +226,6 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
 
 //        view.addSubview(navBarView)
 
-//        navBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        navBarView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-//        navBarView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-//
         playersFieldView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         playersFieldView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         playersFieldView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
@@ -260,7 +235,6 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         gameFieldView.bottomAnchor.constraint(equalTo: playersFieldView.topAnchor, constant: -20).isActive = true
         gameFieldView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
         gameFieldView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
-//        gameFieldView.topAnchor.constraint(equalTo: navBarView.bottomAnchor).isActive = true
         
         msgFieldView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         msgFieldView.topAnchor.constraint(equalTo: playersFieldView.bottomAnchor, constant: 20).isActive = true
@@ -271,6 +245,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate {
         submitButtonView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         submitButtonView.topAnchor.constraint(equalTo: msgFieldView.bottomAnchor, constant: 20).isActive = true
         submitButtonView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
+        submitButtonView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
     }
 }
 
