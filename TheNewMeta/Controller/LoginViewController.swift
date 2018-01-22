@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import RealmSwift
 import Lottie
+import RxSwift
+import Hue
 
 // Inherits from the UIViewController
 class LoginViewController: UIViewController, UITextFieldDelegate {
@@ -22,12 +24,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Overrides
     
+//    lazy var gradient: CAGradientLayer = [
+//        UIColor(hex: "#FD4340"),
+//        UIColor(hex: "#CE2BAE")
+//        ].gradient { gradient in
+//            gradient.speed = 0
+//            gradient.timeOffset = 0
+//
+//            return gradient
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
         self.emailTagView.delegate = self
         self.pwTagView.delegate = self
         self.gamerTagView.delegate = self
+//        view.backgroundColor = gradient
         //        let realm = try! Realm()
         //        try! realm.write {
         //            realm.deleteAll()
