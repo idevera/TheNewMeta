@@ -19,7 +19,7 @@ class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDele
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.dataSource = self
         cv.delegate = self
-        cv.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
+        cv.backgroundColor =  UIColor(hex: "#B7C3F3")
         return cv
     }()
     
@@ -53,7 +53,7 @@ class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDele
         cell.backgroundColor = .white
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1
-        cell.layer.cornerRadius = 8
+//        cell.layer.cornerRadius = 8
         cell.cancelButtonView.layer.setValue(lobby, forKey: "index")
         cell.cancelButtonView.addTarget(self, action: #selector(cancelLobby), for: .touchUpInside)
         

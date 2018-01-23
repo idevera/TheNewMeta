@@ -145,7 +145,7 @@ class LobbyCell: BaseCell {
     
     let leaveButtonView: UIButton = {
         let leaveButton = UIButton()
-        leaveButton.backgroundColor = .red
+        leaveButton.setTitleColor(UIColor.red, for: .normal)
         leaveButton.translatesAutoresizingMaskIntoConstraints = false
         leaveButton.setTitle("Leave?", for: .normal)
         return leaveButton
@@ -175,7 +175,7 @@ class LobbyCell: BaseCell {
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.4, constant: 0))
-        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.8, constant: 5))
+        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.7, constant: 5))
 
         // Leave Button View
         addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
@@ -207,7 +207,8 @@ class HostedCell: BaseCell {
     
     let cancelButtonView: UIButton = {
         let cancelButton = UIButton()
-        cancelButton.backgroundColor = .blue
+//        cancelButton.backgroundColor = .blue
+        cancelButton.setTitleColor(UIColor.red, for: .normal)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         cancelButton.setTitle("Cancel?", for: .normal)
         return cancelButton

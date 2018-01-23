@@ -20,7 +20,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.dataSource = self
         cv.delegate = self
-        cv.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
+        cv.backgroundColor = UIColor(hex: "#B7C3F3")
         return cv
     }()
     
@@ -58,7 +58,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         cell.backgroundColor = .white
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1
-        cell.layer.cornerRadius = 8
+//        cell.layer.cornerRadius = 8
         cell.leaveButtonView.layer.setValue(lobby, forKey: "index")
         cell.leaveButtonView.addTarget(self, action: #selector(leaveLobby), for: .touchUpInside)
 

@@ -249,7 +249,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
     // Setup View Layout
     
     private func setupLayout() {
-        view.backgroundColor = UIColor(red:0.53, green:0.77, blue:0.80, alpha:1.0)
+        view.backgroundColor = UIColor(hex: "#B7C3F3")
         
         view.addSubview(playersFieldView)
         view.addSubview(initialPickerField)
