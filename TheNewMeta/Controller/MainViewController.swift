@@ -44,17 +44,17 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.title = "Search Games"
         
         // Tap gesture to exit keyboard after tap
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+//        view.addGestureRecognizer(tap)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // If there is a segue that is labeled as "Lobby Games" AND a tableview cell is selected, pull out the object from the filteredData array that was clicked and then make it equal to the controller attribute
         print("I am in the segue, before the identifier")
 
-        if segue.identifier == "LobbyGames" {
-            print("I am in the segue")
+        if segue.identifier == "LobbyGamesID" {
             if let indexPath = tableViewContent.indexPathForSelectedRow {
+                print(indexPath)
                 let gameObject = filteredData[indexPath.row]
                 let controller = segue.destination as? AvailableLobbyViewController
                 controller?.chosenGame = gameObject
@@ -104,17 +104,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Return the cell view
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        NSLog("You selected cell number: \(indexPath.row)!")
-//        self.performSegue(withIdentifier: "LobbyGames", sender: self)
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("This this actually segue?")
-//        self.performSegue(withIdentifier: "LobbyGames", sender: self)
-//    }
-
     
     // The search bar is dynamic. With each searchText
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -167,10 +156,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.present(alert, animated: true, completion: nil)
     }
     
-    @objc private func dismissKeyboard() {
-        // Causes the view (or one of its embedded text fields to resign the first responder status.
-        view.endEditing(true)
-    }
+//    @objc private func dismissKeyboard() {
+//        // Causes the view (or one of its embedded text fields to resign the first responder status.
+//        view.endEditing(true)
+//    }
 }
 
 

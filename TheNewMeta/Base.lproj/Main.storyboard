@@ -305,7 +305,7 @@
                                         <connections>
                                             <outlet property="gameImageView" destination="vbA-8B-13c" id="r0Z-zI-WhQ"/>
                                             <outlet property="gameTitleLabel" destination="6z1-RE-gUW" id="8cl-j6-GlC"/>
-                                            <segue destination="f7B-e8-TeQ" kind="show" identifier="LobbyGames" id="TDE-DC-eJq"/>
+                                            <segue destination="f7B-e8-TeQ" kind="show" identifier="LobbyGamesID" id="Nyx-Uo-FTD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
