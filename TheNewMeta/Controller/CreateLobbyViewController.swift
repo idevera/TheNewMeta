@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import RealmSwift
+import Hue
 
 
 class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -203,7 +204,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         initialLabel.layer.masksToBounds = true
         initialLabel.layer.cornerRadius = 5
         initialLabel.textAlignment = .center
-        initialLabel.placeholder = "Choose a game"
+        initialLabel.placeholder = "Click to choose a game"
         return initialLabel
     }()
     
@@ -231,7 +232,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         playersField.layer.cornerRadius = 5
         playersField.textAlignment = .center
 //        playersField.isUserInteractionEnabled = true
-        playersField.placeholder = "Please enter the number of players"
+        playersField.placeholder = "Number of Players?"
         return playersField
     }()
     
@@ -241,7 +242,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         msgField.backgroundColor = .white
         msgField.layer.cornerRadius = 5
         msgField.textAlignment = .center
-        msgField.placeholder = "Add a message to your challengers!"
+        msgField.placeholder = "Message to your challengers"
         return msgField
     }()
     
@@ -260,7 +261,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     private func setupLayout() {
         view.backgroundColor = UIColor(hex: "#B7C3F3")
-        
+
         view.addSubview(playersFieldView)
         view.addSubview(initialPickerField)
         view.addSubview(msgFieldView)

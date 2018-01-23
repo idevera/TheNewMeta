@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ka1.tff</string>
+	</array>
 	<key>GIANT_BOMB_API_KEY</key>
 	<string>1b42297a5dfc94855e6596e6d0039a22976c26b2</string>
 	<key>CFBundleDevelopmentRegion</key>

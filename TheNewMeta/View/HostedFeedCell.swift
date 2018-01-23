@@ -19,7 +19,7 @@ class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDele
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.dataSource = self
         cv.delegate = self
-        cv.backgroundColor =  UIColor(hex: "#B7C3F3")
+        cv.backgroundColor = .clear
         return cv
     }()
     
@@ -50,8 +50,8 @@ class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDele
         
         cell.gameLabel.text = lobby.game.title
         cell.currentNumPlayers.text = "Total Players: \(String(lobby.numberOfPlayers))"
-        cell.backgroundColor = .white
-        cell.layer.borderColor = UIColor.black.cgColor
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.8)
+        cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 1
 //        cell.layer.cornerRadius = 8
         cell.cancelButtonView.layer.setValue(lobby, forKey: "index")

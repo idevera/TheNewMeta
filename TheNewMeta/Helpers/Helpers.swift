@@ -22,10 +22,4 @@ extension UITextField {
     }
 }
 
-//extension UIButton {
-//    func loginStyle() {
-//        self.backgroundColor = UIColor(red:177.0/255.0, green:143.0/255.0, blue:207.0/255.0, alpha: 0)
-//    }
-//}
-
 

@@ -35,7 +35,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.layer.addSublayer(gradient)
+        view.layer.addSublayer(gradient)        
 //        view.backgroundColor = .clear
         setupLayout()
         self.emailTagView.delegate = self
@@ -139,7 +139,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textView.textAlignment = .center
         textView.backgroundColor = .clear
         textView.textColor = .black
-        textView.font = UIFont(name: "Arial", size: 24)
+        textView.font = UIFont(name: "ka1", size: 32)
         return textView
     }()
     
@@ -179,6 +179,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.backgroundColor = UIColor(hex: "#404E5C")
 //        loginButton.backgroundColor = UIColor(red: 177/255.0, green: 143/255.0, blue: 207/255.0, alpha: 1.0)
+        loginButton.setTitle("LOGIN", for: .normal)
+//        loginButton.titleLabel?.font = UIFont(name: "Karmatic Arcade", size: 32.0)
+//        loginButton.titleLabel?.font = UIFont(name: "Open Sans", size: 32.0)
         loginButton.layer.cornerRadius = 1
         return loginButton
     }()
@@ -264,7 +267,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButtonView.widthAnchor.constraint(equalTo: bottomViewContainer.widthAnchor, multiplier: 0.7).isActive = true
         loginButtonView.topAnchor.constraint(equalTo: pwTagView.bottomAnchor, constant: 40).isActive = true
         loginButtonView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
-        loginButtonView.setTitle("LOGIN", for: .normal)
         loginButtonView.addTarget(self, action: #selector(signIn), for: .touchUpInside)
     }
 }

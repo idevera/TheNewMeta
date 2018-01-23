@@ -26,7 +26,8 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.layer.addSublayer(gradient)
+//        self.view.layer.addSublayer(gradient)
+////        self.collectionView(gradient)
         self.view.layer.insertSublayer(gradient, at: 0)
         setupMenuBar()
         setupCollectionView()
@@ -104,7 +105,7 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellID)
         // Feed Cell 2
         collectionView?.register(HostedFeedCell.self, forCellWithReuseIdentifier: hostedID)
-
+        collectionView?.backgroundColor = .clear
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
             // minimizes the space between scrolls
