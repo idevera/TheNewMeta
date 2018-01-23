@@ -76,6 +76,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         if checkInputs() {
             // This game will always exist
             let game = getGame(gameTitle: initialPickerField.text!)
+            print("This game selected exists:", game)
             let newLobby = createNewLobby()
             
             // Perform the migration
@@ -84,12 +85,18 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
             // Write to the database
             try! realm.write {
                 realm.add(newLobby)
-                
-                // Add the newlobby to the game instance
+                print("This is the new lobby host ID:", newLobby.hostID)
+                // Add the newlobby to the game instance array
                 // This should automatically update the newLobby.game property of a lobby
                 game!.matchingLobbies.append(newLobby)
+                
+                // For this created lobby, add the signed in user as a lobby user
                 newLobby.lobbyUsers.append(signedInUser)
+                
+                // Signed in user, add the new lobby to your created Lobbies
                 signedInUser.createdLobbies.append(newLobby)
+                print("This is the signed in users ID:", signedInUser.userID)
+                
                 successCreationAlert()
             }
         }
@@ -157,7 +164,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         // It’s worth noting here that these getters will return optional values, so the type of name is String?. When the "name" key doesn’t exist, the code returns nil. It then makes sense to use optional binding to get the value safely:
         if let id = UserDefaults.standard.string(forKey: "userID") {
             lobby.hostID = id
-            // print("Lobby ID successfully saved for logged in user: \(lobby.hostID)")
+             print("Lobby ID successfully saved for logged in user: \(lobby.hostID)")
         }
         return lobby
     }

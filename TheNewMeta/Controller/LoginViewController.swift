@@ -6,7 +6,6 @@
 //  Copyright © 2018 Irene DeVera. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import RealmSwift
 import Lottie

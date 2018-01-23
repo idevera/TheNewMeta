@@ -20,8 +20,6 @@
 		CC7E049120056DED00C667EB /* JoinedLobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */; };
 		CC9AC9772011262600F1EF4D /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AC9762011262600F1EF4D /* FeedCell.swift */; };
 		CC9AC97F20114C8800F1EF4D /* HostedFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AC97E20114C8800F1EF4D /* HostedFeedCell.swift */; };
-		CCB8CE672009542D00F79B16 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE662009542D00F79B16 /* TestCell.swift */; };
-		CCB8CE69200954A200F79B16 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE68200954A200F79B16 /* TestViewController.swift */; };
 		CCB8CE6B2009611500F79B16 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE6A2009611500F79B16 /* TabBarViewController.swift */; };
 		CCB8CE7120096AE600F79B16 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE7020096AE600F79B16 /* MenuViewCell.swift */; };
 		CCB8CE7320097EA900F79B16 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8CE7220097EA900F79B16 /* Helpers.swift */; };
@@ -87,8 +85,6 @@
 		CC7E049020056DED00C667EB /* JoinedLobbyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedLobbyTableViewCell.swift; sourceTree = "<group>"; };
 		CC9AC9762011262600F1EF4D /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		CC9AC97E20114C8800F1EF4D /* HostedFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostedFeedCell.swift; sourceTree = "<group>"; };
-		CCB8CE662009542D00F79B16 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
-		CCB8CE68200954A200F79B16 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		CCB8CE6A2009611500F79B16 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CCB8CE7020096AE600F79B16 /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
 		CCB8CE7220097EA900F79B16 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -196,7 +192,6 @@
 				CCB8CE6A2009611500F79B16 /* TabBarViewController.swift */,
 				CC27185C1FFC88BA0061FCDD /* MainViewController.swift */,
 				CCF801251FFC42880089994B /* CreateLobbyViewController.swift */,
-				CC5DEC86200EBF07005FE322 /* EditProfileViewController.swift */,
 				CC1654CD2002C36B001DA633 /* AvailableLobbyViewController.swift */,
 				CC7E048E20056C4100C667EB /* UserJoinedLobbiesVC.swift */,
 			);
@@ -232,15 +227,14 @@
 				CCF801141FFC1BDD0089994B /* Realm.framework */,
 				CCF801131FFC1BDA0089994B /* RealmSwift.framework */,
 				CCF800E41FFC1B1D0089994B /* AppDelegate.swift */,
-				CCF801291FFC57BE0089994B /* ContainerViewController.swift */,
-				CC27185A1FFC801E0061FCDD /* SideMenuViewController.swift */,
 				CCA2C6B720107050006FEBB1 /* Model */,
 				CCA2C6B820107066006FEBB1 /* Controller */,
 				CCA2C6B620106FFE006FEBB1 /* View */,
 				CCA2C6B520106FD5006FEBB1 /* Helpers */,
 				CCF800E81FFC1B1D0089994B /* Main.storyboard */,
-				CCB8CE68200954A200F79B16 /* TestViewController.swift */,
-				CCB8CE662009542D00F79B16 /* TestCell.swift */,
+				CC5DEC86200EBF07005FE322 /* EditProfileViewController.swift */,
+				CCF801291FFC57BE0089994B /* ContainerViewController.swift */,
+				CC27185A1FFC801E0061FCDD /* SideMenuViewController.swift */,
 				CCF800EB1FFC1B1D0089994B /* Assets.xcassets */,
 				CCF800ED1FFC1B1D0089994B /* LaunchScreen.storyboard */,
 				CCF800F01FFC1B1D0089994B /* Info.plist */,
@@ -480,11 +474,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC6B142E201467FA0026D3BA /* CreateLobbyViewController.swift in Sources */,
-				CCB8CE69200954A200F79B16 /* TestViewController.swift in Sources */,
 				CC27185D1FFC88BA0061FCDD /* MainViewController.swift in Sources */,
 				CC1654CE2002C36B001DA633 /* AvailableLobbyViewController.swift in Sources */,
 				CCF8012A1FFC57BE0089994B /* ContainerViewController.swift in Sources */,
-				CCB8CE672009542D00F79B16 /* TestCell.swift in Sources */,
 				CCF8011E1FFC1DEC0089994B /* RealmObjects.swift in Sources */,
 				CC7E048F20056C4100C667EB /* UserJoinedLobbiesVC.swift in Sources */,
 				CCF800E71FFC1B1D0089994B /* LoginViewController.swift in Sources */,

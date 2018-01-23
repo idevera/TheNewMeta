@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 import RealmSwift
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
@@ -50,7 +49,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableViewContent.dataSource = self
         searchBarView.delegate = self
         
-        tableViewContent.estimatedRowHeight = 160
+        tableViewContent.estimatedRowHeight = 300
         tableViewContent.rowHeight = UITableViewAutomaticDimension
         self.title = "Games"
         
