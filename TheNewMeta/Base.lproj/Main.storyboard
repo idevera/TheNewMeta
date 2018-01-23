@@ -297,7 +297,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="vbA-8B-13c" secondAttribute="bottom" constant="15" id="al9-kF-YIe"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="6z1-RE-gUW" secondAttribute="trailing" constant="15" id="1AS-bZ-k0S"/>
                                             <constraint firstAttribute="bottom" secondItem="6z1-RE-gUW" secondAttribute="bottom" constant="63" id="3NK-cC-Pop"/>
@@ -445,7 +445,7 @@
                     <view key="view" contentMode="scaleToFill" id="QMB-Oo-FUJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.36314823870000001" green="0.29854940130000002" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="SUg-HY-4fc"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Edit Me" id="9yR-pz-xLJ"/>

@@ -49,7 +49,7 @@ class HostedFeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDele
         let lobby = signedInUser.createdLobbies[indexPath.item]
         
         cell.gameLabel.text = lobby.game.title
-        cell.currentNumPlayers.text = String(lobby.numberOfPlayers)
+        cell.currentNumPlayers.text = "Total Players: \(String(lobby.numberOfPlayers))"
         cell.backgroundColor = .white
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1

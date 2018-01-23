@@ -32,7 +32,7 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
         
         addSubview(collectionView)
         // This is adding a width and a height for the menu collection equal to the menu bar constraints
-        collectionView.backgroundColor = UIColor(hex: "#B7C3F3")
+        collectionView.backgroundColor = .clear
         collectionView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         collectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
@@ -116,7 +116,7 @@ class MenuCell: BaseCell {
     
     override func setupViews() {
         super.setupViews()
-        backgroundColor = UIColor(hex: "#B7C3F3")
+        backgroundColor = .clear
         addSubview(menuViewLabel)
         menuViewLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         menuViewLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true

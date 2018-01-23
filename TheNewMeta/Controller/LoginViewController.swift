@@ -21,11 +21,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var gamerTag = ""
     var email = ""
     var password = ""
-    
+    lazy var gradient: CAGradientLayer = [
+        UIColor(hex: "#FD4340"),
+        UIColor(hex: "#CE2BAE")
+        ].gradient { gradient in
+            gradient.speed = 1
+            gradient.timeOffset = 1
+            gradient.frame = self.view.bounds
+            return gradient
+    }
+
     // Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.layer.addSublayer(gradient)
+//        view.backgroundColor = .clear
         setupLayout()
         self.emailTagView.delegate = self
         self.pwTagView.delegate = self
@@ -128,7 +139,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textView.textAlignment = .center
         textView.backgroundColor = .clear
         textView.textColor = .black
-        textView.font = UIFont(name: "Arial", size: 18)
+        textView.font = UIFont(name: "Arial", size: 24)
         return textView
     }()
     
@@ -138,7 +149,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         gamerTag.backgroundColor = .white
         gamerTag.layer.cornerRadius = 5
         gamerTag.textAlignment = .center
-        gamerTag.placeholder = "HANDLE"
+        gamerTag.placeholder = "Handle"
         return gamerTag
     }()
     
@@ -148,7 +159,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailView.backgroundColor = .white
         emailView.layer.cornerRadius = 5
         emailView.textAlignment = .center
-        emailView.placeholder = "EMAIL"
+        emailView.placeholder = "Email"
         return emailView
     }()
     
@@ -159,7 +170,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         pwView.layer.cornerRadius = 5
         pwView.textAlignment = .center
         pwView.isSecureTextEntry = true
-        pwView.placeholder = "PASSWORD"
+        pwView.placeholder = "Password"
         return pwView
     }()
     

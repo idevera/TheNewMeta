@@ -14,6 +14,15 @@ import RealmSwift
 class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     private var signedInUser = User()
     private var currentAPIGames: [Game] = [Game]()
+    lazy var gradient: CAGradientLayer = [
+        UIColor(hex: "#FD4340"),
+        UIColor(hex: "#CE2BAE")
+        ].gradient { gradient in
+            gradient.speed = 1
+            gradient.timeOffset = 1
+            gradient.frame = self.view.bounds
+            return gradient
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -37,6 +46,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.layer.addSublayer(gradient)
         getData()
         setupLayout()
         findSignedInUser()
@@ -238,10 +248,10 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
     let submitButtonView: UIButton = {
         let submitButton = UIButton()
         submitButton.translatesAutoresizingMaskIntoConstraints = false
-        submitButton.backgroundColor = .yellow
+        submitButton.backgroundColor = UIColor(hex: "4F6272")
         submitButton.layer.cornerRadius = 1
         submitButton.setTitle("Create Lobby", for: .normal)
-        submitButton.setTitleColor(UIColor.darkGray, for: .normal)
+        submitButton.setTitleColor(UIColor.white, for: .normal)
         submitButton.addTarget(self, action: #selector(createLobby(_:)), for: .touchUpInside)
         return submitButton
     }()
