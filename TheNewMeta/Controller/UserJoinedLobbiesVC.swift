@@ -26,11 +26,14 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.view.layer.addSublayer(gradient)
-////        self.collectionView(gradient)
         self.view.layer.insertSublayer(gradient, at: 0)
         setupMenuBar()
         setupCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.collectionView?.reloadData()
     }
     
     // Collection View for the collection view that is holding the collection of Feed Cells
@@ -140,10 +143,6 @@ class BaseCell: UICollectionViewCell {
     func setupViews() {
         
     }
-}
-
-func leaveAction() {
-    
 }
 
 // Lobby Cell in Feed Cell 1 inherits from BaseCell

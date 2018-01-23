@@ -96,9 +96,12 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
                 // Signed in user, add the new lobby to your created Lobbies
                 signedInUser.createdLobbies.append(newLobby)
                 print("This is the signed in users ID:", signedInUser.userID)
-                
-                successCreationAlert()
             }
+            resetForm()
+            
+            // Reload the other collection views
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+            successCreationAlert()
         }
     }
     
@@ -130,6 +133,12 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
             return false
         }
         return true
+    }
+    
+    private func resetForm() {
+        playersFieldView.text = ""
+        msgFieldView.text = ""
+        initialPickerField.text = ""
     }
     
     private func getGame(gameTitle: String) -> Game? {

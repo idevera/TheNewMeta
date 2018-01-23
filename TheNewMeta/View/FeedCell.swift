@@ -34,6 +34,8 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         collectionView.register(LobbyCell.self, forCellWithReuseIdentifier: cellID)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
     }
     
     // Collections for user lobbies
@@ -78,7 +80,9 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         try! realm.write {
             realm.delete(lobby)
         }
-        collectionView.reloadData()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+
+//        collectionView.reloadData()
     }
     
     private func findSignedInUser() {
@@ -94,4 +98,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         return hostUser
     }
     
+    @objc private func loadList() {
+        self.collectionView.reloadData()
+    }
 }

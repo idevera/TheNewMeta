@@ -71,7 +71,10 @@ class MenuBar: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIC
 //        horizontalBarLeftAnchorConstraint?.constant = x
         
         // Here we pass in the menuIndex that we clicked on from the collection view and pass it into the method in the UserJoinedLobbiesVC. You will not see any change. You now need to go back to the menuBar anonymous function and add it as a property of home controller
-         userJoinedLobbiesVC?.scrollToMenuIndex(menuIndex: indexPath.item) // indexPath.item is the index of the collection
+         // indexPath.item is the index of the collection
+        userJoinedLobbiesVC?.scrollToMenuIndex(menuIndex: indexPath.item)
+//        collectionView.reloadData()
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

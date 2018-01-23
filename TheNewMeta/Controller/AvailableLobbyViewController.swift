@@ -107,7 +107,20 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         try! realm.write {
             currentLobby.lobbyUsers.append(signedInUser)
         }
+        
+        let alert = UIAlertController(title: "Joined Lobby!", message: "You were added to this lobby", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+            (_)in
+        })
+        
+        alert.addAction(OKAction)
+        self.present(alert, animated: true, completion: nil)
+        
+        // Navigate back to the root controller
         navigationController?.popToRootViewController(animated: true)
+        
+        // Update the users lobbies by sending a notification
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
     }
     
     private func findSignedInUser() {
