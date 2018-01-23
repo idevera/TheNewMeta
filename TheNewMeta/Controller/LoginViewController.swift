@@ -35,8 +35,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.layer.addSublayer(gradient)        
-//        view.backgroundColor = .clear
+        view.layer.addSublayer(gradient)
         setupLayout()
         self.emailTagView.delegate = self
         self.pwTagView.delegate = self
@@ -178,7 +177,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.backgroundColor = UIColor(hex: "#404E5C")
-//        loginButton.backgroundColor = UIColor(red: 177/255.0, green: 143/255.0, blue: 207/255.0, alpha: 1.0)
         loginButton.setTitle("LOGIN", for: .normal)
 //        loginButton.titleLabel?.font = UIFont(name: "Karmatic Arcade", size: 32.0)
 //        loginButton.titleLabel?.font = UIFont(name: "Open Sans", size: 32.0)
@@ -189,8 +187,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc private func setupLayout() {
         // Add container which controls the top half of the screen
         let topImageContainerView = UIView()
-        // Uncomment if you want to see what it looks like
-//        topImageContainerView.backgroundColor = UIColor(red:0.31, green:0.27, blue:0.38, alpha: 0)
         // Add container to the view
         view.addSubview(topImageContainerView)
         // This enables autolayout for our imageView
