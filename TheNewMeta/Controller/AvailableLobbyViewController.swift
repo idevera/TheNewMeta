@@ -37,6 +37,7 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         
         // Find the user and save it as a variable in this view
         findSignedInUser()
+        
         self.title = "\(chosenGame?.title ?? "No Available Lobbies") Lobbies"
     }
     
@@ -113,6 +114,7 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         let id = UserDefaults.standard.string(forKey: "userID")
         let realm = try! Realm()
         signedInUser = realm.object(ofType: User.self, forPrimaryKey: id)!
+        print("This is the signed in user gamer tag:", signedInUser.gamerTag)
     }
     
     private func findLobbyCreatorName(hostID: String) -> User {

@@ -47,28 +47,30 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Sign in button function
     @objc func signIn(_ sender: Any) {
-        gamerTag = gamerTagView.text!
-        email = emailTagView.text!
-        password = pwTagView.text!
-        
-        let realm = try! Realm()
+        if checkInputs() {
+            gamerTag = gamerTagView.text!
+            email = emailTagView.text!
+            password = pwTagView.text!
+            
+            let realm = try! Realm()
 
-        let matchingUser = realm.objects(User.self).filter("email == '\(email)'").first
-        
-        if matchingUser != nil {
-            print("User was found with a matching email: \(String(describing: matchingUser?.userID))!")
-            assignUserID(userID: matchingUser!.userID)
-            // TODO: Move onto the next sign in page with a welcome a notification
-        } else {
-            let savedUserID = createUser()
-            assignUserID(userID: savedUserID)
-            // TODO: Move onto the next sign in page with a welcome notification that a new user has been created
+            let matchingUser = realm.objects(User.self).filter("email == '\(email)'").first
+            
+            if matchingUser != nil {
+                print("User was found with a matching email: \(String(describing: matchingUser?.userID))!")
+                assignUserID(userID: matchingUser!.userID)
+                // TODO: Move onto the next sign in page with a welcome a notification
+            } else {
+                let savedUserID = createUser()
+                assignUserID(userID: savedUserID)
+                // TODO: Move onto the next sign in page with a welcome notification that a new user has been created
+            }
+            // Clear the password text field
+            pwTagView.text! = ""
+            let tabController = storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarViewController
+            
+            present(tabController, animated: true, completion: nil)
         }
-        // Clear the password text field
-        pwTagView.text! = ""
-        let tabController = storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarViewController
-        
-        present(tabController, animated: true, completion: nil)
     }
     
     // Keyboard returns after editing the text field
@@ -83,6 +85,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     // Private Functions
+    private func checkInputs() -> Bool {
+        if gamerTagView.text == "" || emailTagView.text == "" || pwTagView.text == "" {
+            failAlert()
+            return false
+        }
+        return true
+    }
     
     // Need to add a arrow function to the declare the type that is being returned. Else it will return as a void function.
     private func createUser() -> String {
@@ -106,6 +115,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func assignUserID(userID: String) {
         UserDefaults.standard.set(userID, forKey: "userID")
         UserDefaults.standard.synchronize()
+    }
+    
+    private func failAlert() {
+        let alert = UIAlertController(title: "Try again", message: "Your fields cannot be blank", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+            (_)in
+        })
+        
+        alert.addAction(OKAction)
+        self.present(alert, animated: true, completion: nil)
     }
    
         // TODO: Decide if I want to use this
