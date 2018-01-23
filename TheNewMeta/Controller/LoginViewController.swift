@@ -24,23 +24,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Overrides
     
-//    lazy var gradient: CAGradientLayer = [
-//        UIColor(hex: "#FD4340"),
-//        UIColor(hex: "#CE2BAE")
-//        ].gradient { gradient in
-//            gradient.speed = 0
-//            gradient.timeOffset = 0
-//
-//            return gradient
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
         self.emailTagView.delegate = self
         self.pwTagView.delegate = self
         self.gamerTagView.delegate = self
-//        view.backgroundColor = gradient
         //        let realm = try! Realm()
         //        try! realm.write {
         //            realm.deleteAll()
@@ -75,7 +64,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Keyboard returns after editing the text field
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn( _ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
@@ -149,7 +138,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         gamerTag.backgroundColor = .white
         gamerTag.layer.cornerRadius = 5
         gamerTag.textAlignment = .center
-        gamerTag.placeholder = "handle"
+        gamerTag.placeholder = "HANDLE"
         return gamerTag
     }()
     
@@ -159,7 +148,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailView.backgroundColor = .white
         emailView.layer.cornerRadius = 5
         emailView.textAlignment = .center
-        emailView.placeholder = "email"
+        emailView.placeholder = "EMAIL"
         return emailView
     }()
     
@@ -169,14 +158,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         pwView.backgroundColor = .white
         pwView.layer.cornerRadius = 5
         pwView.textAlignment = .center
-        pwView.placeholder = "password"
+        pwView.isSecureTextEntry = true
+        pwView.placeholder = "PASSWORD"
         return pwView
     }()
     
     let loginButtonView: UIButton = {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.backgroundColor = UIColor(red: 177/255.0, green: 143/255.0, blue: 207/255.0, alpha: 1.0)
+        loginButton.backgroundColor = UIColor(hex: "#404E5C")
+//        loginButton.backgroundColor = UIColor(red: 177/255.0, green: 143/255.0, blue: 207/255.0, alpha: 1.0)
         loginButton.layer.cornerRadius = 1
         return loginButton
     }()
@@ -262,7 +253,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButtonView.widthAnchor.constraint(equalTo: bottomViewContainer.widthAnchor, multiplier: 0.7).isActive = true
         loginButtonView.topAnchor.constraint(equalTo: pwTagView.bottomAnchor, constant: 40).isActive = true
         loginButtonView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
-        loginButtonView.setTitle("Login", for: .normal)
+        loginButtonView.setTitle("LOGIN", for: .normal)
         loginButtonView.addTarget(self, action: #selector(signIn), for: .touchUpInside)
     }
 }
