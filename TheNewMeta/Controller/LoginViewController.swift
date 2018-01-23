@@ -40,10 +40,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.emailTagView.delegate = self
         self.pwTagView.delegate = self
         self.gamerTagView.delegate = self
-        //        let realm = try! Realm()
-        //        try! realm.write {
-        //            realm.deleteAll()
-        //        }
+//                let realm = try! Realm()
+//                try! realm.write {
+//                    realm.deleteAll()
+//                }
     }
     
     // Sign in button function
@@ -88,7 +88,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // Need to add a arrow function to the declare the type that is being returned. Else it will return as a void function.
     private func createUser() -> String {
         let user = User()
-
+        
+        print("This is the user's gamer tag in the login view controller:", user.gamerTag)
         user.gamerTag = gamerTag
         user.email = email
         user.password = password

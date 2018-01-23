@@ -285,12 +285,13 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vbA-8B-13c">
                                                     <rect key="frame" x="15" y="15" width="140" height="149.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="150" id="4HJ-7A-5bz"/>
+                                                        <constraint firstAttribute="width" constant="140" id="CXq-Mp-87y"/>
+                                                        <constraint firstAttribute="height" constant="149.5" id="a4g-9i-w7M"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6z1-RE-gUW">
                                                     <rect key="frame" x="170" y="62" width="190" height="55"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

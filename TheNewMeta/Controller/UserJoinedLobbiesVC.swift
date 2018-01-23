@@ -52,7 +52,7 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     
     // Changes the size of each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height - 100)
+        return CGSize(width: view.frame.width, height: view.frame.height - 120)
     }
     
     // Menu Bar Setup
@@ -69,7 +69,7 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         view.addSubview(menuBarView)
         menuBarView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         menuBarView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        menuBarView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        menuBarView.heightAnchor.constraint(equalToConstant: 120).isActive = true
     }
     
     // MenuBar View Underline
@@ -93,9 +93,10 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     // Horizontal Collection Views
     
     private func setupCollectionView() {
-        collectionView?.contentInset = UIEdgeInsetsMake(100, 0, 0, 0)
+        collectionView?.contentInset = UIEdgeInsetsMake(120, 0, 0, 0)
+//        collectionView?.backgroundColor = .yellow
         // Changes where the scroll of the collection view to not be underneath the menu bar
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(100, 0, 0, 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(120, 0, 0, 0)
 
         // This is the collection for the side scroll
         // collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
@@ -150,6 +151,7 @@ func leaveAction() {
 class LobbyCell: BaseCell {
     let gameTitleLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -184,26 +186,26 @@ class LobbyCell: BaseCell {
         
         // Game label view
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
-        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 10))
-        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.4, constant: 0))
-        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.7, constant: 5))
+        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 20))
+        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.25, constant: 0))
+        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.6, constant: 5))
 
         // Leave Button View
         addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .left, relatedBy: .equal, toItem: gameTitleLabel, attribute: .right, multiplier: 1, constant: 5))
-        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -10))
+        addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -20))
         addConstraint(NSLayoutConstraint(item: leaveButtonView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
 
         // Player Text View
         addConstraint(NSLayoutConstraint(item: playersTextView, attribute: .top, relatedBy: .equal, toItem: gameTitleLabel, attribute: .bottom, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: playersTextView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 10))
+        addConstraint(NSLayoutConstraint(item: playersTextView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 20))
         addConstraint(NSLayoutConstraint(item: playersTextView, attribute: .right, relatedBy: .equal, toItem: leaveButtonView, attribute: .left, multiplier: 1, constant: -5))
 
         // Msg Text View
         addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .top, relatedBy: .equal, toItem: playersTextView, attribute: .bottom, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 10))
+        addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 20))
         addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .right, relatedBy: .equal, toItem: leaveButtonView, attribute: .left, multiplier: 1, constant: -5))
-        addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -10))
+        addConstraint(NSLayoutConstraint(item: msgTextView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -20))
     }
 }
 
@@ -212,6 +214,8 @@ class LobbyCell: BaseCell {
 class HostedCell: BaseCell {
     let gameLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+//        label.font = label.font.withSize(20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -241,21 +245,21 @@ class HostedCell: BaseCell {
         
         // Game label view
         addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
-        addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 10))
+        addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 20))
         addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.6, constant: 0))
-        addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.7, constant: 5))
+        addConstraint(NSLayoutConstraint(item: gameLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.6, constant: 5))
         
-        // Leave Button View
+        // Cancel Button View
         addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
         addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .left, relatedBy: .equal, toItem: gameLabel, attribute: .right, multiplier: 1, constant: 5))
-        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -10))
+        addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -20))
         addConstraint(NSLayoutConstraint(item: cancelButtonView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
 
         // Player Text View
         addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .top, relatedBy: .equal, toItem: gameLabel, attribute: .bottom, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 10))
+        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 20))
         addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .right, relatedBy: .equal, toItem: cancelButtonView, attribute: .left, multiplier: 1, constant: -5))
-        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -5))
+        addConstraint(NSLayoutConstraint(item: currentNumPlayers, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -20))
     }
 }
 

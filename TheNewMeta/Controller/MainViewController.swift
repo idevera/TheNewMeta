@@ -139,6 +139,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private func removeSignedInUserID() {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "userID")
+        print("This is the signed in user ID:")
         print("\(String(describing: UserDefaults.standard.string(forKey: "userID")))")
     }
     

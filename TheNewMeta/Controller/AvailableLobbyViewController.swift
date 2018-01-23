@@ -53,9 +53,15 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         
         // The table view will iterate over each thing in the matchingLobbies
         let lobby = chosenGame?.matchingLobbies[indexPath.row]
-        
+        print("Information about lobby")
+        print(lobby?.hostID)
         // Find the matching User of the lobby and return back their name
         let lobbyHost = findLobbyCreatorName(hostID: (lobby?.hostID)!)
+        
+        print("Information about lobby host:")
+        print(lobbyHost.gamerTag)
+        print(lobbyHost.email)
+        print(lobbyHost.password)
         
         cell.gamerTagLabel.text = lobbyHost.gamerTag
         cell.numPlayersLabel.text = "\(lobby?.numberOfPlayers ?? 0)"
