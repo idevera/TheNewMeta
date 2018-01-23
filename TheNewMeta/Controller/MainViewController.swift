@@ -41,7 +41,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableViewContent.estimatedRowHeight = 160
         tableViewContent.rowHeight = UITableViewAutomaticDimension
-        self.title = "Search Games"
+        self.title = "Games"
         
         // Tap gesture to exit keyboard after tap
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))

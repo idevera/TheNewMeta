@@ -18,6 +18,18 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
 
     @IBOutlet weak var lobbyTableView: UITableView!
     
+    // Overrides
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        lobbyTableView.delegate = self
+        lobbyTableView.dataSource = self
+        
+        // Find the user and save it as a variable in this view
+        findSignedInUser()
+        self.title = "\(chosenGame?.title ?? "No Available Lobbies") Lobbies"
+    }
+    
     // Lobby Tables
     
     // How many sections in your table
@@ -92,8 +104,6 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         return userCreator!
     }
     
-    // TODO: Error handling
-    
     private func preventJoin() {
         let alert = UIAlertController(title: "You are already in this lobby :)", message: "Please try another lobby to join", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
@@ -102,16 +112,5 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         
         alert.addAction(OKAction)
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    // Overrides
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        lobbyTableView.delegate = self
-        lobbyTableView.dataSource = self
-        
-        // Find the user and save it as a variable in this view
-        findSignedInUser()
     }
 }
