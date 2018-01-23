@@ -203,6 +203,13 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		CCC368132017A25F00BEE59C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		CCF800D81FFC1B1D0089994B = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +235,7 @@
 		CCF800E31FFC1B1D0089994B /* TheNewMeta */ = {
 			isa = PBXGroup;
 			children = (
+				CCC368132017A25F00BEE59C /* Fonts */,
 				CCF801141FFC1BDD0089994B /* Realm.framework */,
 				CCF801131FFC1BDA0089994B /* RealmSwift.framework */,
 				CCF800E41FFC1B1D0089994B /* AppDelegate.swift */,
