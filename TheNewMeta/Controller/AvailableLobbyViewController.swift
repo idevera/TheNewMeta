@@ -15,13 +15,23 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
     var chosenGame: Game?
     private var signedInUser = User()
     let lobbyCellIdentifier = "LobbyTableCell"
-
+    lazy var gradient: CAGradientLayer = [
+        UIColor(hex: "#FD4340"),
+        UIColor(hex: "#CE2BAE")
+        ].gradient { gradient in
+            gradient.speed = 1
+            gradient.timeOffset = 1
+            gradient.frame = self.view.bounds
+            return gradient
+    }
+    
     @IBOutlet weak var lobbyTableView: UITableView!
     
     // Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.layer.insertSublayer(gradient, at: 0)
         lobbyTableView.delegate = self
         lobbyTableView.dataSource = self
         
@@ -53,19 +63,20 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         
         // The table view will iterate over each thing in the matchingLobbies
         let lobby = chosenGame?.matchingLobbies[indexPath.row]
-        print("Information about lobby")
-        print(lobby?.hostID)
+//        print("Information about lobby")
+//        print(lobby?.hostID)
         // Find the matching User of the lobby and return back their name
         let lobbyHost = findLobbyCreatorName(hostID: (lobby?.hostID)!)
-        
-        print("Information about lobby host:")
-        print(lobbyHost.gamerTag)
-        print(lobbyHost.email)
-        print(lobbyHost.password)
+//
+//        print("Information about lobby host:")
+//        print(lobbyHost.gamerTag)
+//        print(lobbyHost.email)
+//        print(lobbyHost.password)
         
         cell.gamerTagLabel.text = lobbyHost.gamerTag
-        cell.numPlayersLabel.text = "\(lobby?.numberOfPlayers ?? 0)"
-        cell.messageLabel.text = lobby?.message
+        cell.numPlayersLabel.text = "Total Players: \(lobby?.numberOfPlayers ?? 0)"
+        let message = "\(lobby?.message ?? "Hello")"
+        cell.messageLabel.text = "\"\(message)\""
         
         // Save the index of the matchingLobbies array that currently are in
         cell.joinButton.tag = indexPath.row

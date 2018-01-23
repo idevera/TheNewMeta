@@ -11,7 +11,6 @@ import UIKit
 import RealmSwift
 import Hue
 
-
 class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     private var signedInUser = User()
     private var currentAPIGames: [Game] = [Game]()
@@ -91,7 +90,6 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
                 game!.matchingLobbies.append(newLobby)
                 newLobby.lobbyUsers.append(signedInUser)
                 signedInUser.createdLobbies.append(newLobby)
-                print("This is my signed in useres created lobbies: \(signedInUser.joinedLobbies)")
                 successCreationAlert()
             }
         }
@@ -185,7 +183,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
     }
     
     private func successCreationAlert() {
-        let alert = UIAlertController(title: "Lobby Successfully Created", message: "See your profile for all your currently hosted lobbies", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Lobby Successfully Created", message: "Your lobby was added to your profile", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
             (_)in
         })

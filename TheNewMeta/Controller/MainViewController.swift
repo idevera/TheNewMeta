@@ -18,6 +18,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var filteredData = [Game]()
     private var signedInUser = User()
     let gameCellIdentifier = "gameTitleCell"
+    lazy var gradient: CAGradientLayer = [
+        UIColor(hex: "#FD4340"),
+        UIColor(hex: "#CE2BAE")
+        ].gradient { gradient in
+            gradient.speed = 1
+            gradient.timeOffset = 1
+            gradient.frame = self.view.bounds
+            return gradient
+    }
     
     // Outlets
     
@@ -31,6 +40,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.layer.insertSublayer(gradient, at: 0)
+
         // Get Data from the Realm Database
         getData()
         filteredData = currentGames

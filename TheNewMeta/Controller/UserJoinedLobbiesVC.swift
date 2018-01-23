@@ -159,6 +159,7 @@ class LobbyCell: BaseCell {
     let leaveButtonView: UIButton = {
         let leaveButton = UIButton()
         leaveButton.setTitleColor(UIColor.red, for: .normal)
+        leaveButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         leaveButton.translatesAutoresizingMaskIntoConstraints = false
         leaveButton.setTitle("Leave?", for: .normal)
         return leaveButton
@@ -185,9 +186,9 @@ class LobbyCell: BaseCell {
         addSubview(msgTextView)
         
         // Game label view
-        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 5))
+        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 20))
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 20))
-        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.25, constant: 0))
+        addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.2, constant: 0))
         addConstraint(NSLayoutConstraint(item: gameTitleLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.6, constant: 5))
 
         // Leave Button View
@@ -226,6 +227,7 @@ class HostedCell: BaseCell {
         cancelButton.setTitleColor(UIColor.red, for: .normal)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         cancelButton.setTitle("Cancel?", for: .normal)
+        cancelButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         return cancelButton
     }()
     
