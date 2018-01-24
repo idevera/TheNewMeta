@@ -8,9 +8,9 @@
 
 import UIKit
 import RealmSwift
-import Lottie
-import RxSwift
-import Hue
+//import Lottie // Not actively used at this point https://airbnb.design/lottie/
+//import RxSwift // Not actively used at this point https://github.com/ReactiveX/RxSwift
+import Hue // Created by https://www.hyper.no/
 
 // Inherits from the UIViewController
 class LoginViewController: UIViewController, UITextFieldDelegate {
@@ -138,6 +138,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Add a closure for the imageview - Anonymous functions
     let joystickImageView: UIImageView = {
+        
+        // Icon made by [https://www.flaticon.com/packs/linear-game-design-elements] from www.flaticon.com
+        
         let imageView = UIImageView(image: #imageLiteral(resourceName: "manipulator (1)"))
         // This enables autoLayout for our imageView
         imageView.translatesAutoresizingMaskIntoConstraints = false

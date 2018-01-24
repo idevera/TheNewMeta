@@ -58,6 +58,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        view.addGestureRecognizer(tap)
     }
     
+//    @objc func dismissKeyboard() {
+//        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+//        view.endEditing(true)
+//    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBarView.resignFirstResponder()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.gradient.frame = self.view.bounds

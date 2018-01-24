@@ -11,7 +11,8 @@ import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    // Main icon attribution: http://game-icons.net/lorc/originals/thrown-daggers.html
     var window: UIWindow?
 
     let gameApiIds = ["3030-48190", "3030-48320", "3030-54979", "3030-32887", "3030-24024"]
