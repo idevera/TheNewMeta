@@ -54,7 +54,9 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
 
         let lobby = signedInUser.joinedLobbies[indexPath.row]
 
-        cell.gameTitleLabel.text = "Lobby Host: \(findLobbyHost(hostID: lobby.hostID).gamerTag)"
+        cell.gameTitleLabel.text = "\(lobby.game.title)"
+
+//        cell.gameTitleLabel.text = "\(findLobbyHost(hostID: lobby.hostID).gamerTag)"
         cell.playersTextView.text = "Total players: \(String(lobby.numberOfPlayers))"
         cell.msgTextView.text = "\"\(lobby.message)\""
         cell.backgroundColor = UIColor(white: 1, alpha: 0.8)

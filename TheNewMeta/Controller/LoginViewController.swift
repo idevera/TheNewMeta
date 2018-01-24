@@ -38,14 +38,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.emailTagView.delegate = self
         self.pwTagView.delegate = self
         self.gamerTagView.delegate = self
-//                let realm = try! Realm()
-//                try! realm.write {
-//                    realm.deleteAll()
-//                }
+        
+//        let realm = try! Realm()
+//        try! realm.write {
+//            realm.deleteAll()
+//        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         self.gradient.frame = self.view.bounds
     }
     
@@ -154,7 +156,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textView.textAlignment = .center
         textView.backgroundColor = .clear
         textView.textColor = .black
-        textView.font = UIFont(name: "ka1", size: 32)
+        textView.font = UIFont(name: "Helvetica Neue", size: 32)
+        textView.font = UIFont.boldSystemFont(ofSize: 24.0)
         return textView
     }()
     
@@ -165,6 +168,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         gamerTag.layer.cornerRadius = 5
         gamerTag.textAlignment = .center
         gamerTag.placeholder = "Handle"
+        gamerTag.autocapitalizationType = .none
         return gamerTag
     }()
     
@@ -175,6 +179,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailView.layer.cornerRadius = 5
         emailView.textAlignment = .center
         emailView.placeholder = "Email"
+        emailView.autocapitalizationType = .none
         return emailView
     }()
     
@@ -186,6 +191,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         pwView.textAlignment = .center
         pwView.isSecureTextEntry = true
         pwView.placeholder = "Password"
+        pwView.autocapitalizationType = .none
         return pwView
     }()
     
@@ -195,8 +201,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.backgroundColor = UIColor(hex: "#404E5C")
         loginButton.setTitle("LOGIN", for: .normal)
         // TODO: Need to change main font type
-//        loginButton.titleLabel?.font = UIFont(name: "Karmatic Arcade", size: 32.0)
-//        loginButton.titleLabel?.font = UIFont(name: "Open Sans", size: 32.0)
         loginButton.layer.cornerRadius = 1
         return loginButton
     }()
