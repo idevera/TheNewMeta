@@ -12,6 +12,8 @@ import RealmSwift
 
 class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // Properties
+    
     var chosenGame: Game?
     private var signedInUser = User()
     let lobbyCellIdentifier = "LobbyTableCell"
@@ -21,9 +23,10 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         ].gradient { gradient in
             gradient.speed = 1
             gradient.timeOffset = 1
-            gradient.frame = self.view.bounds
             return gradient
     }
+    
+    // Outlets
     
     @IBOutlet weak var lobbyTableView: UITableView!
     
@@ -39,6 +42,11 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         findSignedInUser()
         
         self.title = "\(chosenGame?.title ?? "No Available Lobbies") Lobbies"
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.gradient.frame = self.view.bounds
     }
     
     // Lobby Tables
@@ -64,15 +72,9 @@ class AvailableLobbyViewController: UIViewController, UITableViewDataSource, UIT
         
         // The table view will iterate over each thing in the matchingLobbies
         let lobby = chosenGame?.matchingLobbies[indexPath.row]
-//        print("Information about lobby")
-//        print(lobby?.hostID)
+
         // Find the matching User of the lobby and return back their name
         let lobbyHost = findLobbyCreatorName(hostID: (lobby?.hostID)!)
-//
-//        print("Information about lobby host:")
-//        print(lobbyHost.gamerTag)
-//        print(lobbyHost.email)
-//        print(lobbyHost.password)
         
         cell.gamerTagLabel.text = lobbyHost.gamerTag
         cell.numPlayersLabel.text = "Total Players: \(lobby?.numberOfPlayers ?? 0)"

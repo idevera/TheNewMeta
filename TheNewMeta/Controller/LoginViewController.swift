@@ -26,7 +26,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         ].gradient { gradient in
             gradient.speed = 1
             gradient.timeOffset = 1
-            gradient.frame = self.view.bounds
             return gradient
     }
 
@@ -45,15 +44,33 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //                }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.gradient.frame = self.view.bounds
+    }
+    
+    // Keyboard returns after editing the text field
+    
+    func textFieldShouldReturn( _ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
+    // Private Functions
+    
     // Sign in button function
-    @objc func signIn(_ sender: Any) {
+    @objc private func signIn(_ sender: Any) {
         if checkInputs() {
             gamerTag = gamerTagView.text!
             email = emailTagView.text!
             password = pwTagView.text!
             
             let realm = try! Realm()
-
+            
             let matchingUser = realm.objects(User.self).filter("email == '\(email)'").first
             
             if matchingUser != nil {
@@ -73,18 +90,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // Keyboard returns after editing the text field
-    
-    func textFieldShouldReturn( _ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-
-    // Private Functions
     private func checkInputs() -> Bool {
         if gamerTagView.text == "" || emailTagView.text == "" || pwTagView.text == "" {
             failAlert()
@@ -126,14 +131,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(OKAction)
         self.present(alert, animated: true, completion: nil)
     }
-   
-        // TODO: Decide if I want to use this
-    //    override func viewDidLayoutSubviews() {
-    //        self.gamerTagView.underlined(borderColor: .black)
-    //        self.emailTagView.underlined(borderColor: .black)
-    //        self.pwTagView.underlined(borderColor: .black)
-    ////        self.loginButtonView.loginStyle()
-    //    }
     
     // Create Views
     
@@ -197,6 +194,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.backgroundColor = UIColor(hex: "#404E5C")
         loginButton.setTitle("LOGIN", for: .normal)
+        // TODO: Need to change main font type
 //        loginButton.titleLabel?.font = UIFont(name: "Karmatic Arcade", size: 32.0)
 //        loginButton.titleLabel?.font = UIFont(name: "Open Sans", size: 32.0)
         loginButton.layer.cornerRadius = 1
@@ -260,14 +258,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         gamerTagView.topAnchor.constraint(equalTo: bottomViewContainer.topAnchor, constant: 20).isActive = true
         gamerTagView.heightAnchor.constraint(equalTo: emailTagView.heightAnchor).isActive = true
 
-
         // Email View
         
         emailTagView.centerXAnchor.constraint(equalTo: bottomViewContainer.centerXAnchor).isActive = true
         emailTagView.widthAnchor.constraint(equalTo: bottomViewContainer.widthAnchor, multiplier: 0.7).isActive = true
         emailTagView.topAnchor.constraint(equalTo: gamerTagView.bottomAnchor, constant: 20).isActive = true
         gamerTagView.heightAnchor.constraint(equalTo: pwTagView.heightAnchor).isActive = true
-
         
         // PW View
         
@@ -285,3 +281,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButtonView.addTarget(self, action: #selector(signIn), for: .touchUpInside)
     }
 }
+
+// TODO: This is a custom underline styling that we could use at a later time
+//    override func viewDidLayoutSubviews() {
+//        self.gamerTagView.underlined(borderColor: .black)
+//        self.emailTagView.underlined(borderColor: .black)
+//        self.pwTagView.underlined(borderColor: .black)
+////        self.loginButtonView.loginStyle()
+//    }

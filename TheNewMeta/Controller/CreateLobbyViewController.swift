@@ -12,6 +12,9 @@ import RealmSwift
 import Hue
 
 class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    // Properties
+    
     private var signedInUser = User()
     private var currentAPIGames: [Game] = [Game]()
     lazy var gradient: CAGradientLayer = [
@@ -20,9 +23,45 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         ].gradient { gradient in
             gradient.speed = 1
             gradient.timeOffset = 1
-            gradient.frame = self.view.bounds
             return gradient
     }
+    
+    // Overrides
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.layer.addSublayer(gradient)
+        getData()
+        setupLayout()
+        findSignedInUser()
+        
+        self.playersFieldView.delegate = self
+        self.msgFieldView.delegate = self
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
+        
+        initialPickerField.inputView = pickerView
+        
+        self.title = "Create Lobby"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        playersFieldView.text = ""
+        msgFieldView.text = ""
+        initialPickerField.text = ""
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.gradient.frame = self.view.bounds
+    }
+    
+    // When the user clicks on the screen the editing of the text field picker will close
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // Picker View
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -42,35 +81,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         initialPickerField.text = currentAPIGames[row].title
     }
     
-    // Overrides
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.layer.addSublayer(gradient)
-        getData()
-        setupLayout()
-        findSignedInUser()
-        
-        self.playersFieldView.delegate = self
-        self.msgFieldView.delegate = self
-        self.pickerView.delegate = self
-        self.pickerView.dataSource = self
-        
-        initialPickerField.inputView = pickerView
-
-        self.title = "Create Lobby"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        playersFieldView.text = ""
-        msgFieldView.text = ""
-        initialPickerField.text = ""
-    }
-    
-    // When the user clicks on the screen the editing of the text field picker will close
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+    // Private Functions
     
     @objc private func createLobby(_ sender: UIButton) {
         if checkInputs() {
@@ -110,6 +121,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
 //        self.view.endEditing(true)
 //        return false
 //    }
+    
     // Keyboard clicks
     
     // Hide the keyboard if the text field is the picker field
@@ -225,9 +237,7 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
     // Picker View
     var pickerView: UIPickerView = {
         let picker = UIPickerView()
-        //        picker.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         picker.translatesAutoresizingMaskIntoConstraints = false
-//        picker.backgroundColor = .
         picker.isHidden = false
         return picker
     }()
@@ -245,7 +255,6 @@ class CreateLobbyViewController: UIViewController, UITextFieldDelegate, UIPicker
         playersField.backgroundColor = .white
         playersField.layer.cornerRadius = 5
         playersField.textAlignment = .center
-//        playersField.isUserInteractionEnabled = true
         playersField.placeholder = "Number of Players?"
         return playersField
     }()

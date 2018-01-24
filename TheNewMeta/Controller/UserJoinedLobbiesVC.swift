@@ -19,7 +19,7 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         ].gradient { gradient in
             gradient.speed = 1
             gradient.timeOffset = 1
-            gradient.frame = self.view.bounds
+//            gradient.frame = self.view.bounds
             return gradient
     }
     // Overrides
@@ -36,7 +36,13 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
         self.collectionView?.reloadData()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.gradient.frame = self.view.bounds
+    }
+    
     // Collection View for the collection view that is holding the collection of Feed Cells
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
@@ -54,6 +60,7 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     }
     
     // Changes the size of each cell
+    // TODO: This prevents the auto layout when the phone is turned
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height - 120)
     }
@@ -97,7 +104,6 @@ class UserJoinedLobbiesVC: UICollectionViewController, UICollectionViewDelegateF
     
     private func setupCollectionView() {
         collectionView?.contentInset = UIEdgeInsetsMake(120, 0, 0, 0)
-//        collectionView?.backgroundColor = .yellow
         // Changes where the scroll of the collection view to not be underneath the menu bar
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(120, 0, 0, 0)
 
@@ -152,6 +158,7 @@ class LobbyCell: BaseCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
         return label
     }()
     
@@ -215,14 +222,13 @@ class HostedCell: BaseCell {
     let gameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
-//        label.font = label.font.withSize(20)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
         return label
     }()
     
     let cancelButtonView: UIButton = {
         let cancelButton = UIButton()
-//        cancelButton.backgroundColor = .blue
         cancelButton.setTitleColor(UIColor.red, for: .normal)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         cancelButton.setTitle("Cancel?", for: .normal)
@@ -232,7 +238,6 @@ class HostedCell: BaseCell {
     
     let currentNumPlayers: UILabel = {
         let numPlayers = UILabel()
-//        numPlayers.backgroundColor = .green
         numPlayers.translatesAutoresizingMaskIntoConstraints = false
         return numPlayers
     }()

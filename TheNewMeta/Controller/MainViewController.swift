@@ -23,7 +23,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ].gradient { gradient in
             gradient.speed = 1
             gradient.timeOffset = 1
-            gradient.frame = self.view.bounds
+//            gradient.frame = self.view.bounds
             return gradient
     }
     
@@ -56,6 +56,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Tap gesture to exit keyboard after tap
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
 //        view.addGestureRecognizer(tap)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.gradient.frame = self.view.bounds
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
